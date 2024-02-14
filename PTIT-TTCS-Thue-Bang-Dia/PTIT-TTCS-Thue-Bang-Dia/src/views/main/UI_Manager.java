@@ -38,6 +38,22 @@ public class UI_Manager extends javax.swing.JFrame {
         lblTra = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         pnlUpdate = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        pnlProcess = new javax.swing.JPanel();
+        lblThaotac = new javax.swing.JLabel();
+        cbThaotac = new javax.swing.JComboBox<>();
+        lblDia = new javax.swing.JLabel();
+        txtDia = new javax.swing.JTextField();
+        lblGia = new javax.swing.JLabel();
+        txtGia = new javax.swing.JTextField();
+        lblMa = new javax.swing.JLabel();
+        txtMa = new javax.swing.JTextField();
+        lblLoai = new javax.swing.JLabel();
+        txtLoai = new javax.swing.JTextField();
+        lblSl = new javax.swing.JLabel();
+        txtSl = new javax.swing.JTextField();
+        btnLuu = new javax.swing.JButton();
         pnlNV = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,17 +137,63 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlContent.setLayout(new java.awt.CardLayout());
 
         pnlUpdate.setBackground(new java.awt.Color(255, 255, 255));
+        pnlUpdate.setPreferredSize(new java.awt.Dimension(536, 350));
+        pnlUpdate.setLayout(new javax.swing.BoxLayout(pnlUpdate, javax.swing.BoxLayout.Y_AXIS));
 
-        javax.swing.GroupLayout pnlUpdateLayout = new javax.swing.GroupLayout(pnlUpdate);
-        pnlUpdate.setLayout(pnlUpdateLayout);
-        pnlUpdateLayout.setHorizontalGroup(
-            pnlUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
-        );
-        pnlUpdateLayout.setVerticalGroup(
-            pnlUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        pnlUpdate.add(jScrollPane1);
+
+        pnlProcess.setBackground(new java.awt.Color(255, 255, 255));
+        pnlProcess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblThaotac.setText("Thao tác:");
+        pnlProcess.add(lblThaotac, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 17, 73, -1));
+
+        cbThaotac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thêm sản phẩm", "Sửa giá ", " " }));
+        pnlProcess.add(cbThaotac, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 14, -1, -1));
+
+        lblDia.setText("Tên đĩa:");
+        pnlProcess.add(lblDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 17, 96, -1));
+        pnlProcess.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 14, 130, -1));
+
+        lblGia.setText("Giá thuê:");
+        pnlProcess.add(lblGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 51, 73, -1));
+        pnlProcess.add(txtGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 48, 120, -1));
+
+        lblMa.setText("Mã đĩa:");
+        pnlProcess.add(lblMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 51, 96, -1));
+        pnlProcess.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 48, 130, -1));
+
+        lblLoai.setText("Loại:");
+        pnlProcess.add(lblLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 85, 73, -1));
+        pnlProcess.add(txtLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 82, 120, -1));
+
+        lblSl.setText("Số lượng:");
+        pnlProcess.add(lblSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 85, 96, -1));
+
+        txtSl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSlActionPerformed(evt);
+            }
+        });
+        pnlProcess.add(txtSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 82, 130, -1));
+
+        btnLuu.setText("Lưu");
+        pnlProcess.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 80, 40));
+
+        pnlUpdate.add(pnlProcess);
 
         pnlContent.add(pnlUpdate, "card2");
 
@@ -141,11 +203,11 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlNV.setLayout(pnlNVLayout);
         pnlNVLayout.setHorizontalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         pnlContent.add(pnlNV, "card3");
@@ -188,6 +250,10 @@ public class UI_Manager extends javax.swing.JFrame {
         tabUpdate.setBackground(new Color(204,204,255));
     }//GEN-LAST:event_tabNVMouseClicked
 
+    private void txtSlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSlActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,16 +291,32 @@ public class UI_Manager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JComboBox<String> cbThaotac;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCD;
+    private javax.swing.JLabel lblDia;
+    private javax.swing.JLabel lblGia;
+    private javax.swing.JLabel lblLoai;
+    private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblSl;
+    private javax.swing.JLabel lblThaotac;
     private javax.swing.JLabel lblThue;
     private javax.swing.JLabel lblTra;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLayoutSize;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNV;
+    private javax.swing.JPanel pnlProcess;
     private javax.swing.JPanel pnlUpdate;
     private javax.swing.JSeparator sprtCD;
     private javax.swing.JPanel tabNV;
     private javax.swing.JPanel tabUpdate;
+    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtGia;
+    private javax.swing.JTextField txtLoai;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtSl;
     // End of variables declaration//GEN-END:variables
 }

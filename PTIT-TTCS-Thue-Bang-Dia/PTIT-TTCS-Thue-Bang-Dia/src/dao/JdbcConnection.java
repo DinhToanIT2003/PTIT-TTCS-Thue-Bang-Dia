@@ -6,25 +6,19 @@ package dao;
 import java.sql.*;
 
 public class JdbcConnection {
-    public static Connection sConn = null;
-    public static void main(String[] args) {
-        //Khai báo chuỗi kết nối
-        String strDbUrl = "jdbc:sqlserver://localhost:1433; databaseName=DOAN_THUEBD;user=sa;password=123456;"
+    public static Connection getJdbcConnection(){
+        Connection con = null;
+        final String url = "jdbc:sqlserver://localhost:1433; databaseName=DOAN_THUEBD;user=sa;password=123456;"
                 + "encrypt=true;trustServerCertificate=true";
-        if (sConn == null) {
-            try {           
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-                sConn = DriverManager.getConnection(strDbUrl);
-                System.out.println("Ket noi thanh cong");
-                DatabaseMetaData data = (DatabaseMetaData) sConn.getMetaData();
-                // hien thi thong tin sql khi ket noi thanh cong
-                System.out.println("Driver Name: " + data.getDriverName());
-                System.out.println("Driver Version: " + data.getDriverVersion());
-                System.out.println("Product Name: " + data.getDatabaseProductName());
-                System.out.println("Version: " + data.getDatabaseProductVersion());
-            } 
-            catch (Exception ex) {System.out.println("Khong the ket noi den CSDL \n" + ex);
-            } 
+        final String user = "sa";
+        final String pass = "123456";
+        
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(url,user,pass);
+        }catch(Exception e){
+            e.printStackTrace();
         }
+        return con;
     }
 }
