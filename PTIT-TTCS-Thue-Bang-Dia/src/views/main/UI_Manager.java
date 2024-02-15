@@ -5,6 +5,17 @@
 package views.main;
 
 import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+import model.Disk;
+import control.UpdateService;
+import dao.DiskDao;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import control.BlankValueException;
+import control.InvalidIDException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,8 +26,17 @@ public class UI_Manager extends javax.swing.JFrame {
     /**
      * Creates new form UI_Staff
      */
+    private UpdateService upService;
+    private int btn;
+    private DefaultTableModel defTabMod;
+    private List<Disk> disks;
+    
+    
+    
     public UI_Manager() {
         initComponents();
+        txtFieldState(); 
+        createTab();
     }
 
     /**
@@ -38,28 +58,32 @@ public class UI_Manager extends javax.swing.JFrame {
         lblTra = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         pnlUpdate = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scpDia = new javax.swing.JScrollPane();
+        tblDia = new javax.swing.JTable();
         pnlProcess = new javax.swing.JPanel();
-        lblThaotac = new javax.swing.JLabel();
-        cbThaotac = new javax.swing.JComboBox<>();
-        lblDia = new javax.swing.JLabel();
-        txtDia = new javax.swing.JTextField();
-        lblGia = new javax.swing.JLabel();
-        txtGia = new javax.swing.JTextField();
+        pnlText = new javax.swing.JPanel();
         lblMa = new javax.swing.JLabel();
-        txtMa = new javax.swing.JTextField();
+        lblTen = new javax.swing.JLabel();
         lblLoai = new javax.swing.JLabel();
-        txtLoai = new javax.swing.JTextField();
         lblSl = new javax.swing.JLabel();
+        lblGia = new javax.swing.JLabel();
+        txtMa = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
+        txtLoai = new javax.swing.JTextField();
         txtSl = new javax.swing.JTextField();
+        txtGia = new javax.swing.JTextField();
+        pnlButton = new javax.swing.JPanel();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
+        lblPhanHoi = new javax.swing.JLabel();
         pnlNV = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("STAFF");
+        setTitle("MANAGER");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         pnlLayoutSize.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -140,58 +164,154 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlUpdate.setPreferredSize(new java.awt.Dimension(536, 350));
         pnlUpdate.setLayout(new javax.swing.BoxLayout(pnlUpdate, javax.swing.BoxLayout.Y_AXIS));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã đĩa", "Tên đĩa", "Loại", "Số lượng", "Giá thuê"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        pnlUpdate.add(jScrollPane1);
-
-        pnlProcess.setBackground(new java.awt.Color(255, 255, 255));
-        pnlProcess.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblThaotac.setText("Thao tác:");
-        pnlProcess.add(lblThaotac, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 17, 73, -1));
-
-        cbThaotac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thêm sản phẩm", "Sửa giá ", " " }));
-        pnlProcess.add(cbThaotac, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 14, -1, -1));
-
-        lblDia.setText("Tên đĩa:");
-        pnlProcess.add(lblDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 17, 96, -1));
-        pnlProcess.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 14, 130, -1));
-
-        lblGia.setText("Giá thuê:");
-        pnlProcess.add(lblGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 51, 73, -1));
-        pnlProcess.add(txtGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 48, 120, -1));
-
-        lblMa.setText("Mã đĩa:");
-        pnlProcess.add(lblMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 51, 96, -1));
-        pnlProcess.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 48, 130, -1));
-
-        lblLoai.setText("Loại:");
-        pnlProcess.add(lblLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 85, 73, -1));
-        pnlProcess.add(txtLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 82, 120, -1));
-
-        lblSl.setText("Số lượng:");
-        pnlProcess.add(lblSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 85, 96, -1));
-
-        txtSl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSlActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        pnlProcess.add(txtSl, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 82, 130, -1));
+        scpDia.setViewportView(tblDia);
+
+        pnlUpdate.add(scpDia);
+
+        pnlProcess.setPreferredSize(new java.awt.Dimension(542, 300));
+
+        lblMa.setText("Mã Đĩa:");
+
+        lblTen.setText("Tên Đĩa:");
+
+        lblLoai.setText("Loại:");
+
+        lblSl.setText("Số lượng:");
+
+        lblGia.setText("Giá:");
+
+        javax.swing.GroupLayout pnlTextLayout = new javax.swing.GroupLayout(pnlText);
+        pnlText.setLayout(pnlTextLayout);
+        pnlTextLayout.setHorizontalGroup(
+            pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTextLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtMa)
+                    .addComponent(txtTen)
+                    .addComponent(txtLoai)
+                    .addComponent(txtSl)
+                    .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        pnlTextLayout.setVerticalGroup(
+            pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTextLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMa)
+                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTen)
+                    .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLoai)
+                    .addComponent(txtLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSl)
+                    .addComponent(txtSl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGia)
+                    .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
+        btnThem.setText("Thêm sản phẩm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnLuu.setText("Lưu");
-        pnlProcess.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 80, 40));
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
+
+        lblPhanHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhanHoi.setForeground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout pnlButtonLayout = new javax.swing.GroupLayout(pnlButton);
+        pnlButton.setLayout(pnlButtonLayout);
+        pnlButtonLayout.setHorizontalGroup(
+            pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLuu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPhanHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        pnlButtonLayout.setVerticalGroup(
+            pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btnThem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSua)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLuu)
+                .addGap(18, 18, 18)
+                .addComponent(lblPhanHoi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlProcessLayout = new javax.swing.GroupLayout(pnlProcess);
+        pnlProcess.setLayout(pnlProcessLayout);
+        pnlProcessLayout.setHorizontalGroup(
+            pnlProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProcessLayout.createSequentialGroup()
+                .addComponent(pnlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlProcessLayout.setVerticalGroup(
+            pnlProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pnlUpdate.add(pnlProcess);
 
@@ -236,6 +356,72 @@ public class UI_Manager extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Methods 
+     private void setDefaultTextField(){
+         txtMa.setText("");
+         txtTen.setText("");
+         txtLoai.setText("");
+         txtSl.setText("");
+         txtGia.setText("");
+     }
+    
+    private void setTableData(List<Disk> disks){
+        this.defTabMod.setRowCount(0);
+        
+        disks = upService.getAllDisk();
+        
+        for(Disk disk : disks){
+            defTabMod.addRow(new Object[] {disk.getMa(), disk.getTen(), disk.getLoai(), disk.getSoluong(), disk.getGia()});
+        }
+    }
+    
+    public void createTab(){
+        upService = new UpdateService();
+        
+        defTabMod = new DefaultTableModel();
+        tblDia.setModel(defTabMod);
+        
+        defTabMod.addColumn("Mã đĩa");
+        defTabMod.addColumn("Tên đĩa");
+        defTabMod.addColumn("Loại");
+        defTabMod.addColumn("Số lượng");
+        defTabMod.addColumn("Giá thuê");
+        
+        disks = upService.getAllDisk();
+        
+        for(Disk disk : disks){
+            defTabMod.addRow(new Object[] {disk.getMa(), disk.getTen(), disk.getLoai(), disk.getSoluong(), disk.getGia()});
+        }
+    }
+    
+    public void txtFieldState(){
+        txtMa.setEnabled(false);
+        txtTen.setEnabled(false);
+        txtLoai.setEnabled(false);
+        txtSl.setEnabled(false);
+        txtGia.setEnabled(false);
+    }
+    
+    public void setBtnSua(){
+        txtMa.setEnabled(true);
+        txtTen.setEnabled(false);
+        txtLoai.setEnabled(false);
+        txtSl.setEnabled(true);
+        txtGia.setEnabled(true);
+    }
+    
+    public void setBtnThem(){
+        txtMa.setEnabled(true);
+        txtTen.setEnabled(true);
+        txtLoai.setEnabled(true);
+        txtSl.setEnabled(true);
+        txtGia.setEnabled(true);
+    }
+    
+    
+    
+    
+    //ActionEvent 
     private void tabUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabUpdateMouseClicked
         pnlUpdate.setVisible(true);
         pnlNV.setVisible(false);
@@ -250,9 +436,119 @@ public class UI_Manager extends javax.swing.JFrame {
         tabUpdate.setBackground(new Color(204,204,255));
     }//GEN-LAST:event_tabNVMouseClicked
 
-    private void txtSlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSlActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSlActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        setBtnThem();
+        btn = 1;
+        txtMa.setText(1 + this.disks.size()+"");
+        txtTen.requestFocus();
+        btnThem.setForeground(Color.red);
+        btnSua.setForeground(Color.BLACK);
+        btnLuu.setForeground(Color.BLACK);
+        
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        setBtnSua();
+        txtMa.requestFocus();
+        btn = 2;
+        btnThem.setForeground(Color.BLACK);
+        btnSua.setForeground(Color.red);
+        btnLuu.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        btnThem.setForeground(Color.BLACK);
+        btnSua.setForeground(Color.BLACK);
+        btnLuu.setForeground(Color.red);
+        boolean flag = false;
+        int countAffCol = 0;
+        
+        if(btn == 2){
+            try{
+                if(txtMa.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                    throw new BlankValueException("Blank Value!");
+                }
+                
+                for(Disk disk : this.disks){
+                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){
+                        disk.setSoluong(Integer.parseInt(txtSl.getText()));
+                        disk.setGia(Integer.parseInt(txtGia.getText()));
+                        countAffCol = this.upService.UpdateDisk(disk);
+                        flag = true;
+                    }
+                }
+                
+                if(flag == false){
+                    throw new InvalidIDException("Invalid ID!");
+                }
+            }catch(BlankValueException e){
+                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            } catch (InvalidIDException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            }
+            
+            if(txtMa.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                    lblPhanHoi.setText("");
+            }else{
+                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+                    if(x == JOptionPane.YES_OPTION){
+                        setTableData(this.disks);
+                        setDefaultTextField();
+                        lblPhanHoi.setText("Số cột bị ảnh hưởng là "+ countAffCol +" cột!");
+                    }
+            }
+            
+               
+       }else if(this.btn == 1){
+           try{
+                
+                if(txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                    throw new BlankValueException("Blank Value!");
+                }
+                
+                for(Disk disk : this.disks){
+                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
+                        throw new InvalidIDException("Invalid ID!");
+                    }
+                }
+               
+                Disk disk = new Disk();
+                
+                disk.setMa(Integer.parseInt(txtMa.getText()));
+                disk.setTen(txtTen.getText());
+                disk.setLoai(txtLoai.getText());
+                disk.setSoluong(Integer.parseInt(txtSl.getText()));
+                disk.setGia(Integer.parseInt(txtGia.getText()));
+                
+                countAffCol = this.upService.addDisk(disk);
+                
+            }catch(BlankValueException e){
+                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            } catch (InvalidIDException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            }
+            
+            if(txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                    lblPhanHoi.setText("");
+            }else{
+                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+                    if(x == JOptionPane.YES_OPTION){
+                        setTableData(this.disks);
+                        setDefaultTextField();
+                        lblPhanHoi.setText("Số cột bị ảnh hưởng là "+ countAffCol +" cột!");
+                    }
+            }  
+            
+       
+       }else{
+           setDefaultTextField();
+       } 
+       
+    }//GEN-LAST:event_btnLuuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,31 +588,34 @@ public class UI_Manager extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuu;
-    private javax.swing.JComboBox<String> cbThaotac;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JLabel lblCD;
-    private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblGia;
     private javax.swing.JLabel lblLoai;
     private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblPhanHoi;
     private javax.swing.JLabel lblSl;
-    private javax.swing.JLabel lblThaotac;
+    private javax.swing.JLabel lblTen;
     private javax.swing.JLabel lblThue;
     private javax.swing.JLabel lblTra;
+    private javax.swing.JPanel pnlButton;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLayoutSize;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNV;
     private javax.swing.JPanel pnlProcess;
+    private javax.swing.JPanel pnlText;
     private javax.swing.JPanel pnlUpdate;
+    private javax.swing.JScrollPane scpDia;
     private javax.swing.JSeparator sprtCD;
     private javax.swing.JPanel tabNV;
     private javax.swing.JPanel tabUpdate;
-    private javax.swing.JTextField txtDia;
+    private javax.swing.JTable tblDia;
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtLoai;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSl;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

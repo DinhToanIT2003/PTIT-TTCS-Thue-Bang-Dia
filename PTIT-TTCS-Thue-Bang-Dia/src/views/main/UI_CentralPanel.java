@@ -109,12 +109,6 @@ public class UI_CentralPanel extends javax.swing.JFrame {
         lblUsername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblUsername.setText("Username:");
 
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
-            }
-        });
-
         lblPassword.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblPassword.setText("Password:");
 
@@ -188,10 +182,6 @@ public class UI_CentralPanel extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());

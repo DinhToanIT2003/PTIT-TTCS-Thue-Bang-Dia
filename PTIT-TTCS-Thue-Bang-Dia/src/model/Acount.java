@@ -9,9 +9,9 @@ package model;
  * @author vduct
  */
 public class Acount {
-    String id;
-    String pass;
-    int role;
+    private String id;
+    private String pass;
+    private int role;
 
     public void setRole(int role) {
         this.role = role;
