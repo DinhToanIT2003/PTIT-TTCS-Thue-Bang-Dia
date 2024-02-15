@@ -56,6 +56,8 @@ public class UI_Manager extends javax.swing.JFrame {
         lblThue = new javax.swing.JLabel();
         tabNV = new javax.swing.JPanel();
         lblTra = new javax.swing.JLabel();
+        tabHome = new javax.swing.JPanel();
+        lblHome = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         pnlUpdate = new javax.swing.JPanel();
         scpDia = new javax.swing.JScrollPane();
@@ -94,10 +96,10 @@ public class UI_Manager extends javax.swing.JFrame {
         lblCD.setFont(new java.awt.Font("Script MT Bold", 3, 48)); // NOI18N
         lblCD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCD.setText("CD");
-        pnlMenu.add(lblCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 60, 88, 82));
+        pnlMenu.add(lblCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 88, 82));
 
         sprtCD.setForeground(new java.awt.Color(0, 0, 0));
-        pnlMenu.add(sprtCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 132, 88, 10));
+        pnlMenu.add(sprtCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 88, 10));
 
         tabUpdate.setBackground(new java.awt.Color(204, 204, 255));
         tabUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,7 +128,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        pnlMenu.add(tabUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
+        pnlMenu.add(tabUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, -1));
 
         tabNV.setBackground(new java.awt.Color(204, 204, 255));
         tabNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,7 +157,37 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        pnlMenu.add(tabNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 278, 270, -1));
+        pnlMenu.add(tabNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, -1));
+
+        tabHome.setBackground(new java.awt.Color(204, 204, 255));
+        tabHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabHomeMouseClicked(evt);
+            }
+        });
+
+        lblHome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHome.setText("Trang chủ");
+
+        javax.swing.GroupLayout tabHomeLayout = new javax.swing.GroupLayout(tabHome);
+        tabHome.setLayout(tabHomeLayout);
+        tabHomeLayout.setHorizontalGroup(
+            tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHomeLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        tabHomeLayout.setVerticalGroup(
+            tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHomeLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         pnlContent.setBackground(new java.awt.Color(204, 204, 255));
         pnlContent.setLayout(new java.awt.CardLayout());
@@ -243,7 +275,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGia)
                     .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         btnThem.setText("Thêm sản phẩm");
@@ -327,7 +359,7 @@ public class UI_Manager extends javax.swing.JFrame {
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 678, Short.MAX_VALUE)
         );
 
         pnlContent.add(pnlNV, "card3");
@@ -343,8 +375,10 @@ public class UI_Manager extends javax.swing.JFrame {
         );
         pnlLayoutSizeLayout.setVerticalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlLayoutSizeLayout.createSequentialGroup()
+                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnlMenu.getAccessibleContext().setAccessibleName("Menu");
@@ -550,6 +584,11 @@ public class UI_Manager extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnLuuActionPerformed
 
+    private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
+        new UI_CentralPanel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_tabHomeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -592,6 +631,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JLabel lblCD;
     private javax.swing.JLabel lblGia;
+    private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblLoai;
     private javax.swing.JLabel lblMa;
     private javax.swing.JLabel lblPhanHoi;
@@ -609,6 +649,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel pnlUpdate;
     private javax.swing.JScrollPane scpDia;
     private javax.swing.JSeparator sprtCD;
+    private javax.swing.JPanel tabHome;
     private javax.swing.JPanel tabNV;
     private javax.swing.JPanel tabUpdate;
     private javax.swing.JTable tblDia;

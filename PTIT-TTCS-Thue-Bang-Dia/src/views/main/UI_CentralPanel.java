@@ -109,8 +109,30 @@ public class UI_CentralPanel extends javax.swing.JFrame {
         lblUsername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblUsername.setText("Username:");
 
+        txtUsername.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsernameMouseClicked(evt);
+            }
+        });
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
+
         lblPassword.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblPassword.setText("Password:");
+
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(0, 102, 102));
         btnLogin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -196,6 +218,42 @@ public class UI_CentralPanel extends javax.swing.JFrame {
             lblWarning.setText("Password or username is wrong. Please, try again!");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsernameMouseClicked
+        lblWarning.setText("");
+    }//GEN-LAST:event_txtUsernameMouseClicked
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        lblWarning.setText("");
+    }//GEN-LAST:event_txtPasswordMouseClicked
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
+        
+        if(result == 1){
+            new UI_Staff().setVisible(true);
+            this.dispose();
+        }else if(result == 0){
+            new UI_Manager().setVisible(true);
+            this.dispose();
+        }else{
+            lblWarning.setText("Password or username is wrong. Please, try again!");
+        }
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
+        
+        if(result == 1){
+            new UI_Staff().setVisible(true);
+            this.dispose();
+        }else if(result == 0){
+            new UI_Manager().setVisible(true);
+            this.dispose();
+        }else{
+            lblWarning.setText("Password or username is wrong. Please, try again!");
+        }       
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments

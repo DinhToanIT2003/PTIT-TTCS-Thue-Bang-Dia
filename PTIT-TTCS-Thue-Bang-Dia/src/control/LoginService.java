@@ -19,6 +19,9 @@ public class LoginService {
     
     public int checkAccount(String id, String pass){
         Acount acc = accDao.getAcc(id);
+        if(acc == null){
+            return -1;
+        }
         if(acc.getPass().equals(pass)){
             return acc.getRole();
         }
