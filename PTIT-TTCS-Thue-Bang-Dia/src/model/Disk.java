@@ -14,8 +14,17 @@ public class Disk {
     private String loai;
     private int soluong;
     private int gia;
-    
-    //geter 
+    private String ngaycn;
+    private String ncc;
+
+    //geter
+    public String getNcc() {
+        return ncc;
+    }
+    public String getNgaycn() {
+        return ngaycn;
+    }
+
     public int getMa() {
         return ma;
     }
@@ -37,6 +46,13 @@ public class Disk {
     }
     
     //setter
+    public void setNcc(String ncc) {
+        this.ncc = ncc;
+    }
+
+    public void setNgaycn(String ngaycn) {
+           this.ngaycn = ngaycn;
+       }
 
     public void setMa(int ma) {
         this.ma = ma;

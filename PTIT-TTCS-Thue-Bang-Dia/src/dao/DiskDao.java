@@ -19,7 +19,7 @@ public class DiskDao {
         
         Connection con = JdbcConnection.getJdbcConnection();
         
-        String sql = "SELECT MADIA, TENDIA, lOAI, SOLUONG, GIA FROM DIA ";
+        String sql = "SELECT MADIA, TENDIA, lOAI, SOLUONG, GIA FROM DIA WHERE DIA.TT = N'Hiện'";
         
         try {
             PreparedStatement prestat = con.prepareCall(sql);
@@ -33,7 +33,7 @@ public class DiskDao {
                 disk.setTen(rs.getString(2));
                 disk.setLoai(rs.getString(3));
                 disk.setSoluong(rs.getInt(4));
-                disk.setGia(rs.getInt(5));
+                disk.setGia(rs.getInt(5));                
                 
                 disks.add(disk);
             }
@@ -46,7 +46,7 @@ public class DiskDao {
     public int UpdateData(Disk disk){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL UpdateDiskData(?,?,?)}";
+        String sql = "{CALL UpdateDiskData(?,?,?,?)}";
         
         CallableStatement cs;
         try {
@@ -54,6 +54,7 @@ public class DiskDao {
             cs.setInt(1, disk.getMa());
             cs.setInt(2, disk.getSoluong());
             cs.setInt(3, disk.getGia());
+            cs.setString(4, disk.getNcc());
             rs = cs.executeUpdate();
 
             System.out.println("Success!");
@@ -67,7 +68,7 @@ public class DiskDao {
     public int addDisk(Disk disk){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL InsertDisk(?,?,?,?,?)}";
+        String sql = "{CALL InsertDisk(?,?,?,?,?,?)}";
         
         CallableStatement cs;
         try {
@@ -77,6 +78,7 @@ public class DiskDao {
             cs.setString(3, disk.getLoai());
             cs.setInt(4, disk.getSoluong());
             cs.setInt(5, disk.getGia());
+            cs.setString(6, disk.getNcc());
             rs = cs.executeUpdate();
 
             System.out.println("Success!");

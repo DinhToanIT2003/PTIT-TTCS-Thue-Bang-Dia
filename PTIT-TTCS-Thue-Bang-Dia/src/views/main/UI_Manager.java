@@ -74,6 +74,8 @@ public class UI_Manager extends javax.swing.JFrame {
         txtLoai = new javax.swing.JTextField();
         txtSl = new javax.swing.JTextField();
         txtGia = new javax.swing.JTextField();
+        lblNcc = new javax.swing.JLabel();
+        txtNcc = new javax.swing.JTextField();
         pnlButton = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -231,25 +233,30 @@ public class UI_Manager extends javax.swing.JFrame {
 
         lblGia.setText("Giá:");
 
+        lblNcc.setText("Mã nhà cung cấp:");
+
         javax.swing.GroupLayout pnlTextLayout = new javax.swing.GroupLayout(pnlText);
         pnlText.setLayout(pnlTextLayout);
         pnlTextLayout.setHorizontalGroup(
             pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTextLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblNcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                        .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtMa)
                     .addComponent(txtTen)
                     .addComponent(txtLoai)
                     .addComponent(txtSl)
-                    .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                    .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(txtNcc))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         pnlTextLayout.setVerticalGroup(
@@ -275,7 +282,11 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGia)
                     .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNcc)
+                    .addComponent(txtNcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         btnThem.setText("Thêm sản phẩm");
@@ -314,7 +325,7 @@ public class UI_Manager extends javax.swing.JFrame {
                         .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLuu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lblPhanHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlButtonLayout.setVerticalGroup(
             pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,7 +366,7 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlNV.setLayout(pnlNVLayout);
         pnlNVLayout.setHorizontalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,6 +445,7 @@ public class UI_Manager extends javax.swing.JFrame {
         txtLoai.setEnabled(false);
         txtSl.setEnabled(false);
         txtGia.setEnabled(false);
+        txtNcc.setEnabled(false);
     }
     
     public void setBtnSua(){
@@ -442,6 +454,7 @@ public class UI_Manager extends javax.swing.JFrame {
         txtLoai.setEnabled(false);
         txtSl.setEnabled(true);
         txtGia.setEnabled(true);
+        txtNcc.setEnabled(true);
     }
     
     public void setBtnThem(){
@@ -450,6 +463,7 @@ public class UI_Manager extends javax.swing.JFrame {
         txtLoai.setEnabled(true);
         txtSl.setEnabled(true);
         txtGia.setEnabled(true);
+        txtNcc.setEnabled(true);
     }
     
     
@@ -473,8 +487,8 @@ public class UI_Manager extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         setBtnThem();
         btn = 1;
-        txtMa.setText(1 + this.disks.size()+"");
-        txtTen.requestFocus();
+//      txtMa.setText(1 + this.disks.size()+"");
+        txtMa.requestFocus();
         btnThem.setForeground(Color.red);
         btnSua.setForeground(Color.BLACK);
         btnLuu.setForeground(Color.BLACK);
@@ -482,6 +496,7 @@ public class UI_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        setDefaultTextField();
         setBtnSua();
         txtMa.requestFocus();
         btn = 2;
@@ -507,6 +522,7 @@ public class UI_Manager extends javax.swing.JFrame {
                     if(disk.getMa() == Integer.parseInt(txtMa.getText())){
                         disk.setSoluong(Integer.parseInt(txtSl.getText()));
                         disk.setGia(Integer.parseInt(txtGia.getText()));
+                        disk.setNcc(txtNcc.getText());
                         countAffCol = this.upService.UpdateDisk(disk);
                         flag = true;
                     }
@@ -525,6 +541,7 @@ public class UI_Manager extends javax.swing.JFrame {
             
             if(txtMa.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
                     lblPhanHoi.setText("");
+                    
             }else{
                 int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
                     if(x == JOptionPane.YES_OPTION){
@@ -538,7 +555,7 @@ public class UI_Manager extends javax.swing.JFrame {
        }else if(this.btn == 1){
            try{
                 
-                if(txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                if(txtNcc.getText().equals("") || txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
                     throw new BlankValueException("Blank Value!");
                 }
                 
@@ -555,6 +572,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 disk.setLoai(txtLoai.getText());
                 disk.setSoluong(Integer.parseInt(txtSl.getText()));
                 disk.setGia(Integer.parseInt(txtGia.getText()));
+                disk.setNcc(txtNcc.getText());
                 
                 countAffCol = this.upService.addDisk(disk);
                 
@@ -566,8 +584,9 @@ public class UI_Manager extends javax.swing.JFrame {
                 txtMa.requestFocus();
             }
             
-            if(txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+            if(txtNcc.getText().equals("") || txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
                     lblPhanHoi.setText("");
+                  
             }else{
                 int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
                     if(x == JOptionPane.YES_OPTION){
@@ -634,6 +653,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblLoai;
     private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblNcc;
     private javax.swing.JLabel lblPhanHoi;
     private javax.swing.JLabel lblSl;
     private javax.swing.JLabel lblTen;
@@ -656,6 +676,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtLoai;
     private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtNcc;
     private javax.swing.JTextField txtSl;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
