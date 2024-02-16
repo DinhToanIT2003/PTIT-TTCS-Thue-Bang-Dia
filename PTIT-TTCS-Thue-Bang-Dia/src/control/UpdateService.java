@@ -31,4 +31,8 @@ public class UpdateService {
     public int addDisk(Disk disk){
         return diskDao.addDisk(disk);
     }
+    
+    public int deleteDisk(Disk disk){
+        return diskDao.deleteDisk(disk);
+    }
 }

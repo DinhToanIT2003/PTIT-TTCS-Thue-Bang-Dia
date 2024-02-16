@@ -81,6 +81,7 @@ public class UI_Manager extends javax.swing.JFrame {
         btnSua = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
         lblPhanHoi = new javax.swing.JLabel();
+        btnXoa = new javax.swing.JButton();
         pnlNV = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,12 +244,11 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblNcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                        .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLoai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtMa)
@@ -313,6 +313,13 @@ public class UI_Manager extends javax.swing.JFrame {
         lblPhanHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPhanHoi.setForeground(new java.awt.Color(255, 51, 51));
 
+        btnXoa.setText("Xóa");
+        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXoaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlButtonLayout = new javax.swing.GroupLayout(pnlButton);
         pnlButton.setLayout(pnlButtonLayout);
         pnlButtonLayout.setHorizontalGroup(
@@ -320,11 +327,14 @@ public class UI_Manager extends javax.swing.JFrame {
             .addGroup(pnlButtonLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                        .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLuu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblPhanHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlButtonLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(lblPhanHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLuu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlButtonLayout.setVerticalGroup(
@@ -334,9 +344,11 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addComponent(btnThem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSua)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLuu)
+                .addGap(12, 12, 12)
+                .addComponent(btnXoa)
                 .addGap(18, 18, 18)
+                .addComponent(btnLuu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPhanHoi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -366,7 +378,7 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlNV.setLayout(pnlNVLayout);
         pnlNVLayout.setHorizontalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,6 +420,7 @@ public class UI_Manager extends javax.swing.JFrame {
          txtLoai.setText("");
          txtSl.setText("");
          txtGia.setText("");
+         txtNcc.setText("");
      }
     
     private void setTableData(List<Disk> disks){
@@ -466,9 +479,16 @@ public class UI_Manager extends javax.swing.JFrame {
         txtNcc.setEnabled(true);
     }
     
+    public void setBtnXoa(){
+        txtMa.setEnabled(true);
+        txtTen.setEnabled(false);
+        txtLoai.setEnabled(false);
+        txtSl.setEnabled(false);
+        txtGia.setEnabled(false);
+        txtNcc.setEnabled(false);
+    }
     
-    
-    
+       
     //ActionEvent 
     private void tabUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabUpdateMouseClicked
         pnlUpdate.setVisible(true);
@@ -492,7 +512,7 @@ public class UI_Manager extends javax.swing.JFrame {
         btnThem.setForeground(Color.red);
         btnSua.setForeground(Color.BLACK);
         btnLuu.setForeground(Color.BLACK);
-        
+        btnXoa.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -503,11 +523,13 @@ public class UI_Manager extends javax.swing.JFrame {
         btnThem.setForeground(Color.BLACK);
         btnSua.setForeground(Color.red);
         btnLuu.setForeground(Color.BLACK);
+        btnXoa.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         btnThem.setForeground(Color.BLACK);
         btnSua.setForeground(Color.BLACK);
+        btnXoa.setForeground(Color.BLACK);
         btnLuu.setForeground(Color.red);
         boolean flag = false;
         int countAffCol = 0;
@@ -547,7 +569,7 @@ public class UI_Manager extends javax.swing.JFrame {
                     if(x == JOptionPane.YES_OPTION){
                         setTableData(this.disks);
                         setDefaultTextField();
-                        lblPhanHoi.setText("Số cột bị ảnh hưởng là "+ countAffCol +" cột!");
+                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
                     }
             }
             
@@ -592,14 +614,51 @@ public class UI_Manager extends javax.swing.JFrame {
                     if(x == JOptionPane.YES_OPTION){
                         setTableData(this.disks);
                         setDefaultTextField();
-                        lblPhanHoi.setText("Số cột bị ảnh hưởng là "+ countAffCol +" cột!");
+                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
                     }
             }  
             
        
+       }else if(btn == 3){
+           
+           try{
+                if(txtMa.getText().equals("")){
+                    throw new BlankValueException("Blank Value!");
+                }
+                
+                for(Disk disk : this.disks){
+                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
+                        countAffCol = this.upService.deleteDisk(disk);
+                        flag = true;
+                    }
+                }
+                
+                if(flag == false){
+                    throw new InvalidIDException("Invalid ID!");
+                }
+            }catch(BlankValueException e){
+                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            } catch (InvalidIDException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
+                txtMa.requestFocus();
+            }
+            
+            if(txtMa.getText().equals("")){
+                    lblPhanHoi.setText("");
+                    
+            }else{
+                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+                    if(x == JOptionPane.YES_OPTION){
+                        setTableData(this.disks);
+                        setDefaultTextField();
+                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+                    }
+            }
+           
        }else{
            setDefaultTextField();
-       } 
+       }
        
     }//GEN-LAST:event_btnLuuActionPerformed
 
@@ -607,6 +666,17 @@ public class UI_Manager extends javax.swing.JFrame {
         new UI_CentralPanel().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tabHomeMouseClicked
+
+    private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
+        setDefaultTextField();
+        setBtnXoa();
+        txtMa.requestFocus();
+        btn = 3;
+        btnThem.setForeground(Color.BLACK);
+        btnSua.setForeground(Color.BLACK);
+        btnLuu.setForeground(Color.BLACK);
+        btnXoa.setForeground(Color.red);
+    }//GEN-LAST:event_btnXoaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -648,6 +718,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel lblCD;
     private javax.swing.JLabel lblGia;
     private javax.swing.JLabel lblHome;

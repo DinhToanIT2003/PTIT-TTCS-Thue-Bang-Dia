@@ -88,4 +88,23 @@ public class DiskDao {
         
         return rs;
     }
+    
+    public int deleteDisk(Disk disk){
+        Connection con = JdbcConnection.getJdbcConnection();
+        int rs = 0;
+        String sql = "{CALL DeleteDisk(?)}";
+        
+        CallableStatement cs;
+        try {
+            cs = con.prepareCall(sql);
+            cs.setInt(1, disk.getMa());
+            rs = cs.executeUpdate();
+
+            System.out.println("Success!");
+        } catch (SQLException ex) {
+            Logger.getLogger(DiskDao.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+        return rs;
+    }
 }
