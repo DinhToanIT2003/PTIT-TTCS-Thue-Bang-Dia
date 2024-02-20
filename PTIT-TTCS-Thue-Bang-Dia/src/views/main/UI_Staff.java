@@ -11,14 +11,20 @@ import java.awt.Color;
  * @author vduct
  */
 public class UI_Staff extends javax.swing.JFrame {
-
+    
+    Color lightBlue = new Color(204,204,255);
+    
     /**
      * Creates new form UI_Staff
      */
     public UI_Staff() {
         initComponents();
+        pnlTaoTheKH.setVisible(true);
+        pnlTra.setVisible(false);
+        pnlThue.setVisible(false);
+        tabTaoTheKH.setBackground(Color.white);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,40 +33,154 @@ public class UI_Staff extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pnlLayoutSize = new javax.swing.JPanel();
-        pnlMenu = new javax.swing.JPanel();
+        pnlNavigationBar = new javax.swing.JPanel();
+        pnlLogo = new javax.swing.JPanel();
         lblCD = new javax.swing.JLabel();
         sprtCD = new javax.swing.JSeparator();
+        pnlMenu = new javax.swing.JPanel();
+        tabTaoTheKH = new javax.swing.JPanel();
+        lblTaoTheKH = new javax.swing.JLabel();
         tabThue = new javax.swing.JPanel();
         lblThue = new javax.swing.JLabel();
         tabTra = new javax.swing.JPanel();
         lblTra = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
+        pnlTaoTheKH = new javax.swing.JPanel();
+        lblCCCD = new javax.swing.JLabel();
+        lblHoTen = new javax.swing.JLabel();
+        lblNgaySinh = new javax.swing.JLabel();
+        lblPhai = new javax.swing.JLabel();
+        lblDiaChi = new javax.swing.JLabel();
+        lblSDT = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        txtCCCD = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
+        txtNgaySinh = new javax.swing.JTextField();
+        txtPhai = new javax.swing.JTextField();
+        txtDiaChi = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        btnOK = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
         pnlThue = new javax.swing.JPanel();
+        scrThue = new javax.swing.JScrollPane();
+        tblThue = new javax.swing.JTable();
+        pnlThue_TimKiem = new javax.swing.JPanel();
+        lblThue_TimKiem_Ten = new javax.swing.JLabel();
+        lblThue_TimKiem_SoLuong = new javax.swing.JLabel();
+        lblThue_TimKiem_Gia = new javax.swing.JLabel();
+        txtThue_TimKiem_Ten = new javax.swing.JTextField();
+        txtThue_TimKiem_SoLuong = new javax.swing.JTextField();
+        txtThue_TimKiem_Gia = new javax.swing.JTextField();
+        btnThue_Tim = new javax.swing.JButton();
+        pnlThue_Them = new javax.swing.JPanel();
+        lblThue_CCCD = new javax.swing.JLabel();
+        lblThue_MaDia = new javax.swing.JLabel();
+        lblThue_SoLuong = new javax.swing.JLabel();
+        lblThue_NgayTra = new javax.swing.JLabel();
+        txtThue_CCCD = new javax.swing.JTextField();
+        txtThue_MaDia = new javax.swing.JTextField();
+        txtThue_SoLuong = new javax.swing.JTextField();
+        txtThue_NgayTra = new javax.swing.JTextField();
+        btnThue_OK = new javax.swing.JButton();
+        btnThue_Reset = new javax.swing.JButton();
         pnlTra = new javax.swing.JPanel();
+        scrTra = new javax.swing.JScrollPane();
+        tblTra = new javax.swing.JTable();
+        pnlTra_TimKiem = new javax.swing.JPanel();
+        lblTra_TimKiem_CCCD = new javax.swing.JLabel();
+        txtTra_TimKiem_CCCD = new javax.swing.JTextField();
+        btnTra_Tim = new javax.swing.JButton();
+        pnlTra_Them = new javax.swing.JPanel();
+        lblTra_ID = new javax.swing.JLabel();
+        lblTra_PhuPhi = new javax.swing.JLabel();
+        txtTra_ID = new javax.swing.JTextField();
+        txtTra_PhuPhi = new javax.swing.JTextField();
+        btnTra_OK = new javax.swing.JButton();
+        btnTra_Reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STAFF");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         pnlLayoutSize.setBackground(new java.awt.Color(204, 204, 255));
 
-        pnlMenu.setBackground(new java.awt.Color(102, 102, 255));
-        pnlMenu.setPreferredSize(new java.awt.Dimension(270, 500));
-        pnlMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlNavigationBar.setBackground(new java.awt.Color(102, 102, 255));
+        pnlNavigationBar.setPreferredSize(new java.awt.Dimension(270, 500));
+        pnlNavigationBar.setLayout(new java.awt.BorderLayout());
+
+        pnlLogo.setBackground(new java.awt.Color(102, 102, 255));
 
         lblCD.setFont(new java.awt.Font("Script MT Bold", 3, 48)); // NOI18N
         lblCD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCD.setText("CD");
-        pnlMenu.add(lblCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 60, 88, 82));
 
         sprtCD.setForeground(new java.awt.Color(0, 0, 0));
-        pnlMenu.add(sprtCD, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 132, 88, 10));
+
+        javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
+        pnlLogo.setLayout(pnlLogoLayout);
+        pnlLogoLayout.setHorizontalGroup(
+            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogoLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCD, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sprtCD, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlLogoLayout.setVerticalGroup(
+            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sprtCD, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCD, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        pnlNavigationBar.add(pnlLogo, java.awt.BorderLayout.PAGE_START);
+
+        pnlMenu.setMaximumSize(new java.awt.Dimension(282, 392));
+        pnlMenu.setName(""); // NOI18N
+        pnlMenu.setLayout(new java.awt.GridLayout(4, 1, 0, 10));
+
+        tabTaoTheKH.setBackground(new java.awt.Color(202, 202, 253));
+        tabTaoTheKH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabTaoTheKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabTaoTheKHMouseClicked(evt);
+            }
+        });
+
+        lblTaoTheKH.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTaoTheKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTaoTheKH.setText("Tạo thẻ khách hàng");
+
+        javax.swing.GroupLayout tabTaoTheKHLayout = new javax.swing.GroupLayout(tabTaoTheKH);
+        tabTaoTheKH.setLayout(tabTaoTheKHLayout);
+        tabTaoTheKHLayout.setHorizontalGroup(
+            tabTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTaoTheKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTaoTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        tabTaoTheKHLayout.setVerticalGroup(
+            tabTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTaoTheKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTaoTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlMenu.add(tabTaoTheKH);
 
         tabThue.setBackground(new java.awt.Color(204, 204, 255));
+        tabThue.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabThue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabThueMouseClicked(evt);
@@ -68,28 +188,31 @@ public class UI_Staff extends javax.swing.JFrame {
         });
 
         lblThue.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblThue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThue.setText("Thuê sản phẩm");
+        lblThue.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout tabThueLayout = new javax.swing.GroupLayout(tabThue);
         tabThue.setLayout(tabThueLayout);
         tabThueLayout.setHorizontalGroup(
             tabThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabThueLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(lblThue, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblThue, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabThueLayout.setVerticalGroup(
             tabThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThueLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lblThue, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblThue, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        pnlMenu.add(tabThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
+        pnlMenu.add(tabThue);
 
         tabTra.setBackground(new java.awt.Color(204, 204, 255));
+        tabTra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabTraMouseClicked(evt);
@@ -97,76 +220,511 @@ public class UI_Staff extends javax.swing.JFrame {
         });
 
         lblTra.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTra.setText("Trả sản phẩm");
+        lblTra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout tabTraLayout = new javax.swing.GroupLayout(tabTra);
         tabTra.setLayout(tabTraLayout);
         tabTraLayout.setHorizontalGroup(
             tabTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTra, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+            .addGroup(tabTraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTra, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabTraLayout.setVerticalGroup(
             tabTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTraLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(lblTra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTra, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        pnlMenu.add(tabTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 278, 270, -1));
+        pnlMenu.add(tabTra);
+
+        pnlNavigationBar.add(pnlMenu, java.awt.BorderLayout.CENTER);
 
         pnlContent.setBackground(new java.awt.Color(204, 204, 255));
-        pnlContent.setLayout(new java.awt.CardLayout());
+        pnlContent.setLayout(new javax.swing.OverlayLayout(pnlContent));
 
-        pnlThue.setBackground(new java.awt.Color(255, 255, 255));
+        lblCCCD.setText("CCCD:");
+
+        lblHoTen.setText("Họ và tên:");
+
+        lblNgaySinh.setText("Ngày sinh:");
+
+        lblPhai.setText("Phái:");
+
+        lblDiaChi.setText("Địa chỉ:");
+
+        lblSDT.setText("Số điện thoại:");
+
+        lblEmail.setText("Email:");
+
+        txtCCCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCCCDActionPerformed(evt);
+            }
+        });
+
+        txtHoTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoTenActionPerformed(evt);
+            }
+        });
+
+        btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOKActionPerformed(evt);
+            }
+        });
+
+        btnReset.setText("Reset");
+        btnReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnResetMouseClicked(evt);
+            }
+        });
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlTaoTheKHLayout = new javax.swing.GroupLayout(pnlTaoTheKH);
+        pnlTaoTheKH.setLayout(pnlTaoTheKHLayout);
+        pnlTaoTheKHLayout.setHorizontalGroup(
+            pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTaoTheKHLayout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTaoTheKHLayout.createSequentialGroup()
+                        .addGap(0, 188, Short.MAX_VALUE)
+                        .addComponent(btnOK)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnReset)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTaoTheKHLayout.createSequentialGroup()
+                        .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCCCD)
+                            .addComponent(lblHoTen)
+                            .addComponent(lblNgaySinh)
+                            .addComponent(lblPhai)
+                            .addComponent(lblSDT)
+                            .addComponent(lblDiaChi)
+                            .addComponent(lblEmail))
+                        .addGap(85, 85, 85)
+                        .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(txtCCCD, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPhai, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDiaChi)
+                            .addComponent(txtEmail))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pnlTaoTheKHLayout.setVerticalGroup(
+            pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTaoTheKHLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCCCD)
+                    .addComponent(txtCCCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHoTen)
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNgaySinh)
+                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhai)
+                    .addComponent(txtPhai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDiaChi)
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSDT)
+                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(pnlTaoTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOK)
+                    .addComponent(btnReset))
+                .addGap(28, 28, 28))
+        );
+
+        pnlContent.add(pnlTaoTheKH);
+
+        tblThue.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrThue.setViewportView(tblThue);
+
+        pnlThue_TimKiem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblThue_TimKiem_Ten.setText("Tên:");
+
+        lblThue_TimKiem_SoLuong.setText("Số lượng:");
+
+        lblThue_TimKiem_Gia.setText("Giá:");
+
+        txtThue_TimKiem_Ten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThue_TimKiem_TenActionPerformed(evt);
+            }
+        });
+
+        btnThue_Tim.setText("Tìm");
+        btnThue_Tim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThue_TimActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlThue_TimKiemLayout = new javax.swing.GroupLayout(pnlThue_TimKiem);
+        pnlThue_TimKiem.setLayout(pnlThue_TimKiemLayout);
+        pnlThue_TimKiemLayout.setHorizontalGroup(
+            pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
+                        .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblThue_TimKiem_SoLuong)
+                            .addComponent(lblThue_TimKiem_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtThue_TimKiem_Ten)
+                            .addComponent(txtThue_TimKiem_SoLuong)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
+                            .addComponent(lblThue_TimKiem_Gia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(13, 13, 13)
+                            .addComponent(txtThue_TimKiem_Gia))
+                        .addComponent(btnThue_Tim)))
+                .addContainerGap())
+        );
+        pnlThue_TimKiemLayout.setVerticalGroup(
+            pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_TimKiem_Ten)
+                    .addComponent(txtThue_TimKiem_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_TimKiem_SoLuong)
+                    .addComponent(txtThue_TimKiem_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_TimKiem_Gia)
+                    .addComponent(txtThue_TimKiem_Gia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnThue_Tim)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        pnlThue_Them.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblThue_CCCD.setText("CCCD:");
+
+        lblThue_MaDia.setText("Mã đĩa:");
+
+        lblThue_SoLuong.setText("Số lượng:");
+
+        lblThue_NgayTra.setText("Ngày trả:");
+
+        txtThue_MaDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThue_MaDiaActionPerformed(evt);
+            }
+        });
+
+        txtThue_SoLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThue_SoLuongActionPerformed(evt);
+            }
+        });
+
+        btnThue_OK.setText("OK");
+        btnThue_OK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThue_OKActionPerformed(evt);
+            }
+        });
+
+        btnThue_Reset.setText("Reset");
+        btnThue_Reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThue_ResetMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlThue_ThemLayout = new javax.swing.GroupLayout(pnlThue_Them);
+        pnlThue_Them.setLayout(pnlThue_ThemLayout);
+        pnlThue_ThemLayout.setHorizontalGroup(
+            pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                        .addComponent(btnThue_OK)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnThue_Reset))
+                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                        .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                                    .addComponent(lblThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                                    .addComponent(lblThue_SoLuong)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtThue_SoLuong)))
+                            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                                .addComponent(lblThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                                .addComponent(lblThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 27, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlThue_ThemLayout.setVerticalGroup(
+            pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_CCCD)
+                    .addComponent(txtThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_MaDia)
+                    .addComponent(txtThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThue_SoLuong)
+                    .addComponent(txtThue_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblThue_NgayTra))
+                .addGap(36, 36, 36)
+                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThue_Reset)
+                    .addComponent(btnThue_OK))
+                .addGap(28, 28, 28))
+        );
 
         javax.swing.GroupLayout pnlThueLayout = new javax.swing.GroupLayout(pnlThue);
         pnlThue.setLayout(pnlThueLayout);
         pnlThueLayout.setHorizontalGroup(
             pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(pnlThueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrThue, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlThue_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlThue_Them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlThueLayout.setVerticalGroup(
             pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrThue)
+                    .addGroup(pnlThueLayout.createSequentialGroup()
+                        .addComponent(pnlThue_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlThue_Them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        pnlContent.add(pnlThue, "card2");
+        pnlContent.add(pnlThue);
 
-        pnlTra.setBackground(new java.awt.Color(255, 255, 255));
+        tblTra.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrTra.setViewportView(tblTra);
+
+        pnlTra_TimKiem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblTra_TimKiem_CCCD.setText("CCCD:");
+
+        btnTra_Tim.setText("Tìm");
+        btnTra_Tim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTra_TimActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlTra_TimKiemLayout = new javax.swing.GroupLayout(pnlTra_TimKiem);
+        pnlTra_TimKiem.setLayout(pnlTra_TimKiemLayout);
+        pnlTra_TimKiemLayout.setHorizontalGroup(
+            pnlTra_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTra_TimKiemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTra_TimKiem_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTra_TimKiem_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTra_TimKiemLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTra_Tim)
+                .addContainerGap())
+        );
+        pnlTra_TimKiemLayout.setVerticalGroup(
+            pnlTra_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTra_TimKiemLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addGroup(pnlTra_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTra_TimKiem_CCCD)
+                    .addComponent(txtTra_TimKiem_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTra_Tim)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        pnlTra_Them.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblTra_ID.setText("ID:");
+
+        lblTra_PhuPhi.setText("Phụ phí:");
+
+        btnTra_OK.setText("OK");
+        btnTra_OK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTra_OKActionPerformed(evt);
+            }
+        });
+
+        btnTra_Reset.setText("Reset");
+        btnTra_Reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTra_ResetMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlTra_ThemLayout = new javax.swing.GroupLayout(pnlTra_Them);
+        pnlTra_Them.setLayout(pnlTra_ThemLayout);
+        pnlTra_ThemLayout.setHorizontalGroup(
+            pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                        .addComponent(btnTra_OK)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTra_Reset))
+                    .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                        .addGroup(pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                                .addComponent(lblTra_PhuPhi, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTra_PhuPhi, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                                .addComponent(lblTra_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTra_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlTra_ThemLayout.setVerticalGroup(
+            pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTra_ThemLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTra_ID, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTra_ID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTra_PhuPhi)
+                    .addComponent(txtTra_PhuPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(pnlTra_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTra_OK)
+                    .addComponent(btnTra_Reset))
+                .addGap(40, 40, 40))
+        );
 
         javax.swing.GroupLayout pnlTraLayout = new javax.swing.GroupLayout(pnlTra);
         pnlTra.setLayout(pnlTraLayout);
         pnlTraLayout.setHorizontalGroup(
             pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(pnlTraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrTra, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTra_Them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlTra_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlTraLayout.setVerticalGroup(
             pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrTra, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addGroup(pnlTraLayout.createSequentialGroup()
+                        .addComponent(pnlTra_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlTra_Them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
-        pnlContent.add(pnlTra, "card3");
+        pnlContent.add(pnlTra);
 
         javax.swing.GroupLayout pnlLayoutSizeLayout = new javax.swing.GroupLayout(pnlLayoutSize);
         pnlLayoutSize.setLayout(pnlLayoutSizeLayout);
         pnlLayoutSizeLayout.setHorizontalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLayoutSizeLayout.createSequentialGroup()
-                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(pnlNavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         pnlLayoutSizeLayout.setVerticalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlNavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        pnlMenu.getAccessibleContext().setAccessibleName("Menu");
+        pnlNavigationBar.getAccessibleContext().setAccessibleName("Menu");
 
         getContentPane().add(pnlLayoutSize, java.awt.BorderLayout.CENTER);
         pnlLayoutSize.getAccessibleContext().setAccessibleName("");
@@ -177,17 +735,96 @@ public class UI_Staff extends javax.swing.JFrame {
 
     private void tabThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabThueMouseClicked
         pnlThue.setVisible(true);
+        pnlTaoTheKH.setVisible(false);
         pnlTra.setVisible(false);
         tabThue.setBackground(Color.white);
-        tabTra.setBackground(new Color(204,204,255));
+        tabTaoTheKH.setBackground(lightBlue);
+        tabTra.setBackground(lightBlue);
     }//GEN-LAST:event_tabThueMouseClicked
 
     private void tabTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabTraMouseClicked
         pnlTra.setVisible(true);
+        pnlTaoTheKH.setVisible(false);
         pnlThue.setVisible(false);
         tabTra.setBackground(Color.white);
-        tabThue.setBackground(new Color(204,204,255));
+        tabTaoTheKH.setBackground(lightBlue);
+        tabThue.setBackground(lightBlue);
     }//GEN-LAST:event_tabTraMouseClicked
+
+    private void txtCCCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCCCDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCCCDActionPerformed
+
+    private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoTenActionPerformed
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOKActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void tabTaoTheKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabTaoTheKHMouseClicked
+        pnlTaoTheKH.setVisible(true);
+        pnlTra.setVisible(false);
+        pnlThue.setVisible(false);
+        tabTaoTheKH.setBackground(Color.white);
+        tabTra.setBackground(lightBlue);
+        tabThue.setBackground(lightBlue);
+    }//GEN-LAST:event_tabTaoTheKHMouseClicked
+
+    private void txtThue_TimKiem_TenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_TimKiem_TenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThue_TimKiem_TenActionPerformed
+
+    private void btnThue_TimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThue_TimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThue_TimActionPerformed
+
+    private void btnThue_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThue_OKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThue_OKActionPerformed
+
+    private void txtThue_SoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_SoLuongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThue_SoLuongActionPerformed
+
+    private void btnTra_TimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTra_TimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTra_TimActionPerformed
+
+    private void btnTra_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTra_OKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTra_OKActionPerformed
+
+    private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
+        txtCCCD.setText("");
+        txtHoTen.setText("");
+        txtNgaySinh.setText("");
+        txtPhai.setText("");
+        txtDiaChi.setText("");
+        txtSDT.setText("");
+        txtEmail.setText("");
+    }//GEN-LAST:event_btnResetMouseClicked
+
+    private void btnThue_ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_ResetMouseClicked
+        txtThue_CCCD.setText("");
+        txtThue_MaDia.setText("");
+        txtThue_SoLuong.setText("");
+        txtThue_NgayTra.setText("");
+    }//GEN-LAST:event_btnThue_ResetMouseClicked
+
+    private void btnTra_ResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTra_ResetMouseClicked
+        txtTra_ID.setText("");
+        txtTra_PhuPhi.setText("");
+    }//GEN-LAST:event_btnTra_ResetMouseClicked
+
+    private void txtThue_MaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_MaDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThue_MaDiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,16 +862,71 @@ public class UI_Staff extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOK;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnThue_OK;
+    private javax.swing.JButton btnThue_Reset;
+    private javax.swing.JButton btnThue_Tim;
+    private javax.swing.JButton btnTra_OK;
+    private javax.swing.JButton btnTra_Reset;
+    private javax.swing.JButton btnTra_Tim;
+    private javax.swing.JLabel lblCCCD;
     private javax.swing.JLabel lblCD;
+    private javax.swing.JLabel lblDiaChi;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblHoTen;
+    private javax.swing.JLabel lblNgaySinh;
+    private javax.swing.JLabel lblPhai;
+    private javax.swing.JLabel lblSDT;
+    private javax.swing.JLabel lblTaoTheKH;
     private javax.swing.JLabel lblThue;
+    private javax.swing.JLabel lblThue_CCCD;
+    private javax.swing.JLabel lblThue_MaDia;
+    private javax.swing.JLabel lblThue_NgayTra;
+    private javax.swing.JLabel lblThue_SoLuong;
+    private javax.swing.JLabel lblThue_TimKiem_Gia;
+    private javax.swing.JLabel lblThue_TimKiem_SoLuong;
+    private javax.swing.JLabel lblThue_TimKiem_Ten;
     private javax.swing.JLabel lblTra;
+    private javax.swing.JLabel lblTra_ID;
+    private javax.swing.JLabel lblTra_PhuPhi;
+    private javax.swing.JLabel lblTra_TimKiem_CCCD;
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlLayoutSize;
+    private javax.swing.JPanel pnlLogo;
     private javax.swing.JPanel pnlMenu;
+    private javax.swing.JPanel pnlNavigationBar;
+    private javax.swing.JPanel pnlTaoTheKH;
     private javax.swing.JPanel pnlThue;
+    private javax.swing.JPanel pnlThue_Them;
+    private javax.swing.JPanel pnlThue_TimKiem;
     private javax.swing.JPanel pnlTra;
+    private javax.swing.JPanel pnlTra_Them;
+    private javax.swing.JPanel pnlTra_TimKiem;
+    private javax.swing.JScrollPane scrThue;
+    private javax.swing.JScrollPane scrTra;
     private javax.swing.JSeparator sprtCD;
+    private javax.swing.JPanel tabTaoTheKH;
     private javax.swing.JPanel tabThue;
     private javax.swing.JPanel tabTra;
+    private javax.swing.JTable tblThue;
+    private javax.swing.JTable tblTra;
+    private javax.swing.JTextField txtCCCD;
+    private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtNgaySinh;
+    private javax.swing.JTextField txtPhai;
+    private javax.swing.JTextField txtSDT;
+    private javax.swing.JTextField txtThue_CCCD;
+    private javax.swing.JTextField txtThue_MaDia;
+    private javax.swing.JTextField txtThue_NgayTra;
+    private javax.swing.JTextField txtThue_SoLuong;
+    private javax.swing.JTextField txtThue_TimKiem_Gia;
+    private javax.swing.JTextField txtThue_TimKiem_SoLuong;
+    private javax.swing.JTextField txtThue_TimKiem_Ten;
+    private javax.swing.JTextField txtTra_ID;
+    private javax.swing.JTextField txtTra_PhuPhi;
+    private javax.swing.JTextField txtTra_TimKiem_CCCD;
     // End of variables declaration//GEN-END:variables
 }
