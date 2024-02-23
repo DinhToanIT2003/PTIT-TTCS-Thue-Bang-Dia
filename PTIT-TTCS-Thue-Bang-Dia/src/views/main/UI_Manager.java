@@ -88,9 +88,8 @@ public class UI_Manager extends javax.swing.JFrame {
         setTitle("MANAGER");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setResizable(false);
 
-        pnlLayoutSize.setBackground(new java.awt.Color(204, 204, 255));
+        pnlLayoutSize.setBackground(new java.awt.Color(102, 102, 255));
 
         pnlMenu.setBackground(new java.awt.Color(102, 102, 255));
         pnlMenu.setPreferredSize(new java.awt.Dimension(270, 500));
