@@ -5,8 +5,19 @@
 package control;
 
 import dao.DiskDao;
+import dao.JdbcConnection;
+import dao.NhaCCDao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.CNModel;
 import model.Disk;
+import model.NhaCC;
 
 /**
  *
@@ -15,6 +26,7 @@ import model.Disk;
 public class UpdateService {
     
     private DiskDao diskDao;
+    private NhaCCDao nccDao;
     
     public UpdateService(){
         diskDao = new DiskDao();
@@ -24,15 +36,20 @@ public class UpdateService {
         return diskDao.getAllDisk();
     }
     
-    public int UpdateDisk(Disk disk){
-        return diskDao.UpdateData(disk);
+    public int UpdateDisk(Disk disk, CNModel cn){
+        return diskDao.UpdateData(disk, cn);
     }
     
-    public int addDisk(Disk disk){
-        return diskDao.addDisk(disk);
+    public int addDisk(Disk disk,CNModel cn){
+        return diskDao.addDisk(disk,cn);
     }
     
     public int deleteDisk(Disk disk){
         return diskDao.deleteDisk(disk);
+    }
+    
+    public List<NhaCC> getAllNcc(){
+        
+        return nccDao.getAllNcc();
     }
 }

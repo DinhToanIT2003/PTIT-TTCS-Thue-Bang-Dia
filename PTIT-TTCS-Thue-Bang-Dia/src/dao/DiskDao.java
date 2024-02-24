@@ -9,6 +9,7 @@ import model.Disk;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.CNModel;
 /**
  *
  * @author vduct
@@ -43,18 +44,17 @@ public class DiskDao {
         return disks;
     }
     
-    public int UpdateData(Disk disk){
+    public int UpdateData(Disk disk, CNModel cn){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL UpdateDiskData(?,?,?,?)}";
+        String sql = "{CALL UpdateDiskData(?,?,?)}";
         
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setInt(1, disk.getMa());
-            cs.setInt(2, disk.getSoluong());
-            cs.setInt(3, disk.getGia());
-            cs.setString(4, disk.getNcc());
+            cs.setInt(1, disk.getMa());            
+            cs.setInt(2, disk.getGia());            
+            cs.setString(3, cn.getManv());
             rs = cs.executeUpdate();
 
             System.out.println("Success!");
@@ -65,10 +65,10 @@ public class DiskDao {
         return rs;
     }
     
-    public int addDisk(Disk disk){
+    public int addDisk(Disk disk,CNModel cn){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL InsertDisk(?,?,?,?,?,?)}";
+        String sql = "{CALL InsertDisk(?,?,?,?,?,?,?)}";
         
         CallableStatement cs;
         try {
@@ -78,7 +78,8 @@ public class DiskDao {
             cs.setString(3, disk.getLoai());
             cs.setInt(4, disk.getSoluong());
             cs.setInt(5, disk.getGia());
-            cs.setString(6, disk.getNcc());
+            cs.setString(6, disk.getNcc());            
+            cs.setString(7, cn.getManv()); 
             rs = cs.executeUpdate();
 
             System.out.println("Success!");

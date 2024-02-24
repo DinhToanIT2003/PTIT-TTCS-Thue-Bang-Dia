@@ -22,12 +22,14 @@ import model.RentDetails;
  * @author vduct
  */
 public class RentDao {
-    public List<Disk> getAllDisk(){
-        List<Disk> disks = new ArrayList<Disk>();
+    private RentDetails rentDt = null;
+    
+    public List<RentDetails> getAllRent(){
+        List<RentDetails> rentDts = new ArrayList<RentDetails>();
         
         Connection con = JdbcConnection.getJdbcConnection();
         
-        String sql = "SELECT MADIA, TENDIA, lOAI, SOLUONG, GIA FROM DIA WHERE DIA.TT = N'Hiện'";
+        String sql = "select * from dbo.CT_THUE where CT_THUE.IDTRA is null";
         
         try {
             PreparedStatement prestat = con.prepareCall(sql);
@@ -35,27 +37,28 @@ public class RentDao {
             ResultSet rs = prestat.executeQuery();
             
             while (rs.next()){
-                Disk disk = new Disk();
+                rentDt = new RentDetails();
                 
-                disk.setMa(rs.getInt(1));
-                disk.setTen(rs.getString(2));
-                disk.setLoai(rs.getString(3));
-                disk.setSoluong(rs.getInt(4));
-                disk.setGia(rs.getInt(5));                
+                rentDt.setId(rs.getString(1));
+                rentDt.setMadia(rs.getString(2));
+                rentDt.setCccdKh(rs.getString(3));
+                rentDt.setCccdNv(rs.getString(4));
+                rentDt.setSlThue(rs.getInt(6));
+                rentDt.setNgayTra(rs.getString(8));
                 
-                disks.add(disk);
+                rentDts.add(rentDt);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DiskDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return disks;
+        return rentDts;
     }
     //select * from dbo.CT_THUE where CT_THUE.IDTRA is not null
     
-    public int insertRent(RentDetails rentDt, String idnv){
+    public int insertRent(RentDetails rentDt, String idnv, String uuid){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL SP_Thue (?, ?, ?, ?, ?)}";
+        String sql = "{CALL SP_Thue (?, ?, ?, ?, ?, ?)}";
         
         
         
@@ -67,6 +70,7 @@ public class RentDao {
             cs.setInt(3, rentDt.getSlThue());
             cs.setDate(4, Date.valueOf(rentDt.getNgayTra()));
             cs.setString(5, rentDt.getCccdNv());
+            cs.setString(6, rentDt.getId());
             
             rs = cs.executeUpdate();
 

@@ -93,9 +93,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="txtThue_SoLuong1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtThue_SoLuong1ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="139" y="132" width="148" height="-1"/>
@@ -113,6 +110,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThue_LuuMouseClicked"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="165" y="218" width="-1" height="-1"/>
@@ -458,20 +458,22 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="txtTimKiem" min="-2" pref="153" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnTimKiem" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnThue" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnTimKiemThue" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="txtThongBao" alignment="0" min="-2" pref="437" max="-2" attributes="0"/>
+                                  <Component id="txtThongBao" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnThue" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnRstThue" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -480,7 +482,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnThue" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnThue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnRstThue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
@@ -490,14 +495,14 @@
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="txtTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnTimKiemThue" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="33" max="32767" attributes="0"/>
-                              <Component id="txtThongBao" min="-2" pref="11" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtThongBao" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -505,10 +510,13 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txtTimKiem">
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnTimKiem">
+                    <Component class="javax.swing.JButton" name="btnTimKiemThue">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTimKiemThueMouseClicked"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnThue">
                       <Properties>
@@ -527,7 +535,20 @@
                         <Property name="orientation" type="int" value="1"/>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JButton" name="btnRstThue">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Reset"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRstThueActionPerformed"/>
+                      </Events>
+                    </Component>
                     <Component class="javax.swing.JLabel" name="txtThongBao">
+                      <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="33" green="33" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

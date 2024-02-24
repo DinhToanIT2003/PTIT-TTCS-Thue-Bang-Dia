@@ -4,6 +4,7 @@
  */
 package control;
 
+import dao.CustomerDao;
 import dao.DiskDao;
 import dao.JdbcConnection;
 import dao.RentDao;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 import model.Disk;
 import model.RentDetails;
 import java.sql.Date;
+import model.Customer;
 
 /**
  *
@@ -26,12 +28,39 @@ import java.sql.Date;
  */
 public class RentService {
     private RentDao rentDao;
+    private DiskDao diskDao;
+    private CustomerDao custDao;
     
-    public List<Disk> getAllDisk(){
-        return rentDao.getAllDisk();
+    public RentService(){
+        diskDao = new DiskDao();
+        rentDao = new RentDao();
+        custDao = new CustomerDao();
     }
     
-    public int insertRent(RentDetails rentDt, String idnv){
-        return rentDao.insertRent(rentDt, idnv);
+    public List<Disk> getAllDisk(){
+        return this.diskDao.getAllDisk();
+    }
+    
+    public List<RentDetails> getAllRent(){
+        
+        return this.rentDao.getAllRent();
+    }
+    
+    public int insertRent(RentDetails rentDt, String idnv, String uuid){
+        return rentDao.insertRent(rentDt, idnv, uuid);
+    }
+    
+    public List<Customer> getAllCust(){
+       
+        return this.custDao.getAllCust();
+    }
+    
+    public boolean chkIDCustomer(String cccdkh, List<Customer> customers){
+        for(Customer cust : customers){
+            if(cust.getCCCD().equals(cccdkh)){
+                return true;
+            }
+        }
+        return false;
     }
 }

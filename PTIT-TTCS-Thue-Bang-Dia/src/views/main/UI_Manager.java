@@ -17,6 +17,8 @@ import control.InvalidIDException;
 import control.LoginService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.CNModel;
+import model.NhaCC;
 
 /**
  *
@@ -32,6 +34,10 @@ public class UI_Manager extends javax.swing.JFrame {
     private DefaultTableModel defTabMod;
     private List<Disk> disks;
     private LoginService login;
+    private CNModel cn =null;
+    private NhaCC nhaCC = null;
+    private List<NhaCC> nCCs;
+    
     
     
     
@@ -243,13 +249,13 @@ public class UI_Manager extends javax.swing.JFrame {
             pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTextLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblNcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblLoai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblGia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblNcc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtMa)
@@ -466,9 +472,9 @@ public class UI_Manager extends javax.swing.JFrame {
         txtMa.setEnabled(true);
         txtTen.setEnabled(false);
         txtLoai.setEnabled(false);
-        txtSl.setEnabled(true);
+        txtSl.setEnabled(false);
         txtGia.setEnabled(true);
-        txtNcc.setEnabled(true);
+        txtNcc.setEnabled(false);
     }
     
     public void setBtnThem(){
@@ -534,19 +540,24 @@ public class UI_Manager extends javax.swing.JFrame {
         btnLuu.setForeground(Color.red);
         boolean flag = false;
         int countAffCol = 0;
+        upService = new UpdateService();
+        cn =new CNModel();
+        this.nCCs = this.upService.getAllNcc();
         
         if(btn == 2){
+            //Sửa
             try{
-                if(txtMa.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                
+                if(txtMa.getText().equals("") || txtGia.getText().equals("")){
                     throw new BlankValueException("Blank Value!");
                 }
+               
                 
                 for(Disk disk : this.disks){
-                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){
-                        disk.setSoluong(Integer.parseInt(txtSl.getText()));
-                        disk.setGia(Integer.parseInt(txtGia.getText()));
-                        disk.setNcc(txtNcc.getText());
-                        countAffCol = this.upService.UpdateDisk(disk);
+                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
+                        disk.setGia(Integer.parseInt(txtGia.getText()));                        
+                        cn.setManv(this.login.getId());
+                        countAffCol = this.upService.UpdateDisk(disk, cn);
                         flag = true;
                     }
                 }
@@ -562,7 +573,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 txtMa.requestFocus();
             }
             
-            if(txtMa.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+            if(txtMa.getText().equals("") || txtGia.getText().equals("")){
                     lblPhanHoi.setText("");
                     
             }else{
@@ -576,11 +587,19 @@ public class UI_Manager extends javax.swing.JFrame {
             
                
        }else if(this.btn == 1){
+           //Thêm
            try{
-                
+               
                 if(txtNcc.getText().equals("") || txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
                     throw new BlankValueException("Blank Value!");
                 }
+                
+                for(NhaCC ncc : this.nCCs){
+                    if(ncc.getId().equals(txtNcc.getText())){
+                        flag = true;
+                    }
+                }
+                if (flag == false) throw new InvalidIDException("Invalid ID!");
                 
                 for(Disk disk : this.disks){
                     if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
@@ -589,15 +608,17 @@ public class UI_Manager extends javax.swing.JFrame {
                 }
                
                 Disk disk = new Disk();
+                CNModel cn =new CNModel();
                 
                 disk.setMa(Integer.parseInt(txtMa.getText()));
                 disk.setTen(txtTen.getText());
                 disk.setLoai(txtLoai.getText());
                 disk.setSoluong(Integer.parseInt(txtSl.getText()));
                 disk.setGia(Integer.parseInt(txtGia.getText()));
-                disk.setNcc(txtNcc.getText());
+                disk.setNcc(txtNcc.getText());                
+                cn.setManv(this.login.getId());
                 
-                countAffCol = this.upService.addDisk(disk);
+                countAffCol = this.upService.addDisk(disk,cn);
                 
             }catch(BlankValueException e){
                 JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -621,7 +642,7 @@ public class UI_Manager extends javax.swing.JFrame {
             
        
        }else if(btn == 3){
-           
+           //Xóa
            try{
                 if(txtMa.getText().equals("")){
                     throw new BlankValueException("Blank Value!");
