@@ -12,6 +12,13 @@ import model.Acount;
  */
 public class LoginService {
     private AccountDao accDao;
+    private static String id;
+
+    public static String getId() {
+        return id;
+    }
+    
+    
     
     public LoginService(){
         accDao = new AccountDao();
@@ -23,6 +30,7 @@ public class LoginService {
             return -1;
         }
         if(acc.getPass().equals(pass)){
+            this.id = id;
             return acc.getRole();
         }
         return -1;

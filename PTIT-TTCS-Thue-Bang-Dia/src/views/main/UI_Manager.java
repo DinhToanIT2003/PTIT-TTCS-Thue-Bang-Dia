@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import control.BlankValueException;
 import control.InvalidIDException;
+import control.LoginService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private int btn;
     private DefaultTableModel defTabMod;
     private List<Disk> disks;
+    private LoginService login;
     
     
     

@@ -4,7 +4,13 @@
  */
 package views.main;
 
+import control.LoginService;
+import control.RentService;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.Disk;
 
 /**
  *
@@ -14,6 +20,11 @@ public class UI_Staff extends javax.swing.JFrame {
     
     Color lightBlue = new Color(204,204,255);
     
+    private RentService rentService = new RentService();
+    private List<Disk> disks = new ArrayList<Disk>();
+    private DefaultTableModel defTabMod = new DefaultTableModel();
+    private LoginService login;
+    
     /**
      * Creates new form UI_Staff
      */
@@ -22,6 +33,8 @@ public class UI_Staff extends javax.swing.JFrame {
         
         pnlTra.setVisible(false);
         pnlThue.setVisible(false);
+        
+        showThongTin();
         
     }
     
@@ -34,6 +47,18 @@ public class UI_Staff extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgThue = new javax.swing.JDialog();
+        pnlThue_Them1 = new javax.swing.JPanel();
+        lblThue_CCCD1 = new javax.swing.JLabel();
+        lblThue_MaDia1 = new javax.swing.JLabel();
+        lblThue_SoLuong1 = new javax.swing.JLabel();
+        lblThue_NgayTra1 = new javax.swing.JLabel();
+        txtThue_CCCD1 = new javax.swing.JTextField();
+        txtThue_MaDia1 = new javax.swing.JTextField();
+        txtThue_SoLuong1 = new javax.swing.JTextField();
+        txtThue_NgayTra1 = new javax.swing.JTextField();
+        btnThue_Luu = new javax.swing.JButton();
+        btnThue_Huy = new javax.swing.JButton();
         pnlLayoutSize = new javax.swing.JPanel();
         pnlNavigationBar = new javax.swing.JPanel();
         pnlLogo = new javax.swing.JPanel();
@@ -46,22 +71,14 @@ public class UI_Staff extends javax.swing.JFrame {
         lblTra = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         pnlThue = new javax.swing.JPanel();
-        scrThue = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tblThue = new javax.swing.JTable();
-        pnlThue_TimKiem = new javax.swing.JPanel();
-        lblThue_TimKiem_Ten = new javax.swing.JLabel();
-        txtThue_TimKiem_Ten = new javax.swing.JTextField();
-        btnThue_Tim = new javax.swing.JButton();
-        pnlThue_Them = new javax.swing.JPanel();
-        lblThue_CCCD = new javax.swing.JLabel();
-        lblThue_MaDia = new javax.swing.JLabel();
-        lblThue_SoLuong = new javax.swing.JLabel();
-        lblThue_NgayTra = new javax.swing.JLabel();
-        txtThue_CCCD = new javax.swing.JTextField();
-        txtThue_MaDia = new javax.swing.JTextField();
-        txtThue_SoLuong = new javax.swing.JTextField();
-        txtThue_NgayTra = new javax.swing.JTextField();
-        btnThue_OK = new javax.swing.JButton();
+        pnlThueProcess = new javax.swing.JPanel();
+        txtTimKiem = new javax.swing.JTextField();
+        btnTimKiem = new javax.swing.JButton();
+        btnThue = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtThongBao = new javax.swing.JLabel();
         pnlTra = new javax.swing.JPanel();
         scrTra = new javax.swing.JScrollPane();
         tblTra = new javax.swing.JTable();
@@ -76,6 +93,50 @@ public class UI_Staff extends javax.swing.JFrame {
         txtTra_PhuPhi = new javax.swing.JTextField();
         btnTra_OK = new javax.swing.JButton();
         btnTra_Reset = new javax.swing.JButton();
+
+        dlgThue.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dlgThue.setTitle("Phiếu thuê");
+        dlgThue.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        dlgThue.setResizable(false);
+        dlgThue.setSize(new java.awt.Dimension(377, 300));
+
+        pnlThue_Them1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlThue_Them1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblThue_CCCD1.setText("CCCD:");
+        pnlThue_Them1.add(lblThue_CCCD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 50, 43, -1));
+
+        lblThue_MaDia1.setText("Mã đĩa:");
+        pnlThue_Them1.add(lblThue_MaDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 90, 43, -1));
+
+        lblThue_SoLuong1.setText("Số lượng:");
+        pnlThue_Them1.add(lblThue_SoLuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 135, -1, -1));
+
+        lblThue_NgayTra1.setText("Ngày trả:");
+        pnlThue_Them1.add(lblThue_NgayTra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 181, 50, -1));
+        pnlThue_Them1.add(txtThue_CCCD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 47, 149, -1));
+        pnlThue_Them1.add(txtThue_MaDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 87, 149, -1));
+
+        txtThue_SoLuong1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThue_SoLuong1ActionPerformed(evt);
+            }
+        });
+        pnlThue_Them1.add(txtThue_SoLuong1, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 132, 148, -1));
+        pnlThue_Them1.add(txtThue_NgayTra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 178, 148, -1));
+
+        btnThue_Luu.setText("Save");
+        pnlThue_Them1.add(btnThue_Luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 218, -1, -1));
+
+        btnThue_Huy.setText("Cancel");
+        btnThue_Huy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThue_HuyMouseClicked(evt);
+            }
+        });
+        pnlThue_Them1.add(btnThue_Huy, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 218, -1, -1));
+
+        dlgThue.getContentPane().add(pnlThue_Them1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STAFF");
@@ -191,6 +252,7 @@ public class UI_Staff extends javax.swing.JFrame {
         pnlNavigationBar.add(pnlMenu, java.awt.BorderLayout.CENTER);
 
         pnlContent.setBackground(new java.awt.Color(204, 204, 255));
+        pnlContent.setOpaque(false);
         pnlContent.setLayout(new java.awt.CardLayout());
 
         tblThue.setModel(new javax.swing.table.DefaultTableModel(
@@ -204,158 +266,75 @@ public class UI_Staff extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrThue.setViewportView(tblThue);
+        jScrollPane1.setViewportView(tblThue);
 
-        pnlThue_TimKiem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnTimKiem.setText("Tìm Kiếm");
 
-        lblThue_TimKiem_Ten.setText("Tên:");
-
-        txtThue_TimKiem_Ten.addActionListener(new java.awt.event.ActionListener() {
+        btnThue.setText("Thuê");
+        btnThue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThueMouseClicked(evt);
+            }
+        });
+        btnThue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtThue_TimKiem_TenActionPerformed(evt);
+                btnThueActionPerformed(evt);
             }
         });
 
-        btnThue_Tim.setText("Tìm");
-        btnThue_Tim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThue_TimActionPerformed(evt);
-            }
-        });
+        jSeparator1.setForeground(new java.awt.Color(51, 0, 51));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        javax.swing.GroupLayout pnlThue_TimKiemLayout = new javax.swing.GroupLayout(pnlThue_TimKiem);
-        pnlThue_TimKiem.setLayout(pnlThue_TimKiemLayout);
-        pnlThue_TimKiemLayout.setHorizontalGroup(
-            pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlThueProcessLayout = new javax.swing.GroupLayout(pnlThueProcess);
+        pnlThueProcess.setLayout(pnlThueProcessLayout);
+        pnlThueProcessLayout.setHorizontalGroup(
+            pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThueProcessLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
-                        .addComponent(lblThue_TimKiem_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(txtThue_TimKiem_Ten, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThue_TimKiemLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnThue_Tim)))
-                .addContainerGap())
-        );
-        pnlThue_TimKiemLayout.setVerticalGroup(
-            pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThue_TimKiemLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(pnlThue_TimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblThue_TimKiem_Ten)
-                    .addComponent(txtThue_TimKiem_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnThue_Tim)
+                .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTimKiem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnThue))
+                    .addComponent(txtThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        pnlThue_Them.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblThue_CCCD.setText("CCCD:");
-
-        lblThue_MaDia.setText("Mã đĩa:");
-
-        lblThue_SoLuong.setText("Số lượng:");
-
-        lblThue_NgayTra.setText("Ngày trả:");
-
-        txtThue_MaDia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtThue_MaDiaActionPerformed(evt);
-            }
-        });
-
-        txtThue_SoLuong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtThue_SoLuongActionPerformed(evt);
-            }
-        });
-
-        btnThue_OK.setText("OK");
-        btnThue_OK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThue_OKActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlThue_ThemLayout = new javax.swing.GroupLayout(pnlThue_Them);
-        pnlThue_Them.setLayout(pnlThue_ThemLayout);
-        pnlThue_ThemLayout.setHorizontalGroup(
-            pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                        .addComponent(lblThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                        .addComponent(lblThue_SoLuong)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtThue_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                        .addComponent(lblThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                        .addComponent(lblThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThue_ThemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnThue_OK)
-                .addContainerGap())
-        );
-        pnlThue_ThemLayout.setVerticalGroup(
-            pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThue_ThemLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblThue_CCCD)
-                    .addComponent(txtThue_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblThue_MaDia)
-                    .addComponent(txtThue_MaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblThue_SoLuong)
-                    .addComponent(txtThue_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(pnlThue_ThemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtThue_NgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblThue_NgayTra))
-                .addGap(37, 37, 37)
-                .addComponent(btnThue_OK)
-                .addContainerGap(159, Short.MAX_VALUE))
+        pnlThueProcessLayout.setVerticalGroup(
+            pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnThue)
+                    .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlThueProcessLayout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTimKiem)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(txtThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout pnlThueLayout = new javax.swing.GroupLayout(pnlThue);
         pnlThue.setLayout(pnlThueLayout);
         pnlThueLayout.setHorizontalGroup(
             pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrThue, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThue_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlThue_Them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addComponent(pnlThueProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlThueLayout.setVerticalGroup(
             pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrThue)
-                    .addGroup(pnlThueLayout.createSequentialGroup()
-                        .addComponent(pnlThue_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlThue_Them, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addComponent(pnlThueProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlContent.add(pnlThue, "card2");
@@ -509,13 +488,13 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlNavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlContent, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         pnlLayoutSizeLayout.setVerticalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlNavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(pnlContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlNavigationBar.getAccessibleContext().setAccessibleName("Menu");
@@ -545,21 +524,9 @@ public class UI_Staff extends javax.swing.JFrame {
         tabThue.setBackground(lightBlue);
     }//GEN-LAST:event_tabTraMouseClicked
 
-    private void txtThue_TimKiem_TenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_TimKiem_TenActionPerformed
+    private void btnThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtThue_TimKiem_TenActionPerformed
-
-    private void btnThue_TimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThue_TimActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThue_TimActionPerformed
-
-    private void btnThue_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThue_OKActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThue_OKActionPerformed
-
-    private void txtThue_SoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_SoLuongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtThue_SoLuongActionPerformed
+    }//GEN-LAST:event_btnThueActionPerformed
 
     private void btnTra_TimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTra_TimActionPerformed
         // TODO add your handling code here:
@@ -574,9 +541,19 @@ public class UI_Staff extends javax.swing.JFrame {
         txtTra_PhuPhi.setText("");
     }//GEN-LAST:event_btnTra_ResetMouseClicked
 
-    private void txtThue_MaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_MaDiaActionPerformed
+    private void btnThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThueMouseClicked
+        this.dlgThue.setLocationRelativeTo(this);
+        this.dlgThue.setVisible(true);
+        
+    }//GEN-LAST:event_btnThueMouseClicked
+
+    private void txtThue_SoLuong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThue_SoLuong1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtThue_MaDiaActionPerformed
+    }//GEN-LAST:event_txtThue_SoLuong1ActionPerformed
+
+    private void btnThue_HuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_HuyMouseClicked
+        this.dlgThue.dispose();
+    }//GEN-LAST:event_btnThue_HuyMouseClicked
 
     /**
      * @param args the command line arguments
@@ -612,20 +589,44 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void showThongTin(){
+        
+        this.tblThue.setModel(defTabMod);
+        
+        this.disks = this.rentService.getAllDisk();
+        
+        defTabMod.addColumn("Mã đĩa");
+        defTabMod.addColumn("Tên đĩa");
+        defTabMod.addColumn("Loại");
+        defTabMod.addColumn("Số lượng");
+        defTabMod.addColumn("Giá thuê");
+        
+        for(Disk disk : disks){
+            defTabMod.addRow(new Object[] {
+                disk.getMa(), disk.getTen(), disk.getLoai(), disk.getSoluong(), disk.getGia()
+            });
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThue_OK;
-    private javax.swing.JButton btnThue_Tim;
+    private javax.swing.JButton btnThue;
+    private javax.swing.JButton btnThue_Huy;
+    private javax.swing.JButton btnThue_Luu;
+    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnTra_OK;
     private javax.swing.JButton btnTra_Reset;
     private javax.swing.JButton btnTra_Tim;
+    private javax.swing.JDialog dlgThue;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCD;
     private javax.swing.JLabel lblThue;
-    private javax.swing.JLabel lblThue_CCCD;
-    private javax.swing.JLabel lblThue_MaDia;
-    private javax.swing.JLabel lblThue_NgayTra;
-    private javax.swing.JLabel lblThue_SoLuong;
-    private javax.swing.JLabel lblThue_TimKiem_Ten;
+    private javax.swing.JLabel lblThue_CCCD1;
+    private javax.swing.JLabel lblThue_MaDia1;
+    private javax.swing.JLabel lblThue_NgayTra1;
+    private javax.swing.JLabel lblThue_SoLuong1;
     private javax.swing.JLabel lblTra;
     private javax.swing.JLabel lblTra_ID;
     private javax.swing.JLabel lblTra_PhuPhi;
@@ -636,23 +637,23 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNavigationBar;
     private javax.swing.JPanel pnlThue;
-    private javax.swing.JPanel pnlThue_Them;
-    private javax.swing.JPanel pnlThue_TimKiem;
+    private javax.swing.JPanel pnlThueProcess;
+    private javax.swing.JPanel pnlThue_Them1;
     private javax.swing.JPanel pnlTra;
     private javax.swing.JPanel pnlTra_Them;
     private javax.swing.JPanel pnlTra_TimKiem;
-    private javax.swing.JScrollPane scrThue;
     private javax.swing.JScrollPane scrTra;
     private javax.swing.JSeparator sprtCD;
     private javax.swing.JPanel tabThue;
     private javax.swing.JPanel tabTra;
     private javax.swing.JTable tblThue;
     private javax.swing.JTable tblTra;
-    private javax.swing.JTextField txtThue_CCCD;
-    private javax.swing.JTextField txtThue_MaDia;
-    private javax.swing.JTextField txtThue_NgayTra;
-    private javax.swing.JTextField txtThue_SoLuong;
-    private javax.swing.JTextField txtThue_TimKiem_Ten;
+    private javax.swing.JLabel txtThongBao;
+    private javax.swing.JTextField txtThue_CCCD1;
+    private javax.swing.JTextField txtThue_MaDia1;
+    private javax.swing.JTextField txtThue_NgayTra1;
+    private javax.swing.JTextField txtThue_SoLuong1;
+    private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTra_ID;
     private javax.swing.JTextField txtTra_PhuPhi;
     private javax.swing.JTextField txtTra_TimKiem_CCCD;

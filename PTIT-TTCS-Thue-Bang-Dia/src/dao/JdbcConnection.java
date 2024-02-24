@@ -8,7 +8,7 @@ import java.sql.*;
 public class JdbcConnection {
     public static Connection getJdbcConnection(){
         Connection con = null;
-        final String url = "jdbc:sqlserver://localhost:1433; databaseName=DOAN_THUEBD;user=sa;password=123456;"
+        final String url = "jdbc:sqlserver://localhost:1433; databaseName=DOAN_THUEBD;"
                 + "encrypt=true;trustServerCertificate=true";
         final String user = "sa";
         final String pass = "123456";
