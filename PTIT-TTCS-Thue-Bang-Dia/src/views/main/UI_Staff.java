@@ -5,6 +5,7 @@
 package views.main;
 
 import Helper.CustomUUID;
+import Helper.RandomCodeGenerator;
 import control.BlankValueException;
 import control.InvalidIDException;
 import control.LoginService;
@@ -26,12 +27,13 @@ public class UI_Staff extends javax.swing.JFrame {
     
     Color lightBlue = new Color(204,204,255);
     
+    private int countAffCol = 0;
     private String idThue;
     private RentService rentService = new RentService();
     private List<Disk> disks = new ArrayList<Disk>();
     private DefaultTableModel defTabMod = new DefaultTableModel();
     private LoginService login;
-    private CustomUUID cusUid = new CustomUUID(); 
+    private RandomCodeGenerator uID; 
     private RentDetails rentDt;
     private List<RentDetails> rentDtls = new ArrayList<RentDetails>();
     private List<Customer> customers = null;
@@ -591,7 +593,9 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnThue_LuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_LuuMouseClicked
         getThueForm();
         
-        this.rentService.insertRent(this.rentDt, this.login.getId(), this.idThue);
+        this.countAffCol = this.rentService.insertRent(this.rentDt, this.login.getId(), this.idThue);
+        
+        txtThongBao.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
     }//GEN-LAST:event_btnThue_LuuMouseClicked
 
     /**
@@ -669,6 +673,7 @@ public class UI_Staff extends javax.swing.JFrame {
         rentDt = new RentDetails();
         customers = new ArrayList<Customer>();
         this.customers = this.rentService.getAllCust();
+        this.uID = new RandomCodeGenerator();
         
         try{
             //Kiểm tra các trường có bị trống không
@@ -680,14 +685,18 @@ public class UI_Staff extends javax.swing.JFrame {
             //Kiểm tra mã id thuê sinh ra có trùng không
             this.rentDtls = this.rentService.getAllRent();
             do{
-                this.idThue = this.cusUid.getUuid();
+                this.idThue = this.uID.generateCode();
                 
 
                 for(RentDetails rent : rentDtls){
                     if(rent.getId().equals(idThue)){
                         flag = false;
+                    }else{
+                        flag = true;
                     }
                 }
+                
+                
             }while(flag == false);
             
             //lấy dữ liệu vào rent details

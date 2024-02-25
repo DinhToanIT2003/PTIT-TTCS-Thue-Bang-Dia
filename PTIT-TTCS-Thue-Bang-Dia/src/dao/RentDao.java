@@ -65,12 +65,12 @@ public class RentDao {
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setInt(1, Integer.parseInt(rentDt.getMadia()));
+            cs.setString(1, rentDt.getMadia());
             cs.setString(2, rentDt.getCccdKh());
             cs.setInt(3, rentDt.getSlThue());
             cs.setDate(4, Date.valueOf(rentDt.getNgayTra()));
-            cs.setString(5, rentDt.getCccdNv());
-            cs.setString(6, rentDt.getId());
+            cs.setString(5, idnv);
+            cs.setString(6, uuid);
             
             rs = cs.executeUpdate();
 
