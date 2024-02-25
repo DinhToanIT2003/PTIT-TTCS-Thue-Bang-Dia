@@ -593,9 +593,6 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnThue_LuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_LuuMouseClicked
         getThueForm();
         
-        this.countAffCol = this.rentService.insertRent(this.rentDt, this.login.getId(), this.idThue);
-        
-        txtThongBao.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
     }//GEN-LAST:event_btnThue_LuuMouseClicked
 
     /**
@@ -720,6 +717,12 @@ public class UI_Staff extends javax.swing.JFrame {
                     txtThue_NgayTra1.getText().equals("") || flag == false){
             this.txtThongBao.setText("");
         }else{
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+            if(x == JOptionPane.YES_OPTION){
+                this.countAffCol = this.rentService.insertRent(this.rentDt, this.login.getId(), this.idThue);
+                        
+                txtThongBao.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
+            }
             this.dlgThue.dispose();
             resetTableThue();
         }
