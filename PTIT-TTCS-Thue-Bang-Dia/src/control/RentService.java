@@ -4,6 +4,7 @@
  */
 package control;
 
+import Helper.DateDBToString;
 import dao.CustomerDao;
 import dao.DiskDao;
 import dao.JdbcConnection;
@@ -50,14 +51,17 @@ public class RentService {
         return rentDao.insertRent(rentDt, idnv, uuid);
     }
     
-    public List<Customer> getAllCust(){
-       
+    public List<Customer> getAllCust(){       
         return this.custDao.getAllCust();
     }
     
-    public boolean chkIDCustomer(String cccdkh, List<Customer> customers){
+    public List<RentDetails> getAllRentNotPay(){
+        return this.rentDao.getAllRentNotPay();
+    }
+    
+    public boolean chkIDCustomer(String makh, List<Customer> customers){
         for(Customer cust : customers){
-            if(cust.getCCCD().equals(cccdkh)){
+            if(cust.getMakh().trim().equals(makh)){
                 return true;
             }
         }

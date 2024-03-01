@@ -11,12 +11,37 @@ package model;
 public class RentDetails {
     private String id;
     private String madia;
-    private String cccdKh;
-    private String cccdNv;
+    private String maKh;
+    private String maNv;
     private String idTra;
     private int slThue;
+    private int gia;
     private String ngayThue;
     private String ngayTra;
+
+    public String getMaKh() {
+        return maKh;
+    }
+
+    public void setMaKh(String maKh) {
+        this.maKh = maKh;
+    }
+
+    public String getMaNv() {
+        return maNv;
+    }
+
+    public void setMaNv(String maNv) {
+        this.maNv = maNv;
+    }
+
+    public int getGia() {
+        return gia;
+    }
+
+    public void setGia(int gia) {
+        this.gia = gia;
+    }
 
     public String getId() {
         return id;
@@ -32,22 +57,6 @@ public class RentDetails {
 
     public void setMadia(String madia) {
         this.madia = madia;
-    }
-
-    public String getCccdKh() {
-        return cccdKh;
-    }
-
-    public void setCccdKh(String cccdKh) {
-        this.cccdKh = cccdKh;
-    }
-
-    public String getCccdNv() {
-        return cccdNv;
-    }
-
-    public void setCccdNv(String cccdNv) {
-        this.cccdNv = cccdNv;
     }
 
     public String getIdTra() {

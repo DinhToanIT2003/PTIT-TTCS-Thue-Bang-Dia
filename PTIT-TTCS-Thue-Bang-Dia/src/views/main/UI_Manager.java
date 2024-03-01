@@ -4,6 +4,7 @@
  */
 package views.main;
 
+import Helper.RandomCodeGenerator;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import model.Disk;
@@ -19,6 +20,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CNModel;
 import model.NhaCC;
+import model.Payment;
+import model.RentDetails;
+import Helper.CheckValueHelper;
 
 /**
  *
@@ -37,6 +41,9 @@ public class UI_Manager extends javax.swing.JFrame {
     private CNModel cn =null;
     private NhaCC nhaCC = null;
     private List<NhaCC> nCCs;
+    private List<CNModel> cns;
+    private RandomCodeGenerator uID; 
+    private String idCn;
     
     
     
@@ -84,11 +91,11 @@ public class UI_Manager extends javax.swing.JFrame {
         txtGia = new javax.swing.JTextField();
         lblNcc = new javax.swing.JLabel();
         txtNcc = new javax.swing.JTextField();
+        lblPhanHoi = new javax.swing.JLabel();
         pnlButton = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLuu = new javax.swing.JButton();
-        lblPhanHoi = new javax.swing.JLabel();
         btnXoa = new javax.swing.JButton();
         pnlNV = new javax.swing.JPanel();
 
@@ -138,7 +145,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        pnlMenu.add(tabUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, -1));
+        pnlMenu.add(tabUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
         tabNV.setBackground(new java.awt.Color(204, 204, 255));
         tabNV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,7 +174,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        pnlMenu.add(tabNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, -1));
+        pnlMenu.add(tabNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 270, -1));
 
         tabHome.setBackground(new java.awt.Color(204, 204, 255));
         tabHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,19 +192,19 @@ public class UI_Manager extends javax.swing.JFrame {
         tabHomeLayout.setHorizontalGroup(
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabHomeLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(29, 29, 29)
                 .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         tabHomeLayout.setVerticalGroup(
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHomeLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(tabHomeLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 110, 280, -1));
 
         pnlContent.setBackground(new java.awt.Color(204, 204, 255));
         pnlContent.setLayout(new java.awt.CardLayout());
@@ -243,28 +250,35 @@ public class UI_Manager extends javax.swing.JFrame {
 
         lblNcc.setText("Mã nhà cung cấp:");
 
+        lblPhanHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPhanHoi.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout pnlTextLayout = new javax.swing.GroupLayout(pnlText);
         pnlText.setLayout(pnlTextLayout);
         pnlTextLayout.setHorizontalGroup(
             pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTextLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblNcc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtMa)
-                    .addComponent(txtTen)
-                    .addComponent(txtLoai)
-                    .addComponent(txtSl)
-                    .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addComponent(txtNcc))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPhanHoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlTextLayout.createSequentialGroup()
+                        .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNcc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblSl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMa)
+                            .addComponent(txtTen)
+                            .addComponent(txtLoai)
+                            .addComponent(txtSl)
+                            .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(txtNcc))
+                        .addGap(0, 27, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlTextLayout.setVerticalGroup(
             pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +307,9 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addGroup(pnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNcc)
                     .addComponent(txtNcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblPhanHoi)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         btnThem.setText("Thêm sản phẩm");
@@ -317,9 +333,6 @@ public class UI_Manager extends javax.swing.JFrame {
             }
         });
 
-        lblPhanHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPhanHoi.setForeground(new java.awt.Color(255, 51, 51));
-
         btnXoa.setText("Xóa");
         btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -333,16 +346,12 @@ public class UI_Manager extends javax.swing.JFrame {
             pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlButtonLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlButtonLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(lblPhanHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                        .addComponent(btnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLuu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThem, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                    .addComponent(btnSua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLuu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         pnlButtonLayout.setVerticalGroup(
             pnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,8 +364,6 @@ public class UI_Manager extends javax.swing.JFrame {
                 .addComponent(btnXoa)
                 .addGap(18, 18, 18)
                 .addComponent(btnLuu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPhanHoi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -367,7 +374,8 @@ public class UI_Manager extends javax.swing.JFrame {
             .addGroup(pnlProcessLayout.createSequentialGroup()
                 .addComponent(pnlText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
         pnlProcessLayout.setVerticalGroup(
             pnlProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +393,7 @@ public class UI_Manager extends javax.swing.JFrame {
         pnlNV.setLayout(pnlNVLayout);
         pnlNVLayout.setHorizontalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 763, Short.MAX_VALUE)
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +463,7 @@ public class UI_Manager extends javax.swing.JFrame {
         disks = upService.getAllDisk();
         
         for(Disk disk : disks){
-            defTabMod.addRow(new Object[] {disk.getMa(), disk.getTen(), disk.getLoai(), disk.getSoluong(), disk.getGia()});
+            defTabMod.addRow(new Object[] {disk.getMa(), disk.getTen(), disk.getLoai(), disk.getSoluong(), disk.getGia()});            
         }
     }
     
@@ -478,7 +486,7 @@ public class UI_Manager extends javax.swing.JFrame {
     }
     
     public void setBtnThem(){
-        txtMa.setEnabled(true);
+        txtMa.setEnabled(false);
         txtTen.setEnabled(true);
         txtLoai.setEnabled(true);
         txtSl.setEnabled(true);
@@ -514,8 +522,8 @@ public class UI_Manager extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         setBtnThem();
         btn = 1;
-//      txtMa.setText(1 + this.disks.size()+"");
-        txtMa.requestFocus();
+        
+        this.txtTen.requestFocus();
         btnThem.setForeground(Color.red);
         btnSua.setForeground(Color.BLACK);
         btnLuu.setForeground(Color.BLACK);
@@ -538,149 +546,16 @@ public class UI_Manager extends javax.swing.JFrame {
         btnSua.setForeground(Color.BLACK);
         btnXoa.setForeground(Color.BLACK);
         btnLuu.setForeground(Color.red);
-        boolean flag = false;
-        int countAffCol = 0;
-        upService = new UpdateService();
-        cn =new CNModel();
-        this.nCCs = this.upService.getAllNcc();
         
-        if(btn == 2){
-            //Sửa
-            try{
-                
-                if(txtMa.getText().equals("") || txtGia.getText().equals("")){
-                    throw new BlankValueException("Blank Value!");
-                }
-               
-                
-                for(Disk disk : this.disks){
-                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
-                        disk.setGia(Integer.parseInt(txtGia.getText()));                        
-                        cn.setManv(this.login.getId());
-                        countAffCol = this.upService.UpdateDisk(disk, cn);
-                        flag = true;
-                    }
-                }
-                
-                if(flag == false){
-                    throw new InvalidIDException("Invalid ID!");
-                }
-            }catch(BlankValueException e){
-                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            } catch (InvalidIDException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            }
+        switch (btn){
+            case 1 -> cnThem();
             
-            if(txtMa.getText().equals("") || txtGia.getText().equals("")){
-                    lblPhanHoi.setText("");
-                    
-            }else{
-                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
-                    if(x == JOptionPane.YES_OPTION){
-                        setTableData(this.disks);
-                        setDefaultTextField();
-                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
-                    }
-            }
+            case 2 -> cnSua();
             
-               
-       }else if(this.btn == 1){
-           //Thêm
-           try{
-               
-                if(txtNcc.getText().equals("") || txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
-                    throw new BlankValueException("Blank Value!");
-                }
+            case 3 -> cnXoa();
                 
-                for(NhaCC ncc : this.nCCs){
-                    if(ncc.getId().equals(txtNcc.getText())){
-                        flag = true;
-                    }
-                }
-                if (flag == false) throw new InvalidIDException("Invalid ID!");
-                
-                for(Disk disk : this.disks){
-                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
-                        throw new InvalidIDException("Invalid ID!");
-                    }
-                }
-               
-                Disk disk = new Disk();
-                CNModel cn =new CNModel();
-                
-                disk.setMa(Integer.parseInt(txtMa.getText()));
-                disk.setTen(txtTen.getText());
-                disk.setLoai(txtLoai.getText());
-                disk.setSoluong(Integer.parseInt(txtSl.getText()));
-                disk.setGia(Integer.parseInt(txtGia.getText()));
-                disk.setNcc(txtNcc.getText());                
-                cn.setManv(this.login.getId());
-                
-                countAffCol = this.upService.addDisk(disk,cn);
-                
-            }catch(BlankValueException e){
-                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            } catch (InvalidIDException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            }
-            
-            if(txtNcc.getText().equals("") || txtMa.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
-                    lblPhanHoi.setText("");
-                  
-            }else{
-                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
-                    if(x == JOptionPane.YES_OPTION){
-                        setTableData(this.disks);
-                        setDefaultTextField();
-                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
-                    }
-            }  
-            
-       
-       }else if(btn == 3){
-           //Xóa
-           try{
-                if(txtMa.getText().equals("")){
-                    throw new BlankValueException("Blank Value!");
-                }
-                
-                for(Disk disk : this.disks){
-                    if(disk.getMa() == Integer.parseInt(txtMa.getText())){                        
-                        countAffCol = this.upService.deleteDisk(disk);
-                        flag = true;
-                    }
-                }
-                
-                if(flag == false){
-                    throw new InvalidIDException("Invalid ID!");
-                }
-            }catch(BlankValueException e){
-                JOptionPane.showMessageDialog(this, "Blank value!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            } catch (InvalidIDException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid ID!", "Warning", JOptionPane.WARNING_MESSAGE);
-                txtMa.requestFocus();
-            }
-            
-            if(txtMa.getText().equals("")){
-                    lblPhanHoi.setText("");
-                    
-            }else{
-                int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
-                    if(x == JOptionPane.YES_OPTION){
-                        setTableData(this.disks);
-                        setDefaultTextField();
-                        lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
-                    }
-            }
-           
-       }else{
-           setDefaultTextField();
-       }
+            default -> setDefaultTextField();
+        }
        
     }//GEN-LAST:event_btnLuuActionPerformed
 
@@ -734,8 +609,190 @@ public class UI_Manager extends javax.swing.JFrame {
                 new UI_Manager().setVisible(true);
             }
         });
+        
+        
+    }
+    
+    
+    public void cnSua(){
+        boolean flag = false;
+        int countAffCol = 0;
+        upService = new UpdateService();
+        cn =new CNModel();
+        Disk disk = new Disk();
+        
+        try{
+            //kiểm tra thiếu thông tin
+            if(txtMa.getText().equals("") || txtGia.getText().equals("")){
+                throw new BlankValueException("Thiếu Thông tin!");
+            }            
+            
+            //kiểm tra mã đĩa có tồn tại không
+            for(Disk disk2 : this.disks){
+                if(disk2.getMa().trim().equals(txtMa.getText().trim())){
+                    disk.setMa(txtMa.getText());
+                    flag = true;
+                    }
+                }
+                    
+            if(flag == false){
+                throw new InvalidIDException("Sai mã đĩa!");
+            }
+            
+            //Kiểm giá trị của Giá
+            if(CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText()))){
+                disk.setGia(Integer.parseInt(txtGia.getText()));
+            }else{
+                flag = false;
+                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên!");
+            }
+        }catch(BlankValueException e){
+            JOptionPane.showMessageDialog(this, e, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+        } catch (InvalidIDException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+        }   
+        
+        if(txtMa.getText().equals("") || txtGia.getText().equals("")){
+            lblPhanHoi.setText("");
+                    
+        }else{
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+            if(x == JOptionPane.YES_OPTION){
+                setTableData(this.disks);
+                setDefaultTextField();
+                countAffCol = this.upService.UpdateDisk(disk, LoginService.getId());
+                lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+            }
+        }
     }
 
+    public void cnThem(){
+        boolean flag = false;
+        int countAffCol = 0;
+        upService = new UpdateService();
+        cn =new CNModel();
+        this.nhaCC = new NhaCC();
+
+        try{
+            //kiểm tra dữ liệu trống
+            if(txtNcc.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+                throw new BlankValueException("Thiếu thông tin!");
+            }
+                    
+            //Kiểm tra xem có tồn tại nhà cung cấp này không
+            this.nCCs = this.upService.getAllNcc();
+            for(NhaCC ncc : this.nCCs){
+                if(ncc.getId().trim().equals(txtNcc.getText().toUpperCase())){
+                    this.nhaCC.setId(txtNcc.getText().toUpperCase());
+                    flag = true;                         
+                }
+            }
+            if (flag == false) throw new InvalidIDException("Không tồn tại nhà cung cấp!");
+
+            //Kiểm tra có bị trùng mã đĩa nhập không
+            for(Disk disk : this.disks){
+                if(disk.getMa().trim().equals(this.txtMa.getText().trim())){
+                    throw new InvalidIDException("Trùng mã đĩa nhập!");
+                }
+            }
+
+            //thêm thông tin vào disk 
+            
+            Disk disk = new Disk();
+            
+            //Tạo tự động mã đĩa
+            this.disks = this.upService.getAllDisk();
+            do{
+               disk.setMa(RandomCodeGenerator.generateCode()); 
+                
+                for(Disk disk2 : this.disks){
+                    if(disk2.getMa().trim().equals(disk.getMa())){
+                        flag = false;
+                    }else{
+                        flag = true;
+                    }
+                }
+ 
+            }while(flag == false);
+
+            //tiếp tục thêm thông tin vào đĩa
+            disk.setTen(txtTen.getText());
+            disk.setLoai(txtLoai.getText().toUpperCase());
+            
+            if(CheckValueHelper.isInteger(Double.parseDouble(txtSl.getText())) && CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText()))){
+                disk.setSoluong(Integer.parseInt(txtSl.getText()));
+                disk.setGia(Integer.parseInt(txtGia.getText()));
+            }else{
+                flag = false;
+                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên!");
+            }
+            
+            countAffCol = this.upService.addDisk(disk, LoginService.getId(), nhaCC);
+
+        }catch(BlankValueException e){
+            JOptionPane.showMessageDialog(this, e, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+        } catch (InvalidIDException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+         }   
+        
+        if(flag == false || txtNcc.getText().equals("") || txtTen.getText().equals("") || txtLoai.getText().equals("") || txtSl.getText().equals("") || txtGia.getText().equals("")){
+            lblPhanHoi.setText("");                    
+        }else{
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+            if(x == JOptionPane.YES_OPTION){
+                setTableData(this.disks);
+                setDefaultTextField();
+                lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+            }
+        }   
+    }
+    
+    public void cnXoa(){
+        boolean flag = false;
+        int countAffCol = 0;
+        upService = new UpdateService();
+        cn =new CNModel();
+        
+        try{
+            //Kiểm tra xem thông tin nhập đủ chưa
+            if(txtMa.getText().equals("")){
+                throw new BlankValueException("Thiếu thông tin!");
+            }
+            
+            //Kiểm tra xem có tồn tại mã đĩa không nếu không thì báo lỗi
+            for(Disk disk : this.disks){
+                if(disk.getMa().trim().equals(this.txtMa.getText().trim())){
+                    countAffCol = this.upService.deleteDisk(disk);
+                    flag = true;
+                }
+            }
+                    
+            if(flag == false){
+                throw new InvalidIDException("Không tìm thấy mã đĩa!");
+            }
+        }catch(BlankValueException e){
+            JOptionPane.showMessageDialog(this, e, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+        } catch (InvalidIDException ex) {
+            JOptionPane.showMessageDialog(this, ex, "Warning", JOptionPane.WARNING_MESSAGE);
+            txtMa.requestFocus();
+        }   
+        
+        if(txtMa.getText().equals("")){
+            lblPhanHoi.setText("");
+        }else{
+            int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
+            if(x == JOptionPane.YES_OPTION){
+                setTableData(this.disks);
+                setDefaultTextField();
+                lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+            }
+        }        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;

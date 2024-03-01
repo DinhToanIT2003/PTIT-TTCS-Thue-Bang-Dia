@@ -12,20 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.CNModel;
 import model.Disk;
-import model.NhaCC;
 
 /**
  *
  * @author vduct
  */
-public class NhaCCDao {
-    public static List<NhaCC> getAllNcc(){
-        List<NhaCC> nhaCCs = new ArrayList<NhaCC>();
+public class CNDao {
+    public List<CNModel> getAllCnList(){
+        List<CNModel> cns = new ArrayList<CNModel>();
         
         Connection con = JdbcConnection.getJdbcConnection();
         
-        String sql = "SELECT NHACUNGCAP.MANCC FROM NHACUNGCAP ";
+        String sql = "select ID from dbo.CT_CAPNHAT";
         
         try {
             PreparedStatement prestat = con.prepareCall(sql);
@@ -33,23 +33,15 @@ public class NhaCCDao {
             ResultSet rs = prestat.executeQuery();
             
             while (rs.next()){
-                NhaCC nhaCC = new NhaCC();
+                CNModel cn = new CNModel();
                 
-                nhaCC.setId(rs.getString(1));
+                cn.setId(rs.getInt(1));
                 
-                nhaCCs.add(nhaCC);
+                cns.add(cn);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DiskDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return nhaCCs;
+        return cns;
     }
-    
-//    public static void main(String[] args) {
-//        List<NhaCC> nhaCCs = NhaCCDao.getAllNcc();
-//        for(NhaCC ncc : nhaCCs){
-//            System.out.println(ncc.getId());
-//        }
-//          System.out.println("\n\nhello");
-//    }
 }

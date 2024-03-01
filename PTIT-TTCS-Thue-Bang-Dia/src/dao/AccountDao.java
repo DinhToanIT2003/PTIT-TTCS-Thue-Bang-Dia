@@ -29,6 +29,7 @@ public class AccountDao {
                 acc.setId(rs.getString(2));
                 acc.setPass(rs.getString(3));
                 acc.setRole(rs.getInt(4));
+                acc.setTT(rs.getString(5));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -9,12 +9,21 @@ package model;
  * @author vduct
  */
 public class Acount {
-    private String id;
+    private String id;//là tên đăng nhập
     private String pass;
     private int role;
+    private String TT;
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public String getTT() {
+        return TT;
+    }
+
+    public void setTT(String TT) {
+        this.TT = TT;
     }
 
     public int getRole() {

@@ -9,15 +9,15 @@ package model;
  * @author vduct
  */
 public class CNModel {
-    private String id;
+    private int id;
     private String ngcn;
     private String manv;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

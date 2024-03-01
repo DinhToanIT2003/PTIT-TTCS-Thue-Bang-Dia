@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CNModel;
+import model.NhaCC;
 /**
  *
  * @author vduct
@@ -30,7 +31,7 @@ public class DiskDao {
             while (rs.next()){
                 Disk disk = new Disk();
                 
-                disk.setMa(rs.getInt(1));
+                disk.setMa(rs.getString(1));
                 disk.setTen(rs.getString(2));
                 disk.setLoai(rs.getString(3));
                 disk.setSoluong(rs.getInt(4));
@@ -44,17 +45,18 @@ public class DiskDao {
         return disks;
     }
     
-    public int UpdateData(Disk disk, CNModel cn){
+    public int UpdateData(Disk disk, String manv){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL UpdateDiskData(?,?,?)}";
+        String sql = "{CALL SP_CHINHGIA(?,?,?)}";
         
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setInt(1, disk.getMa());            
-            cs.setInt(2, disk.getGia());            
-            cs.setString(3, cn.getManv());
+            cs.setString(1, disk.getMa()); 
+            cs.setString(2, manv);
+            cs.setInt(3, disk.getGia());          
+            
             rs = cs.executeUpdate();
 
             System.out.println("Success!");
@@ -65,21 +67,23 @@ public class DiskDao {
         return rs;
     }
     
-    public int addDisk(Disk disk,CNModel cn){
+    public int addDisk(Disk disk,String manv, NhaCC ncc){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL InsertDisk(?,?,?,?,?,?,?)}";
+        String sql = "{CALL SP_NHAPDIA(?,?,?,?,?,?,?)}";
         
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setInt(1, disk.getMa());
-            cs.setString(2, disk.getTen());
-            cs.setString(3, disk.getLoai());
-            cs.setInt(4, disk.getSoluong());
-            cs.setInt(5, disk.getGia());
-            cs.setString(6, disk.getNcc());            
-            cs.setString(7, cn.getManv()); 
+            
+            cs.setString(1, ncc.getId());
+            cs.setString(2, manv);            
+            cs.setString(3, disk.getMa());
+            cs.setString(4, disk.getTen());
+            cs.setString(5, disk.getLoai());
+            cs.setInt(6, disk.getSoluong());
+            cs.setInt(7, disk.getGia());                        
+             
             rs = cs.executeUpdate();
 
             System.out.println("Success!");
@@ -93,12 +97,13 @@ public class DiskDao {
     public int deleteDisk(Disk disk){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
-        String sql = "{CALL DeleteDisk(?)}";
+        String sql = "{CALL SP_XOADIA(?)}";
         
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setInt(1, disk.getMa());
+            cs.setString(1, disk.getMa());
+            
             rs = cs.executeUpdate();
 
             System.out.println("Success!");

@@ -9,23 +9,17 @@ package model;
  * @author vduct
  */
 public class Disk {
-    private int ma;
+    private String ma;
     private String ten;
     private String loai;
     private int soluong;
     private int gia;
-    private String ngaycn;
-    private String ncc;
+    
 
     //geter
-    public String getNcc() {
-        return ncc;
-    }
-    public String getNgaycn() {
-        return ngaycn;
-    }
+  
 
-    public int getMa() {
+    public String getMa() {
         return ma;
     }
 
@@ -46,15 +40,8 @@ public class Disk {
     }
     
     //setter
-    public void setNcc(String ncc) {
-        this.ncc = ncc;
-    }
-
-    public void setNgaycn(String ngaycn) {
-           this.ngaycn = ngaycn;
-       }
-
-    public void setMa(int ma) {
+   
+    public void setMa(String ma) {
         this.ma = ma;
     }
 

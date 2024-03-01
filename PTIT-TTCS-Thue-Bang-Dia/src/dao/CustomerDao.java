@@ -27,7 +27,7 @@ public class CustomerDao {
         
         Connection con = JdbcConnection.getJdbcConnection();
         
-        String sql = "select * from dbo.KHACHHANG";
+        String sql = "select * from dbo.KHACHHANG where KHACHHANG.TT = 'enable'";
         
         try {
             PreparedStatement prestat = con.prepareCall(sql);
@@ -37,7 +37,7 @@ public class CustomerDao {
             while (rs.next()){
                 this.cust = new Customer();
                 
-                cust.setCCCD(rs.getString(1));
+                cust.setMakh(rs.getString(1));
                 
                 customers.add(cust);
             }

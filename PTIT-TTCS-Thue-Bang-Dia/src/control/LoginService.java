@@ -24,16 +24,23 @@ public class LoginService {
         accDao = new AccountDao();
     }
     
+    /**
+     * KIỂM TRA TÀI KHOẢN
+     * @param id
+     * @param pass
+     * @return 
+     */
     public int checkAccount(String id, String pass){
         Acount acc = accDao.getAcc(id);
         if(acc == null){
             return -1;
         }
-        if(acc.getPass().equals(pass)){
+        if(acc.getPass().equals(pass) && acc.getTT().equals("enable")){
             this.id = id;
             return acc.getRole();
+        } else {
+            return -1;
         }
-        return -1;
     }
     
 }
