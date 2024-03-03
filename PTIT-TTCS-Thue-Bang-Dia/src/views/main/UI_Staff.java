@@ -42,8 +42,8 @@ public class UI_Staff extends javax.swing.JFrame {
     private LoginService login;
     private RandomCodeGenerator uID; 
     private RentDetails rentDt;
-    private List<RentDetails> rentDtls = new ArrayList<RentDetails>();
-    private List<Payment> pms = new ArrayList<Payment>();
+    private List<RentDetails> rentDtls = new ArrayList<>();
+    private List<Payment> pms = null;
     private PayService payService = null;
     
     private List<Customer> customers = null;
@@ -118,6 +118,7 @@ public class UI_Staff extends javax.swing.JFrame {
         btnTra = new javax.swing.JButton();
         btnResetTra = new javax.swing.JButton();
         txtThongBaoTra = new javax.swing.JLabel();
+        btnXuatHoaDon = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTra = new javax.swing.JTable();
 
@@ -407,12 +408,12 @@ public class UI_Staff extends javax.swing.JFrame {
             pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThueProcessLayout.createSequentialGroup()
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThue)
-                            .addComponent(btnRstThue))
-                        .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
+                    .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnThue)
+                                .addComponent(btnRstThue))
                             .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnTimKiemThue))))
@@ -466,37 +467,50 @@ public class UI_Staff extends javax.swing.JFrame {
 
         txtThongBaoTra.setForeground(new java.awt.Color(255, 51, 51));
 
+        btnXuatHoaDon.setText("Xuất hóa đơn");
+        btnXuatHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXuatHoaDonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtThongBaoTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtThongBaoTra, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtTKTra, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTKTra, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnResetTra)
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnXuatHoaDon)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTKTra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                            .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(txtTKTra)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtThongBaoTra)
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -520,7 +534,7 @@ public class UI_Staff extends javax.swing.JFrame {
         pnlTraLayout.setHorizontalGroup(
             pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
         );
         pnlTraLayout.setVerticalGroup(
             pnlTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,7 +561,7 @@ public class UI_Staff extends javax.swing.JFrame {
         pnlLayoutSizeLayout.setVerticalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlNavigationBar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(pnlContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+            .addComponent(pnlContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlNavigationBar.getAccessibleContext().setAccessibleName("Menu");
@@ -618,9 +632,14 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraMouseClicked
 
     private void btnOkTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkTraMouseClicked
-        getPhieuTra();
-        txtThongBaoTra.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
+        getPhieuTra(); 
+        txtThongBaoTra.setText("Phiếu trả đã được lưu!");
     }//GEN-LAST:event_btnOkTraMouseClicked
+
+    private void btnXuatHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXuatHoaDonMouseClicked
+        xuatHoaDon();
+        txtThongBaoTra.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
+    }//GEN-LAST:event_btnXuatHoaDonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -680,18 +699,15 @@ public class UI_Staff extends javax.swing.JFrame {
     }
     
     /**HIỆN THÔNG TIN ĐĨA TÌM KIẾM
+     * @param tenDia
      * @params String 
     */
     public void showTKDiskInfo(String tenDia){
         this.defTabMod.setRowCount(0);
         boolean flag = false;
-//        boolean checkLogic;
-//        String tmp;
         
         //Kiểm tra tên đĩa có tồn tại không
         for(Disk disk : this.disks){
-//            tmp = disk.getTen();
-//            checkLogic = disk.getTen().trim().equals(tenDia);
 
             //Nếu có thì hiện hàng thông tin đĩa đó ra
             if(disk.getTen().trim().equals(tenDia)){                
@@ -711,7 +727,7 @@ public class UI_Staff extends javax.swing.JFrame {
     public void getRentForm(){
         boolean flag = true;
         rentDt = new RentDetails();
-        customers = new ArrayList<Customer>(); //Để check có viết sai mã khách hàng không
+        customers = new ArrayList<>(); //Để check có viết sai mã khách hàng không
         this.customers = this.rentService.getAllCust();
         this.uID = new RandomCodeGenerator();
         
@@ -725,24 +741,18 @@ public class UI_Staff extends javax.swing.JFrame {
             //Kiểm tra mã id thuê sinh ra có trùng không và tạo mới mã nếu trùng 
             this.rentDtls = this.rentService.getAllRent();
             do{
-                this.idThue = this.uID.generateCode();
+                this.idThue = RandomCodeGenerator.generateCode();
                 
 
                 for(RentDetails rent : rentDtls){
-                    if(rent.getId().equals(idThue)){
-                        flag = false;
-                    }else{
-                        flag = true;
-                    }
+                    flag = !rent.getId().equals(idThue);
                 }
                
             }while(flag == false);
             
             this.rentDtls.clear();
             
-//            if(flag == true){
-//              rentDt.setId(idThue);  
-//            }
+
             
             //lấy dữ liệu vào rent details
             rentDt.setMadia(txtThue_MaDia.getText());            
@@ -829,6 +839,7 @@ public class UI_Staff extends javax.swing.JFrame {
     }
     
     /**HIỆN THÔNG TIN PHIẾU THUÊ CẦN TÌM
+     * @param makh
      * @params String 
     */
     public void showTKRentInfo(String makh){
@@ -874,10 +885,12 @@ public class UI_Staff extends javax.swing.JFrame {
      */
     public void getPhieuTra(){
         boolean flag = true;
-        this.uID = new RandomCodeGenerator();
         payService = new PayService();
         rentDtls = this.rentService.getAllRentNotPay();
         Payment pm = new Payment();
+        pms = new ArrayList<>();
+        List<Payment> pays = new ArrayList<>();
+        pays = this.payService.getAllPay();
         
         try{
             //Kiểm tra trường có bị trống không
@@ -886,7 +899,7 @@ public class UI_Staff extends javax.swing.JFrame {
             }
             
             
-            //lấy dữ liệu vào payment        
+            //lấy dữ liệu vào payment(phiếu trả)        
             
             pm.setPhuPhi(Integer.parseInt(this.txtTra_PhuPhi.getText())); 
 
@@ -899,35 +912,22 @@ public class UI_Staff extends javax.swing.JFrame {
                 this.idThue = this.txtTra_ID.getText(); 
                 
             
-            //Tạo mã phiếu trả và mã hóa đơn tự động
-            this.pms = this.payService.getAllPay();
+            //Tạo mã phiếu trả tự động
+            pays = this.payService.getAllPay();
             do{
                 pm.setMaPtra(RandomCodeGenerator.generateCode()); 
                 
-                for(Payment pay : this.pms){
-                    if(pay.getMaPtra().trim().equals(pm.getMaPtra())){
-                        flag = false;
-                    }else{
-                        flag = true;
-                    }
+                for(Payment pay : pays){
+                    flag = !pay.getMaPtra().trim().equals(pm.getMaPtra());
                 }
  
-            }while(flag == false);
+            }while(flag == false);      
+           
+            //Thêm phiếu trả vào danh sách phiếu trả
+            pms.add(pm);
             
-            do{
-                pm.setMaHd(RandomCodeGenerator.generateCode()); 
- ;
-
-                for(Payment pay : this.pms){
-                    if(pay.getMaHd().trim().equals(pm.getMaPtra())){
-                        flag = false;
-                    }else{
-                        flag = true;
-                    }
-                }
-  
-            }while(flag == false);
-
+            //Giải phóng đối tượng pm
+            pm = null;
             
             this.rentDtls.clear();
         }catch(BlankValueException e){
@@ -942,7 +942,7 @@ public class UI_Staff extends javax.swing.JFrame {
         }else{
             int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
             if(x == JOptionPane.YES_OPTION){
-             this.countAffCol = this.payService.insertPay(pm, idThue, LoginService.getId());
+             
             }
             this.dlgTra.dispose();
             setTableTra();
@@ -961,6 +961,31 @@ public class UI_Staff extends javax.swing.JFrame {
         this.rentDtls.clear();
     }
     
+    public void xuatHoaDon(){
+        boolean flag = true;
+        String mahd;
+        List<Payment> pays = new ArrayList<>();
+        pays = this.payService.getAllPay();
+        
+        //Tạo mã hóa đơn tự động
+        do{
+                mahd = RandomCodeGenerator.generateCode();
+
+                for(Payment pay : pays){
+                    flag = !pay.getMaHd().trim().equals(mahd.trim());
+                }
+  
+            }while(flag == false);
+        
+        //Chạy for để nhập phiếu trả cùng hóa đơn vào CSDL
+        for(Payment pay : this.pms){
+            pay.setMaHd(mahd);
+           this.countAffCol = this.payService.insertPay(pay, idThue, LoginService.getId()); 
+        }
+        
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOkTra;
     private javax.swing.JButton btnResetTra;
@@ -971,6 +996,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnThue_Luu;
     private javax.swing.JButton btnTimKiemThue;
     private javax.swing.JButton btnTra;
+    private javax.swing.JButton btnXuatHoaDon;
     private javax.swing.JDialog dlgThue;
     private javax.swing.JDialog dlgTra;
     private javax.swing.JLabel jLabel1;
