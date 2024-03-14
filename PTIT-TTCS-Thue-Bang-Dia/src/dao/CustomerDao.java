@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Customer;
-import model.RentDetails;
 
 /**
  *
@@ -35,9 +34,16 @@ public class CustomerDao {
             ResultSet rs = prestat.executeQuery();
             
             while (rs.next()){
-                this.cust = new Customer();
+                cust = new Customer();
                 
                 cust.setMakh(rs.getString(1));
+                cust.setCccd(rs.getString(2));                
+                cust.setHoten(rs.getString(3));
+                cust.setGioitinh(rs.getString(4));
+                cust.setNgaysinh(rs.getString(5));
+                cust.setSdt(rs.getString(6));
+                cust.setEmail(rs.getString(7));
+                cust.setDiachi(rs.getString(8));
                 
                 customers.add(cust);
             }
