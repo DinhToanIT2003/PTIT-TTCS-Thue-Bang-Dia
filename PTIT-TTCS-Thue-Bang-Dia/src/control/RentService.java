@@ -67,4 +67,14 @@ public class RentService {
         }
         return false;
     }
+    
+     public boolean check_InvalidDisk(String madia){
+        List<Disk> disks = this.diskDao.getAllDisk();
+        for(Disk disk:disks){
+            if(disk.getMa().trim().equals(madia.trim())){
+                return true;
+            }
+        }
+        return false;
+    }
 }

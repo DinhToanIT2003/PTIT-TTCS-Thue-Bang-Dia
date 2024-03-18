@@ -435,7 +435,7 @@ public class UI_Staff extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueLayout.createSequentialGroup()
                 .addComponent(pnlThueProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
 
         pnlContent.add(pnlThue, "card2");
@@ -501,13 +501,13 @@ public class UI_Staff extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(jSeparator2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(txtTKTra)))
@@ -755,18 +755,23 @@ public class UI_Staff extends javax.swing.JFrame {
 
             
             //lấy dữ liệu vào rent details
-            rentDt.setMadia(txtThue_MaDia.getText());            
+            if(this.rentService.check_InvalidDisk(this.txtThue_MaDia.getText())){
+                rentDt.setMadia(txtThue_MaDia.getText()); 
+            }else{
+                throw new InvalidIDException("Không tồn tại đĩa!");
+            }
+                       
             rentDt.setSlThue(Integer.parseInt(this.txtThue_SoLuong.getText()));
             rentDt.setNgayTra(this.txtThue_NgayTra.getText());
             
-                //kiểm tra xem mã khách hàng nhập vào có tồn tại không
-                if(!this.rentService.chkIDCustomer(this.txtThue_MaKH.getText(), customers)){
-                    flag = false;
-                    throw new InvalidIDException("Không tìm thấy khách hàng!");
-                }
-                //Nếu có thì thêm mã khách hàng
-                rentDt.setMaKh(this.txtThue_MaKH.getText());
-                this.customers.clear();
+            //kiểm tra xem mã khách hàng nhập vào có tồn tại không
+            if(!this.rentService.chkIDCustomer(this.txtThue_MaKH.getText(), customers)){
+                flag = false;    
+                throw new InvalidIDException("Không tìm thấy khách hàng!");    
+            }
+            //Nếu có thì thêm mã khách hàng
+            rentDt.setMaKh(this.txtThue_MaKH.getText());        
+            this.customers.clear();            
         }catch(BlankValueException e){
             JOptionPane.showMessageDialog(this, e.toString());
         }catch(InvalidIDException e){
@@ -983,7 +988,13 @@ public class UI_Staff extends javax.swing.JFrame {
            this.countAffCol = this.payService.insertPay(pay, idThue, LoginService.getId()); 
         }
         
-        
+    }
+    
+    public void setBtnThue(){
+        this.txtThue_MaDia.setText("");
+        this.txtThue_MaKH.setText("");
+        this.txtThue_NgayTra.setText("");
+        this.txtThue_SoLuong.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -26,9 +26,9 @@ import model.NhaCC;
  */
 public class UpdateService {
     
-    private final DiskDao diskDao;
-    private final NhaCCDao nccDao;
-    private final CNDao cnDao;
+    private DiskDao diskDao;
+    private NhaCCDao nccDao;
+    private CNDao cnDao;
     
     public UpdateService(){
         diskDao = new DiskDao();
@@ -61,4 +61,5 @@ public class UpdateService {
         
         return cnDao.getAllCnList();
     }
+    
 }

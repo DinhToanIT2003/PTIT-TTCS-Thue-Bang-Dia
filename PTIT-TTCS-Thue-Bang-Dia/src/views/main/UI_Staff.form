@@ -298,7 +298,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="pnlNavigationBar" pref="0" max="32767" attributes="0"/>
-              <Component id="pnlContent" alignment="1" pref="515" max="32767" attributes="0"/>
+              <Component id="pnlContent" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -736,13 +736,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="3" max="-2" attributes="0">
+                                  <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnTra" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="btnTK" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="btnResetTra" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                           <Component id="btnXuatHoaDon" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="btnTra" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="btnTK" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
