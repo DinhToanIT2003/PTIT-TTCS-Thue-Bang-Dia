@@ -5,6 +5,7 @@
 package views.main;
 
 import Helper.CustomUUID;
+import Helper.DateConfig;
 import Helper.RandomCodeGenerator;
 import control.BlankValueException;
 import control.InvalidIDException;
@@ -14,6 +15,7 @@ import control.RentService;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -45,8 +47,9 @@ public class UI_Staff extends javax.swing.JFrame {
     private List<RentDetails> rentDtls = new ArrayList<>();
     private List<Payment> pms = null;
     private PayService payService = null;
-    
-    private List<Customer> customers = new ArrayList<Customer>();
+
+    private DateConfig dcf = null;
+    private List<Customer> customers = null;
     
     /**
      * Creates new form UI_Staff
@@ -56,8 +59,7 @@ public class UI_Staff extends javax.swing.JFrame {
         
         
         pnlThue.setVisible(false);
-        
-        
+
         
     }
     
@@ -79,9 +81,8 @@ public class UI_Staff extends javax.swing.JFrame {
         txtThue_MaKH = new javax.swing.JTextField();
         txtThue_MaDia = new javax.swing.JTextField();
         txtThue_SoLuong = new javax.swing.JTextField();
-        txtThue_NgayTra = new javax.swing.JTextField();
         btnThue_Luu = new javax.swing.JButton();
-        btnThue_Huy = new javax.swing.JButton();
+        txtThue_NgayTra = new com.toedter.calendar.JDateChooser();
         dlgTra = new javax.swing.JDialog();
         pnlTra_Them = new javax.swing.JPanel();
         btnOkTra = new javax.swing.JButton();
@@ -89,6 +90,7 @@ public class UI_Staff extends javax.swing.JFrame {
         txtTra_PhuPhi = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnThue_Huy = new javax.swing.JButton();
         pnlLayoutSize = new javax.swing.JPanel();
         pnlNavigationBar = new javax.swing.JPanel();
         pnlLogo = new javax.swing.JPanel();
@@ -157,7 +159,6 @@ public class UI_Staff extends javax.swing.JFrame {
         pnlThue_Them1.add(txtThue_MaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 47, 149, -1));
         pnlThue_Them1.add(txtThue_MaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 87, 149, -1));
         pnlThue_Them1.add(txtThue_SoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 148, -1));
-        pnlThue_Them1.add(txtThue_NgayTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 178, 148, -1));
 
         btnThue_Luu.setText("Save");
         btnThue_Luu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,15 +166,10 @@ public class UI_Staff extends javax.swing.JFrame {
                 btnThue_LuuMouseClicked(evt);
             }
         });
-        pnlThue_Them1.add(btnThue_Luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 218, -1, -1));
+        pnlThue_Them1.add(btnThue_Luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
 
-        btnThue_Huy.setText("Cancel");
-        btnThue_Huy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThue_HuyMouseClicked(evt);
-            }
-        });
-        pnlThue_Them1.add(btnThue_Huy, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 218, -1, -1));
+        txtThue_NgayTra.setDateFormatString("dd-MM-yyyy ");
+        pnlThue_Them1.add(txtThue_NgayTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 150, -1));
 
         dlgThue.getContentPane().add(pnlThue_Them1, java.awt.BorderLayout.CENTER);
 
@@ -233,6 +229,13 @@ public class UI_Staff extends javax.swing.JFrame {
         );
 
         dlgTra.getContentPane().add(pnlTra_Them, java.awt.BorderLayout.LINE_START);
+
+        btnThue_Huy.setText("Cancel");
+        btnThue_Huy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThue_HuyMouseClicked(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("STAFF");
@@ -757,7 +760,8 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThueMouseClicked
 
     private void btnThue_HuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_HuyMouseClicked
-        this.dlgThue.dispose();
+        this.dcf = new DateConfig();
+        this.txtThongBaoThue.setText(""+this.dcf.getDate(txtThue_NgayTra));
     }//GEN-LAST:event_btnThue_HuyMouseClicked
 
     private void btnTimKiemThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemThueMouseClicked
@@ -911,11 +915,12 @@ public class UI_Staff extends javax.swing.JFrame {
         customers = new ArrayList<>(); //Để check có viết sai mã khách hàng không
         this.customers = this.rentService.getAllCust();
         this.uID = new RandomCodeGenerator();
+        this.dcf = new DateConfig();
         
         try{
             //Kiểm tra các trường có bị trống không
             if(txtThue_MaKH.getText().equals("") || txtThue_MaDia.getText().equals("") || txtThue_SoLuong.getText().equals("") || 
-                    txtThue_NgayTra.getText().equals("")){
+                    this.dcf.getDate(txtThue_NgayTra).equals("")){
                 throw new BlankValueException("Thiếu thông tin!");
             }
             
@@ -936,18 +941,24 @@ public class UI_Staff extends javax.swing.JFrame {
 
             
             //lấy dữ liệu vào rent details
-            rentDt.setMadia(txtThue_MaDia.getText());            
+            if(this.rentService.check_InvalidDisk(this.txtThue_MaDia.getText())){
+                rentDt.setMadia(txtThue_MaDia.getText()); 
+            }else{
+                throw new InvalidIDException("Không tồn tại đĩa!");
+            }
+                       
             rentDt.setSlThue(Integer.parseInt(this.txtThue_SoLuong.getText()));
-            rentDt.setNgayTra(this.txtThue_NgayTra.getText());
+            rentDt.setNgayTra(this.dcf.getDate(txtThue_NgayTra));
             
-                //kiểm tra xem mã khách hàng nhập vào có tồn tại không
-                if(!this.rentService.chkIDCustomer(this.txtThue_MaKH.getText(), customers)){
-                    flag = false;
-                    throw new InvalidIDException("Không tìm thấy khách hàng!");
-                }
-                //Nếu có thì thêm mã khách hàng
-                rentDt.setMaKh(this.txtThue_MaKH.getText());
-                this.customers.clear();
+            
+            //kiểm tra xem mã khách hàng nhập vào có tồn tại không
+            if(!this.rentService.chkIDCustomer(this.txtThue_MaKH.getText(), customers)){
+                flag = false;    
+                throw new InvalidIDException("Không tìm thấy khách hàng!");    
+            }
+            //Nếu có thì thêm mã khách hàng
+            rentDt.setMaKh(this.txtThue_MaKH.getText());        
+            this.customers.clear();            
         }catch(BlankValueException e){
             JOptionPane.showMessageDialog(this, e.toString());
         }catch(InvalidIDException e){
@@ -956,7 +967,7 @@ public class UI_Staff extends javax.swing.JFrame {
         
         //Dòng này để xử lý khi người dùng nhập sai hay thiếu giá trị sẽ giữ nguyên dialog thuê nếu đúng hết sẽ hỏi lại người dùng có chắc chắn không và đòng dialog, cập nhật bảng đĩa.
         if(txtThue_MaKH.getText().equals("") || txtThue_MaDia.getText().equals("") || txtThue_SoLuong.getText().equals("") || 
-                    txtThue_NgayTra.getText().equals("") || flag == false){
+                    this.dcf.getDate(txtThue_NgayTra).equals("") || flag == false){
             this.txtThongBaoThue.setText("");
         }else{
             int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
@@ -1164,7 +1175,12 @@ public class UI_Staff extends javax.swing.JFrame {
            this.countAffCol = this.payService.insertPay(pay, idThue, LoginService.getId()); 
         }
         
-        
+    }
+    
+    public void setBtnThue(){
+        this.txtThue_MaDia.setText("");
+        this.txtThue_MaKH.setText("");        
+        this.txtThue_SoLuong.setText("");
     }
     
     /**HIỆN BẢNG DANH SÁCH THẺ KHÁCH HÀNG
@@ -1253,7 +1269,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JLabel txtThongBaoTra;
     private javax.swing.JTextField txtThue_MaDia;
     private javax.swing.JTextField txtThue_MaKH;
-    private javax.swing.JTextField txtThue_NgayTra;
+    private com.toedter.calendar.JDateChooser txtThue_NgayTra;
     private javax.swing.JTextField txtThue_SoLuong;
     private javax.swing.JTextField txtTimKiemTheKH;
     private javax.swing.JTextField txtTimKiemThue;
