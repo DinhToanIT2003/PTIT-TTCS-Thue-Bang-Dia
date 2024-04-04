@@ -16,7 +16,7 @@ public class Disk {
     private int gia;
     
 
-    //geter
+    //getter
   
 
     public String getMa() {

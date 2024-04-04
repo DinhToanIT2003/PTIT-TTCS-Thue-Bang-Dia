@@ -47,9 +47,9 @@ public class UI_Staff extends javax.swing.JFrame {
     private List<RentDetails> rentDtls = new ArrayList<>();
     private List<Payment> pms = null;
     private PayService payService = null;
-    private DateConfig dcf =null;
+
+    private DateConfig dcf = null;
     private List<Customer> customers = null;
-    
     
     /**
      * Creates new form UI_Staff
@@ -101,6 +101,8 @@ public class UI_Staff extends javax.swing.JFrame {
         lblThue = new javax.swing.JLabel();
         tabTra = new javax.swing.JPanel();
         lblTra = new javax.swing.JLabel();
+        tabTheKH = new javax.swing.JPanel();
+        lblTheKH = new javax.swing.JLabel();
         pnlContent = new javax.swing.JPanel();
         pnlThue = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -123,6 +125,16 @@ public class UI_Staff extends javax.swing.JFrame {
         btnXuatHoaDon = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTra = new javax.swing.JTable();
+        pnlTheKH = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblTheKH = new javax.swing.JTable();
+        pnlTheKHProcess = new javax.swing.JPanel();
+        txtTimKiemTheKH = new javax.swing.JTextField();
+        btnTimKiemTheKH = new javax.swing.JButton();
+        btnThemKH = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        btnRstTheKH = new javax.swing.JButton();
+        txtThongBaoTheKH = new javax.swing.JLabel();
 
         dlgThue.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dlgThue.setTitle("Phiếu thuê");
@@ -336,6 +348,38 @@ public class UI_Staff extends javax.swing.JFrame {
 
         pnlMenu.add(tabTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 91, -1, -1));
 
+        tabTheKH.setBackground(new java.awt.Color(204, 204, 255));
+        tabTheKH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tabTheKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabTheKHMouseClicked(evt);
+            }
+        });
+
+        lblTheKH.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTheKH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTheKH.setText("Thẻ khách hàng");
+        lblTheKH.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout tabTheKHLayout = new javax.swing.GroupLayout(tabTheKH);
+        tabTheKH.setLayout(tabTheKHLayout);
+        tabTheKHLayout.setHorizontalGroup(
+            tabTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTheKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        tabTheKHLayout.setVerticalGroup(
+            tabTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabTheKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlMenu.add(tabTheKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+
         pnlNavigationBar.add(pnlMenu, java.awt.BorderLayout.LINE_END);
 
         pnlContent.setBackground(new java.awt.Color(204, 204, 255));
@@ -354,7 +398,15 @@ public class UI_Staff extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblThue);
 
         pnlThueProcess.setBackground(new java.awt.Color(255, 255, 255));
@@ -550,6 +602,107 @@ public class UI_Staff extends javax.swing.JFrame {
 
         pnlContent.add(pnlTra, "card3");
 
+        pnlTheKH.setBackground(new java.awt.Color(255, 255, 255));
+
+        tblTheKH.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tblTheKH);
+
+        pnlTheKHProcess.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnTimKiemTheKH.setText("Tìm Kiếm");
+        btnTimKiemTheKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTimKiemTheKHMouseClicked(evt);
+            }
+        });
+
+        btnThemKH.setText("Thêm");
+        btnThemKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemKHMouseClicked(evt);
+            }
+        });
+
+        jSeparator4.setForeground(new java.awt.Color(51, 0, 51));
+        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        btnRstTheKH.setText("Reset");
+        btnRstTheKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRstTheKHActionPerformed(evt);
+            }
+        });
+
+        txtThongBaoTheKH.setForeground(new java.awt.Color(255, 51, 51));
+
+        javax.swing.GroupLayout pnlTheKHProcessLayout = new javax.swing.GroupLayout(pnlTheKHProcess);
+        pnlTheKHProcess.setLayout(pnlTheKHProcessLayout);
+        pnlTheKHProcessLayout.setHorizontalGroup(
+            pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtTimKiemTheKH, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTimKiemTheKH)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
+                        .addComponent(txtThongBaoTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnThemKH)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRstTheKH)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pnlTheKHProcessLayout.setVerticalGroup(
+            pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
+                .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnThemKH)
+                                .addComponent(btnRstTheKH))
+                            .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtTimKiemTheKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTimKiemTheKH))))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtThongBaoTheKH)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlTheKHLayout = new javax.swing.GroupLayout(pnlTheKH);
+        pnlTheKH.setLayout(pnlTheKHLayout);
+        pnlTheKHLayout.setHorizontalGroup(
+            pnlTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlTheKHProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+        );
+        pnlTheKHLayout.setVerticalGroup(
+            pnlTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTheKHLayout.createSequentialGroup()
+                .addComponent(pnlTheKHProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
+        );
+
+        pnlContent.add(pnlTheKH, "card2");
+
         javax.swing.GroupLayout pnlLayoutSizeLayout = new javax.swing.GroupLayout(pnlLayoutSize);
         pnlLayoutSize.setLayout(pnlLayoutSizeLayout);
         pnlLayoutSizeLayout.setHorizontalGroup(
@@ -579,8 +732,10 @@ public class UI_Staff extends javax.swing.JFrame {
     private void tabThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabThueMouseClicked
         pnlThue.setVisible(true);
         pnlTra.setVisible(false);
+        pnlTheKH.setVisible(false);
         tabThue.setBackground(Color.white);
         tabTra.setBackground(lightBlue);
+        tabTheKH.setBackground(lightBlue);
         this.defTabMod.setColumnCount(0);
         this.defTabMod.setRowCount(0);
         showThongTinThue();
@@ -589,8 +744,10 @@ public class UI_Staff extends javax.swing.JFrame {
     private void tabTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabTraMouseClicked
         pnlTra.setVisible(true);
         pnlThue.setVisible(false);
+        pnlTheKH.setVisible(false);
         tabTra.setBackground(Color.white);        
         tabThue.setBackground(lightBlue);
+        tabTheKH.setBackground(lightBlue);
         this.defTabMod.setColumnCount(0);
         this.defTabMod.setRowCount(0);
         showThongTinTra();
@@ -644,6 +801,30 @@ public class UI_Staff extends javax.swing.JFrame {
         xuatHoaDon();
         txtThongBaoTra.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
     }//GEN-LAST:event_btnXuatHoaDonMouseClicked
+
+    private void tabTheKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabTheKHMouseClicked
+        pnlTheKH.setVisible(true);
+        pnlThue.setVisible(false);
+        pnlTra.setVisible(false);
+        tabTheKH.setBackground(Color.white);        
+        tabThue.setBackground(lightBlue);
+        tabTra.setBackground(lightBlue);
+        this.defTabMod.setColumnCount(0);
+        this.defTabMod.setRowCount(0);
+        showThongTinTheKH();
+    }//GEN-LAST:event_tabTheKHMouseClicked
+
+    private void btnTimKiemTheKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemTheKHMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimKiemTheKHMouseClicked
+
+    private void btnThemKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemKHMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemKHMouseClicked
+
+    private void btnRstTheKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRstTheKHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRstTheKHActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1002,14 +1183,45 @@ public class UI_Staff extends javax.swing.JFrame {
         this.txtThue_SoLuong.setText("");
     }
     
+    /**HIỆN BẢNG DANH SÁCH THẺ KHÁCH HÀNG
+     * @params NONE
+    */
+    public void showThongTinTheKH(){
+        
+        this.tblTheKH.setModel(defTabMod);
+                
+        this.customers = this.rentService.getAllCust();
+        
+        defTabMod.addColumn("Mã khách hàng");
+        defTabMod.addColumn("Căn cước công dân");
+        defTabMod.addColumn("Họ tên");
+        defTabMod.addColumn("Giới tính");
+        defTabMod.addColumn("Ngày sinh");
+        defTabMod.addColumn("Số điện thoại");
+        defTabMod.addColumn("Email");
+        defTabMod.addColumn("Địa chỉ");
+        
+        for(Customer customer : customers){
+            System.out.println(customer.getCccd());
+            defTabMod.addRow(new Object[] {
+                customer.getMakh(), customer.getCccd(), customer.getHoten(), customer.getGioitinh(),
+                customer.getNgaysinh(), customer.getSdt(), customer.getEmail(), customer.getDiachi()
+            });
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOkTra;
     private javax.swing.JButton btnResetTra;
+    private javax.swing.JButton btnRstTheKH;
     private javax.swing.JButton btnRstThue;
     private javax.swing.JButton btnTK;
+    private javax.swing.JButton btnThemKH;
     private javax.swing.JButton btnThue;
     private javax.swing.JButton btnThue_Huy;
     private javax.swing.JButton btnThue_Luu;
+    private javax.swing.JButton btnTimKiemTheKH;
     private javax.swing.JButton btnTimKiemThue;
     private javax.swing.JButton btnTra;
     private javax.swing.JButton btnXuatHoaDon;
@@ -1020,9 +1232,12 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lblCD;
+    private javax.swing.JLabel lblTheKH;
     private javax.swing.JLabel lblThue;
     private javax.swing.JLabel lblThue_MAKH;
     private javax.swing.JLabel lblThue_MaDia1;
@@ -1034,23 +1249,29 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLogo;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNavigationBar;
+    private javax.swing.JPanel pnlTheKH;
+    private javax.swing.JPanel pnlTheKHProcess;
     private javax.swing.JPanel pnlThue;
     private javax.swing.JPanel pnlThueProcess;
     private javax.swing.JPanel pnlThue_Them1;
     private javax.swing.JPanel pnlTra;
     private javax.swing.JPanel pnlTra_Them;
     private javax.swing.JSeparator sprtCD;
+    private javax.swing.JPanel tabTheKH;
     private javax.swing.JPanel tabThue;
     private javax.swing.JPanel tabTra;
+    private javax.swing.JTable tblTheKH;
     private javax.swing.JTable tblThue;
     private javax.swing.JTable tblTra;
     private javax.swing.JTextField txtTKTra;
+    private javax.swing.JLabel txtThongBaoTheKH;
     private javax.swing.JLabel txtThongBaoThue;
     private javax.swing.JLabel txtThongBaoTra;
     private javax.swing.JTextField txtThue_MaDia;
     private javax.swing.JTextField txtThue_MaKH;
     private com.toedter.calendar.JDateChooser txtThue_NgayTra;
     private javax.swing.JTextField txtThue_SoLuong;
+    private javax.swing.JTextField txtTimKiemTheKH;
     private javax.swing.JTextField txtTimKiemThue;
     private javax.swing.JTextField txtTra_ID;
     private javax.swing.JTextField txtTra_PhuPhi;
