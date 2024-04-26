@@ -27,12 +27,10 @@ public class Customer {
     }
 
     public String getCccd() {
-        System.out.println(cccd);
         return cccd;
     }
 
     public void setCccd(String cccd) {
-        System.out.println(this.cccd);
         this.cccd = cccd;
     }
 
