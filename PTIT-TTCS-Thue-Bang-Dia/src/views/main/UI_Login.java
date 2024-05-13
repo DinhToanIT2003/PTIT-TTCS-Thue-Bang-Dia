@@ -12,13 +12,13 @@ import model.Acount;
  *
  * @author ACER
  */
-public class UI_CentralPanel extends javax.swing.JFrame {
+public class UI_Login extends javax.swing.JFrame {
     LoginService login;
     Acount acc;
     /**
      * Creates new form UI_CentralPanel
      */
-    public UI_CentralPanel() {
+    public UI_Login() {
         initComponents(); 
         this.pack();
         login = new LoginService();
@@ -55,10 +55,10 @@ public class UI_CentralPanel extends javax.swing.JFrame {
         pnlLayout.setPreferredSize(new java.awt.Dimension(800, 500));
         pnlLayout.setLayout(null);
 
-        pnlLogo.setBackground(new java.awt.Color(0, 102, 102));
+        pnlLogo.setBackground(new java.awt.Color(102, 200, 255));
         pnlLogo.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo - Copy.png"))); // NOI18N
         lblLogo.setPreferredSize(new java.awt.Dimension(200, 200));
 
         lblCuahang.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
@@ -103,7 +103,7 @@ public class UI_CentralPanel extends javax.swing.JFrame {
         pnlLogin.setPreferredSize(new java.awt.Dimension(400, 500));
 
         lblLogin.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
-        lblLogin.setForeground(new java.awt.Color(0, 102, 102));
+        lblLogin.setForeground(new java.awt.Color(102, 200, 255));
         lblLogin.setText("LOGIN");
 
         lblUsername.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -134,7 +134,7 @@ public class UI_CentralPanel extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(0, 102, 102));
+        btnLogin.setBackground(new java.awt.Color(102, 200, 255));
         btnLogin.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
@@ -206,17 +206,7 @@ public class UI_CentralPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
-        
-        if(result == 1){
-            new UI_Staff().setVisible(true);
-            this.dispose();
-        }else if(result == 0){
-            new UI_Manager().setVisible(true);
-            this.dispose();
-        }else{
-            lblWarning.setText("Password or username is wrong. Please, try again!");
-        }
+        dangNhap();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsernameMouseClicked
@@ -228,68 +218,72 @@ public class UI_CentralPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordMouseClicked
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
-        
-        if(result == 1){
-            new UI_Staff().setVisible(true);
-            this.dispose();
-        }else if(result == 0){
-            new UI_Manager().setVisible(true);
-            this.dispose();
-        }else{
-            lblWarning.setText("Password or username is wrong. Please, try again!");
-        }
+        dangNhap();
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
-        
-        if(result == 1){
-            new UI_Staff().setVisible(true);
-            this.dispose();
-        }else if(result == 0){
-            new UI_Manager().setVisible(true);
-            this.dispose();
-        }else{
-            lblWarning.setText("Password or username is wrong. Please, try again!");
-        }       
+        dangNhap();       
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(UI_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(UI_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(UI_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(UI_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new UI_Login().setVisible(true);
+//            }
+//        });
+//        
+//    }
+    
+    public void dangNhap(){
+        try{
+            int result = login.checkAccount(txtUsername.getText(), txtPassword.getText());
+        
+            if(result == 1){
+                JOptionPane.showMessageDialog(rootPane, "Login success!");
+                new UI_Staff().setVisible(true);
+                this.dispose();
+            }else if(result == 0){
+                JOptionPane.showMessageDialog(rootPane, "Login success!");
+                new UI_Manager().setVisible(true);
+                this.dispose();
+            }else{
+                lblWarning.setText("Password or username is wrong. Please, try again!");
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UI_CentralPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UI_CentralPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UI_CentralPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UI_CentralPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e, "Error querying data", JOptionPane.WARNING_MESSAGE);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UI_CentralPanel().setVisible(true);
-            }
-        });
         
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
