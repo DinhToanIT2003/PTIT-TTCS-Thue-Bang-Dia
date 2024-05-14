@@ -74,7 +74,7 @@ public class UI_Manager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dilDmk = new javax.swing.JDialog();
+        dlgDmk = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         txtMkcu = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
@@ -161,7 +161,8 @@ public class UI_Manager extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cmbTkLoai = new javax.swing.JComboBox<>();
 
-        dilDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dlgDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dlgDmk.setSize(new java.awt.Dimension(396, 168));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Mật khẩu cũ:");
@@ -171,43 +172,46 @@ public class UI_Manager extends javax.swing.JFrame {
 
         btnHome_pass_OK.setText("Ok");
 
-        javax.swing.GroupLayout dilDmkLayout = new javax.swing.GroupLayout(dilDmk.getContentPane());
-        dilDmk.getContentPane().setLayout(dilDmkLayout);
-        dilDmkLayout.setHorizontalGroup(
-            dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dilDmkLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dilDmkLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome_pass_OK)
-                .addGap(35, 35, 35))
+        javax.swing.GroupLayout dlgDmkLayout = new javax.swing.GroupLayout(dlgDmk.getContentPane());
+        dlgDmk.getContentPane().setLayout(dlgDmkLayout);
+        dlgDmkLayout.setHorizontalGroup(
+            dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgDmkLayout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgDmkLayout.createSequentialGroup()
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgDmkLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHome_pass_OK)))
+                .addGap(37, 37, 37))
         );
-        dilDmkLayout.setVerticalGroup(
-            dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dilDmkLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        dlgDmkLayout.setVerticalGroup(
+            dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgDmkLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(btnHome_pass_OK)
-                .addContainerGap())
+                .addGap(39, 39, 39))
         );
 
         frmPerInf.setTitle("Thông tin Nhân viên");
         frmPerInf.setBackground(new java.awt.Color(255, 255, 255));
+        frmPerInf.setSize(new java.awt.Dimension(580, 334));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_info.png"))); // NOI18N
 
@@ -425,6 +429,11 @@ public class UI_Manager extends javax.swing.JFrame {
         btnDMK.setMargin(new java.awt.Insets(2, 16, 3, 16));
         btnDMK.setOpaque(true);
         btnDMK.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDMKMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnDMK);
         jToolBar1.add(jSeparator2);
 
@@ -436,6 +445,11 @@ public class UI_Manager extends javax.swing.JFrame {
         btnTTND.setMargin(new java.awt.Insets(2, 16, 3, 16));
         btnTTND.setOpaque(true);
         btnTTND.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTTND.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTTNDMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnTTND);
 
         pnlHome.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
@@ -1084,6 +1098,16 @@ public class UI_Manager extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutMouseClicked
 
+    private void btnDMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDMKMouseClicked
+        this.dlgDmk.setVisible(true);
+        this.dlgDmk.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnDMKMouseClicked
+
+    private void btnTTNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTTNDMouseClicked
+        this.frmPerInf.setVisible(true);
+        this.frmPerInf.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnTTNDMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1429,7 +1453,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTkLoai;
     private javax.swing.JComboBox<String> cmbTkbd;
     private javax.swing.JComboBox<String> cmbTkdt;
-    private javax.swing.JDialog dilDmk;
+    private javax.swing.JDialog dlgDmk;
     private javax.swing.JFrame frmPerInf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

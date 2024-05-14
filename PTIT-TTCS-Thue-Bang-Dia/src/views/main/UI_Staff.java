@@ -87,7 +87,7 @@ public class UI_Staff extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnThue_Huy = new javax.swing.JButton();
-        dilDmk = new javax.swing.JDialog();
+        dlgDmk = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         txtMkcu = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
@@ -265,57 +265,57 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
-        dilDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dlgDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dlgDmk.setSize(new java.awt.Dimension(396, 168));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Mật khẩu cũ:");
 
-        txtMkcu.setText("jPasswordField1");
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Mật khẩu mới:");
 
-        txtMkmoi.setText("jPasswordField1");
-
         btnHome_pass_OK.setText("Ok");
 
-        javax.swing.GroupLayout dilDmkLayout = new javax.swing.GroupLayout(dilDmk.getContentPane());
-        dilDmk.getContentPane().setLayout(dilDmkLayout);
-        dilDmkLayout.setHorizontalGroup(
-            dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dilDmkLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(83, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dilDmkLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome_pass_OK)
-                .addGap(35, 35, 35))
+        javax.swing.GroupLayout dlgDmkLayout = new javax.swing.GroupLayout(dlgDmk.getContentPane());
+        dlgDmk.getContentPane().setLayout(dlgDmkLayout);
+        dlgDmkLayout.setHorizontalGroup(
+            dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgDmkLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgDmkLayout.createSequentialGroup()
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgDmkLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHome_pass_OK)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
-        dilDmkLayout.setVerticalGroup(
-            dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dilDmkLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        dlgDmkLayout.setVerticalGroup(
+            dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgDmkLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dilDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(btnHome_pass_OK)
-                .addContainerGap())
+                .addGap(34, 34, 34))
         );
 
         frmPerInf.setTitle("Thông tin Nhân viên");
         frmPerInf.setBackground(new java.awt.Color(255, 255, 255));
+        frmPerInf.setSize(new java.awt.Dimension(580, 334));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_info.png"))); // NOI18N
 
@@ -427,16 +427,16 @@ public class UI_Staff extends javax.swing.JFrame {
         tabHomeLayout.setHorizontalGroup(
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabHomeLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(17, 17, 17)
                 .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         tabHomeLayout.setVerticalGroup(
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabHomeLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHomeLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabThue.setBackground(new java.awt.Color(204, 204, 255));
@@ -485,10 +485,10 @@ public class UI_Staff extends javax.swing.JFrame {
         tabTra.setLayout(tabTraLayout);
         tabTraLayout.setHorizontalGroup(
             tabTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTraLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTraLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(lblTra, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         tabTraLayout.setVerticalGroup(
             tabTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,16 +514,17 @@ public class UI_Staff extends javax.swing.JFrame {
         tabTheKH.setLayout(tabTheKHLayout);
         tabTheKHLayout.setHorizontalGroup(
             tabTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTheKHLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTheKHLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(lblTheKH, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         tabTheKHLayout.setVerticalGroup(
             tabTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTheKHLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTheKHLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(lblTheKH)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout pnlNavigationBarLayout = new javax.swing.GroupLayout(pnlNavigationBar);
@@ -594,6 +595,11 @@ public class UI_Staff extends javax.swing.JFrame {
         btnDMK.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDMK.setMargin(new java.awt.Insets(2, 16, 3, 16));
         btnDMK.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDMKMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnDMK);
         jToolBar1.add(jSeparator5);
 
@@ -604,6 +610,11 @@ public class UI_Staff extends javax.swing.JFrame {
         btnTTND.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTTND.setMargin(new java.awt.Insets(2, 16, 3, 16));
         btnTTND.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTTND.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTTNDMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnTTND);
 
         pnlHome.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
@@ -664,7 +675,7 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addComponent(lblLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCD1)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         pnlHome.add(jPanel7, java.awt.BorderLayout.CENTER);
@@ -697,6 +708,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
         pnlThueProcess.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnTimKiemThue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search (2).png"))); // NOI18N
         btnTimKiemThue.setText("Tìm Kiếm");
         btnTimKiemThue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -704,6 +716,7 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
+        btnThue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Thực thi.png"))); // NOI18N
         btnThue.setText("Thuê");
         btnThue.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -714,6 +727,7 @@ public class UI_Staff extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(51, 0, 51));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        btnRstThue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Refresh.png"))); // NOI18N
         btnRstThue.setText("Reset");
         btnRstThue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -735,7 +749,7 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                        .addComponent(txtThongBaoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                        .addComponent(txtThongBaoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -776,13 +790,14 @@ public class UI_Staff extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueLayout.createSequentialGroup()
                 .addComponent(pnlThueProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
         );
 
         pnlContent.add(pnlThue, "card2");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search (2).png"))); // NOI18N
         btnTK.setText("Tìm kiếm");
         btnTK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -792,6 +807,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        btnTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Thực thi.png"))); // NOI18N
         btnTra.setText("Trả");
         btnTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -799,6 +815,7 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
+        btnResetTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Refresh.png"))); // NOI18N
         btnResetTra.setText("Reset");
         btnResetTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -808,6 +825,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
         txtThongBaoTra.setForeground(new java.awt.Color(255, 51, 51));
 
+        btnXuatHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
         btnXuatHoaDon.setText("Xuất hóa đơn");
         btnXuatHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -826,21 +844,21 @@ public class UI_Staff extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtTKTra, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTK)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTra, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnResetTra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnXuatHoaDon)))
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -883,8 +901,8 @@ public class UI_Staff extends javax.swing.JFrame {
             .addGroup(pnlTraLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 79, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnlContent.add(pnlTra, "card3");
@@ -907,6 +925,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
         pnlTheKHProcess.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnTimKiemTheKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search (2).png"))); // NOI18N
         btnTimKiemTheKH.setText("Tìm Kiếm");
         btnTimKiemTheKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -914,6 +933,7 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
+        btnThemKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Thực thi.png"))); // NOI18N
         btnThemKH.setText("Thêm");
         btnThemKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -924,6 +944,7 @@ public class UI_Staff extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(51, 0, 51));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        btnRstTheKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Refresh.png"))); // NOI18N
         btnRstTheKH.setText("Reset");
         btnRstTheKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -945,7 +966,7 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlTheKHProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
-                        .addComponent(txtThongBaoTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                        .addComponent(txtThongBaoTheKH, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlTheKHProcessLayout.createSequentialGroup()
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -979,14 +1000,14 @@ public class UI_Staff extends javax.swing.JFrame {
         pnlTheKHLayout.setHorizontalGroup(
             pnlTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlTheKHProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
         );
         pnlTheKHLayout.setVerticalGroup(
             pnlTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTheKHLayout.createSequentialGroup()
                 .addComponent(pnlTheKHProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE))
         );
 
         pnlContent.add(pnlTheKH, "card2");
@@ -1002,7 +1023,7 @@ public class UI_Staff extends javax.swing.JFrame {
         );
         pnlLayoutSizeLayout.setVerticalGroup(
             pnlLayoutSizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlNavigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+            .addComponent(pnlNavigationBar, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
             .addComponent(pnlContent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1126,6 +1147,16 @@ public class UI_Staff extends javax.swing.JFrame {
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         setHomePage();
     }//GEN-LAST:event_tabHomeMouseClicked
+
+    private void btnDMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDMKMouseClicked
+        this.dlgDmk.setVisible(true);
+        this.dlgDmk.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnDMKMouseClicked
+
+    private void btnTTNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTTNDMouseClicked
+        this.frmPerInf.setVisible(true);
+        this.frmPerInf.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnTTNDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1547,7 +1578,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnTimKiemThue;
     private javax.swing.JButton btnTra;
     private javax.swing.JButton btnXuatHoaDon;
-    private javax.swing.JDialog dilDmk;
+    private javax.swing.JDialog dlgDmk;
     private javax.swing.JDialog dlgThue;
     private javax.swing.JDialog dlgTra;
     private javax.swing.JFrame frmPerInf;
