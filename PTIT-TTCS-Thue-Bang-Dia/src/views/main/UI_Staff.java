@@ -12,6 +12,8 @@ import control.InvalidIDException;
 import control.LoginService;
 import control.PayService;
 import control.RentService;
+import dao.CustomerDao;
+import dao.DiskDao;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -106,6 +108,25 @@ public class UI_Staff extends javax.swing.JFrame {
         txtHome_gt = new javax.swing.JLabel();
         txtHome_ns = new javax.swing.JLabel();
         btnHome_Inf_OK = new javax.swing.JButton();
+        dlgTheKH = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        txtIdKH = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCccd = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtHoTen = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        cmbGioiTinh = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        dchNgaySinh = new com.toedter.calendar.JDateChooser();
+        jLabel19 = new javax.swing.JLabel();
+        txtSDT = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtDiaChi = new javax.swing.JTextField();
+        btnThemKH_Luu = new javax.swing.JButton();
         pnlLayoutSize = new javax.swing.JPanel();
         pnlNavigationBar = new javax.swing.JPanel();
         lblCD = new javax.swing.JLabel();
@@ -391,6 +412,131 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnHome_Inf_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
+        );
+
+        dlgTheKH.setSize(new java.awt.Dimension(400, 500));
+
+        jLabel3.setText("Mã khách hàng");
+
+        txtIdKH.setText("ID Khách hàng");
+        txtIdKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdKHActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Thêm khách hàng");
+
+        jLabel6.setText("CCCD");
+
+        txtCccd.setText("CCCD");
+
+        jLabel16.setText("Họ và tên");
+
+        txtHoTen.setText("Họ và tên");
+
+        jLabel17.setText("Giới tính");
+
+        cmbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+
+        jLabel18.setText("Ngày sinh");
+
+        dchNgaySinh.setDateFormatString("dd-MM-yyyy");
+
+        jLabel19.setText("Số điện thoại");
+
+        txtSDT.setText("Số điện thoại");
+
+        jLabel20.setText("Email");
+
+        txtEmail.setText("Email");
+
+        jLabel21.setText("Địa chỉ");
+
+        txtDiaChi.setText("Địa chỉ");
+
+        btnThemKH_Luu.setText("Lưu");
+        btnThemKH_Luu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemKH_LuuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlgTheKHLayout = new javax.swing.GroupLayout(dlgTheKH.getContentPane());
+        dlgTheKH.getContentPane().setLayout(dlgTheKHLayout);
+        dlgTheKHLayout.setHorizontalGroup(
+            dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgTheKHLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(dlgTheKHLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnThemKH_Luu)
+                    .addGroup(dlgTheKHLayout.createSequentialGroup()
+                        .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdKH, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                            .addComponent(txtCccd)
+                            .addComponent(txtHoTen)
+                            .addComponent(cmbGioiTinh, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dchNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSDT)
+                            .addComponent(txtEmail)
+                            .addComponent(txtDiaChi))))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        dlgTheKHLayout.setVerticalGroup(
+            dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgTheKHLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel5)
+                .addGap(41, 41, 41)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtCccd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(cmbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(dchNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dlgTheKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnThemKH_Luu)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1086,15 +1232,16 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXuatHoaDonMouseClicked
 
     private void btnTimKiemTheKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemTheKHMouseClicked
-        // TODO add your handling code here:
+        this.showTKCustInfo(txtTimKiemTheKH.getText());
     }//GEN-LAST:event_btnTimKiemTheKHMouseClicked
 
     private void btnThemKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemKHMouseClicked
-        // TODO add your handling code here:
+        this.dlgTheKH.setLocationRelativeTo(this);
+        this.dlgTheKH.setVisible(true);
     }//GEN-LAST:event_btnThemKHMouseClicked
 
     private void btnRstTheKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRstTheKHActionPerformed
-        // TODO add your handling code here:
+        resetTableTheKH();
     }//GEN-LAST:event_btnRstTheKHActionPerformed
 
     private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
@@ -1157,6 +1304,14 @@ public class UI_Staff extends javax.swing.JFrame {
         this.frmPerInf.setVisible(true);
         this.frmPerInf.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnTTNDMouseClicked
+
+    private void txtIdKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdKHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdKHActionPerformed
+
+    private void btnThemKH_LuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemKH_LuuMouseClicked
+        themKhachHang();
+    }//GEN-LAST:event_btnThemKH_LuuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1546,6 +1701,81 @@ public class UI_Staff extends javax.swing.JFrame {
         
     }
     
+        public void showTKCustInfo(String cccd){
+        this.defTabMod.setRowCount(0);
+        boolean flag = false;
+
+        //Kiểm tra cccd có tồn tại không
+        for(Customer customer : this.customers){
+
+            //Nếu có thì hiện hàng thông tin khách hàng
+            if(customer.getCccd().trim().equals(cccd)){                
+                defTabMod.addRow(new Object[] {
+                customer.getMakh(), customer.getCccd(), customer.getHoten(), customer.getGioitinh(),
+                customer.getNgaysinh(), customer.getSdt(), customer.getEmail(), customer.getDiachi()
+                });
+                flag = true;
+            }
+        }
+        //không tìm được thì thông báo cho người dùng 
+        if(flag == false) this.txtThongBaoThue.setText("Không có đĩa nào hợp lệ!");
+    }
+
+    public void resetTableTheKH(){
+        this.defTabMod.setRowCount(0);
+        this.customers = this.rentService.getAllCust();
+        for(Customer customer : customers){
+            defTabMod.addRow(new Object[] {
+                customer.getMakh(), customer.getCccd(), customer.getHoten(), customer.getGioitinh(),
+                customer.getNgaysinh(), customer.getSdt(), customer.getEmail(), customer.getDiachi()
+            });
+        }
+    }
+
+    // Thêm khách hàng
+    public void themKhachHang() {
+        this.dcf = new DateConfig();
+
+        try {
+            if (this.txtIdKH.getText().equals("")) {
+                throw new BlankValueException("Mã khách hàng không được để trống!");
+            } else if (this.txtCccd.getText().equals("")) {
+                throw new BlankValueException("Căn cước công dân không được để trống!");
+            } else if (this.txtHoTen.getText().equals("")) {
+                throw new BlankValueException("Họ và tên không được để trống!");
+            } else if (this.txtHoTen.getText().equals("")) {
+                throw new BlankValueException("Họ và tên không được để trống!");
+            }
+
+            Customer cust = new Customer();
+            cust.setMakh(txtIdKH.getText());
+            cust.setCccd(txtCccd.getText());
+            cust.setHoten(txtHoTen.getText());
+            cust.setGioitinh((String) cmbGioiTinh.getSelectedItem());
+            cust.setNgaysinh(this.dcf.getDate(dchNgaySinh));
+            cust.setSdt(txtSDT.getText());
+            cust.setEmail(txtEmail.getText());
+            cust.setDiachi(txtDiaChi.getText());
+
+            System.out.println("I'm here!");
+            String manv = LoginService.getId();
+
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thêm khách hàng?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            System.out.println("x= " + x);
+            System.out.println("Equal?" + JOptionPane.YES_OPTION);
+
+            if (x == JOptionPane.YES_OPTION) {
+                CustomerDao.addNewCustomer(cust, manv);
+                JOptionPane.showMessageDialog(this, "Thêm khách hàng thành công!");
+                this.dlgTheKH.dispose();
+                resetTableTheKH();
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
+    }
+    
     /**
      * Phần HomePage
      */
@@ -1571,6 +1801,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnTK;
     private javax.swing.JButton btnTTND;
     private javax.swing.JButton btnThemKH;
+    private javax.swing.JButton btnThemKH_Luu;
     private javax.swing.JButton btnThue;
     private javax.swing.JButton btnThue_Huy;
     private javax.swing.JButton btnThue_Luu;
@@ -1578,7 +1809,10 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnTimKiemThue;
     private javax.swing.JButton btnTra;
     private javax.swing.JButton btnXuatHoaDon;
+    private javax.swing.JComboBox<String> cmbGioiTinh;
+    private com.toedter.calendar.JDateChooser dchNgaySinh;
     private javax.swing.JDialog dlgDmk;
+    private javax.swing.JDialog dlgTheKH;
     private javax.swing.JDialog dlgThue;
     private javax.swing.JDialog dlgTra;
     private javax.swing.JFrame frmPerInf;
@@ -1589,8 +1823,17 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1636,13 +1879,19 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JTable tblTheKH;
     private javax.swing.JTable tblThue;
     private javax.swing.JTable tblTra;
+    private javax.swing.JTextField txtCccd;
+    private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtHoTen;
     private javax.swing.JLabel txtHome_CCCD;
     private javax.swing.JLabel txtHome_gt;
     private javax.swing.JLabel txtHome_ht;
     private javax.swing.JLabel txtHome_mnv;
     private javax.swing.JLabel txtHome_ns;
+    private javax.swing.JTextField txtIdKH;
     private javax.swing.JPasswordField txtMkcu;
     private javax.swing.JPasswordField txtMkmoi;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTKTra;
     private javax.swing.JLabel txtThongBaoTheKH;
     private javax.swing.JLabel txtThongBaoThue;

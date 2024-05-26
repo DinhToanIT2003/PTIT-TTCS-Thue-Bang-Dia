@@ -58,8 +58,7 @@ public class UI_Login extends javax.swing.JFrame {
         pnlLogo.setBackground(new java.awt.Color(102, 200, 255));
         pnlLogo.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo - Copy.png"))); // NOI18N
-        lblLogo.setPreferredSize(new java.awt.Dimension(200, 200));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoHD.png"))); // NOI18N
 
         lblCuahang.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         lblCuahang.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,24 +73,24 @@ public class UI_Login extends javax.swing.JFrame {
         pnlLogoLayout.setHorizontalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogoLayout.createSequentialGroup()
-                .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCopyRight)
-                    .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlLogoLayout.createSequentialGroup()
-                            .addGap(76, 76, 76)
-                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblCopyRight)
                         .addGroup(pnlLogoLayout.createSequentialGroup()
                             .addGap(61, 61, 61)
-                            .addComponent(lblCuahang, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblCuahang, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlLogoLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(lblLogo)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogoLayout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCuahang, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(lblCopyRight)
                 .addGap(59, 59, 59))
         );
