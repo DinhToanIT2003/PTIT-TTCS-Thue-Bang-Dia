@@ -15,9 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Customer;
 import java.sql.CallableStatement;
-import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 /**
  *
