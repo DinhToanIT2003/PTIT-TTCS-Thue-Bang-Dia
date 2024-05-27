@@ -23,8 +23,10 @@ import model.NhaCC;
 import model.Payment;
 import model.RentDetails;
 import Helper.CheckValueHelper;
+import control.HomePageService;
 import control.TKBDService;
 import control.TKDTService;
+import model.Staff;
 import model.TKBD;
 import model.TKDT;
 
@@ -37,6 +39,9 @@ public class UI_Manager extends javax.swing.JFrame {
     /**
      * Creates new form UI_Staff
      */
+    
+    // Phần trang chủ
+    private HomePageService homePageService = new HomePageService();
     
     //Phần Cập nhật
     private UpdateService upService;
@@ -59,6 +64,8 @@ public class UI_Manager extends javax.swing.JFrame {
     private String tkbd = "";
     private TKBDService tkbdService;
     private List<TKBD> bds;
+    
+    private Staff staff = null;
     
     public UI_Manager() {
         initComponents();
@@ -92,7 +99,6 @@ public class UI_Manager extends javax.swing.JFrame {
         txtHome_ht = new javax.swing.JLabel();
         txtHome_gt = new javax.swing.JLabel();
         txtHome_ns = new javax.swing.JLabel();
-        btnHome_Inf_OK = new javax.swing.JButton();
         pnlLayoutSize = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblCD = new javax.swing.JLabel();
@@ -230,32 +236,27 @@ public class UI_Manager extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Ngày sinh:");
 
-        btnHome_Inf_OK.setText("OK");
-
         javax.swing.GroupLayout frmPerInfLayout = new javax.swing.GroupLayout(frmPerInf.getContentPane());
         frmPerInf.getContentPane().setLayout(frmPerInfLayout);
         frmPerInfLayout.setHorizontalGroup(
             frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmPerInfLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHome_Inf_OK)
-                    .addGroup(frmPerInfLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(103, 103, 103)
-                        .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHome_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_ht, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_gt, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_mnv, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel11)
+                .addGap(103, 103, 103)
+                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHome_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_ht, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_gt, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_mnv, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         frmPerInfLayout.setVerticalGroup(
@@ -284,9 +285,7 @@ public class UI_Manager extends javax.swing.JFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(btnHome_Inf_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1106,6 +1105,7 @@ public class UI_Manager extends javax.swing.JFrame {
     private void btnTTNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTTNDMouseClicked
         this.frmPerInf.setVisible(true);
         this.frmPerInf.setLocationRelativeTo(this);
+        showThongTinNhanVien();
     }//GEN-LAST:event_btnTTNDMouseClicked
 
     /**
@@ -1439,9 +1439,20 @@ public class UI_Manager extends javax.swing.JFrame {
         tabTK.setBackground(new Color(204,204,255));
     }
     
+    // Hiện thông tin nhân viên
+    public void showThongTinNhanVien(){
+        String manv = LoginService.getId();
+        this.staff = this.homePageService.getStaffInfo(manv);
+        
+        this.txtHome_mnv.setText(manv);
+        this.txtHome_CCCD.setText(staff.getCccd());
+        this.txtHome_ht.setText(staff.getHo() + " " + staff.getTen());
+        this.txtHome_gt.setText(staff.getGioiTinh());
+        this.txtHome_ns.setText(String.valueOf(staff.getNgaySinh()));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDMK;
-    private javax.swing.JButton btnHome_Inf_OK;
     private javax.swing.JButton btnHome_pass_OK;
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnLogout;

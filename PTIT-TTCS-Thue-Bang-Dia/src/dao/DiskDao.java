@@ -9,7 +9,6 @@ import model.Disk;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.CNModel;
 import model.NhaCC;
 /**
  *

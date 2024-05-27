@@ -8,6 +8,7 @@ import Helper.CustomUUID;
 import Helper.DateConfig;
 import Helper.RandomCodeGenerator;
 import control.BlankValueException;
+import control.HomePageService;
 import control.InvalidIDException;
 import control.LoginService;
 import control.PayService;
@@ -27,6 +28,7 @@ import model.Customer;
 import model.Disk;
 import model.Payment;
 import model.RentDetails;
+import model.Staff;
 
 
 /**
@@ -40,6 +42,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private int countAffCol = 0;
     private String idThue;
     private RentService rentService = new RentService();
+    private HomePageService homePageService = new HomePageService();
     private List<Disk> disks = new ArrayList<Disk>();
     private DefaultTableModel defTabMod = new DefaultTableModel();
     
@@ -52,6 +55,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
     private DateConfig dcf = null;
     private List<Customer> customers = null;
+    private Staff staff = null;
     
     /**
      * Creates new form UI_Staff
@@ -107,7 +111,6 @@ public class UI_Staff extends javax.swing.JFrame {
         txtHome_ht = new javax.swing.JLabel();
         txtHome_gt = new javax.swing.JLabel();
         txtHome_ns = new javax.swing.JLabel();
-        btnHome_Inf_OK = new javax.swing.JButton();
         dlgTheKH = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         txtIdKH = new javax.swing.JTextField();
@@ -341,7 +344,7 @@ public class UI_Staff extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_info.png"))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Mã nhân vên:");
+        jLabel10.setText("Mã nhân viên:");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Họ tên:");
@@ -355,32 +358,27 @@ public class UI_Staff extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Ngày sinh:");
 
-        btnHome_Inf_OK.setText("OK");
-
         javax.swing.GroupLayout frmPerInfLayout = new javax.swing.GroupLayout(frmPerInf.getContentPane());
         frmPerInf.getContentPane().setLayout(frmPerInfLayout);
         frmPerInfLayout.setHorizontalGroup(
             frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frmPerInfLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHome_Inf_OK)
-                    .addGroup(frmPerInfLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(103, 103, 103)
-                        .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHome_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_ht, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_gt, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_mnv, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel11)
+                .addGap(103, 103, 103)
+                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(frmPerInfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHome_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_ht, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_gt, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_mnv, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         frmPerInfLayout.setVerticalGroup(
@@ -409,9 +407,7 @@ public class UI_Staff extends javax.swing.JFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHome_ns, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(btnHome_Inf_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         dlgTheKH.setSize(new java.awt.Dimension(400, 500));
@@ -1303,6 +1299,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnTTNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTTNDMouseClicked
         this.frmPerInf.setVisible(true);
         this.frmPerInf.setLocationRelativeTo(this);
+        showThongTinNhanVien();
     }//GEN-LAST:event_btnTTNDMouseClicked
 
     private void txtIdKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdKHActionPerformed
@@ -1720,7 +1717,8 @@ public class UI_Staff extends javax.swing.JFrame {
         //không tìm được thì thông báo cho người dùng 
         if(flag == false) this.txtThongBaoThue.setText("Không có đĩa nào hợp lệ!");
     }
-
+    
+    // Làm mới bảng khách hàng
     public void resetTableTheKH(){
         this.defTabMod.setRowCount(0);
         this.customers = this.rentService.getAllCust();
@@ -1789,9 +1787,21 @@ public class UI_Staff extends javax.swing.JFrame {
         tabTheKH.setBackground(lightBlue);
         tabThue.setBackground(lightBlue);
     }
+    
+    // Hiện thông tin nhân viên
+    public void showThongTinNhanVien(){
+        String manv = LoginService.getId();
+        this.staff = this.homePageService.getStaffInfo(manv);
+        
+        this.txtHome_mnv.setText(manv);
+        this.txtHome_CCCD.setText(staff.getCccd());
+        this.txtHome_ht.setText(staff.getHo() + " " + staff.getTen());
+        this.txtHome_gt.setText(staff.getGioiTinh());
+        this.txtHome_ns.setText(String.valueOf(staff.getNgaySinh()));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDMK;
-    private javax.swing.JButton btnHome_Inf_OK;
     private javax.swing.JButton btnHome_pass_OK;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnOkTra;
