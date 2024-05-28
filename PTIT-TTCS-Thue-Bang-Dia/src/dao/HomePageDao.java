@@ -10,7 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.sql.ResultSet;
-import java.util.Date;
+import Helper.SystemHelper;
 
 /**
  *
@@ -45,5 +45,21 @@ public class HomePageDao {
         }
         
         return staff;
+    }
+    
+    public void UpdatePassword(String manv, String mkc, String mkm)throws Exception{
+        Connection con = JdbcConnection.getJdbcConnection();
+        int rs = 0;
+        String sql = "{CALL SP_DOIMATKHAU(?,?,?)}";
+        
+        CallableStatement cs;
+        cs = con.prepareCall(sql);
+            cs.setString(2, mkc); 
+            cs.setString(1, manv);
+            cs.setString(3, mkm);          
+            
+            rs = cs.executeUpdate();
+
+            System.out.println("Success!"); 
     }
 }

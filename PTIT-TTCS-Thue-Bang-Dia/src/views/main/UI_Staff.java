@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -99,6 +101,9 @@ public class UI_Staff extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtMkmoi = new javax.swing.JPasswordField();
         btnHome_pass_OK = new javax.swing.JButton();
+        txtDmk_Tb = new javax.swing.JLabel();
+        show2 = new javax.swing.JLabel();
+        disable = new javax.swing.JLabel();
         frmPerInf = new javax.swing.JFrame();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -166,6 +171,7 @@ public class UI_Staff extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnRstThue = new javax.swing.JButton();
         txtThongBaoThue = new javax.swing.JLabel();
+        btnHoanTac_Tra3 = new javax.swing.JButton();
         pnlTra = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         txtTKTra = new javax.swing.JTextField();
@@ -175,6 +181,7 @@ public class UI_Staff extends javax.swing.JFrame {
         btnResetTra = new javax.swing.JButton();
         txtThongBaoTra = new javax.swing.JLabel();
         btnXuatHoaDon = new javax.swing.JButton();
+        btnHoanTac_Tra = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTra = new javax.swing.JTable();
         pnlTheKH = new javax.swing.JPanel();
@@ -289,8 +296,16 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
+        dlgDmk.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dlgDmk.setTitle("Đổi mật khẩu");
         dlgDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        dlgDmk.setSize(new java.awt.Dimension(396, 168));
+        dlgDmk.setPreferredSize(new java.awt.Dimension(364, 150));
+        dlgDmk.setSize(new java.awt.Dimension(396, 200));
+        dlgDmk.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                dlgDmkWindowClosed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Mật khẩu cũ:");
@@ -299,6 +314,31 @@ public class UI_Staff extends javax.swing.JFrame {
         jLabel9.setText("Mật khẩu mới:");
 
         btnHome_pass_OK.setText("Ok");
+        btnHome_pass_OK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHome_pass_OKMouseClicked(evt);
+            }
+        });
+
+        txtDmk_Tb.setForeground(new java.awt.Color(255, 51, 51));
+
+        show2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pictogrammers-Material-Light-Eye.48.png"))); // NOI18N
+        show2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        show2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show2MouseClicked(evt);
+            }
+        });
+
+        disable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        disable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pictogrammers-Material-Light-Eye-off.48.png"))); // NOI18N
+        disable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        disable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                disableMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout dlgDmkLayout = new javax.swing.GroupLayout(dlgDmk.getContentPane());
         dlgDmk.getContentPane().setLayout(dlgDmkLayout);
@@ -306,35 +346,47 @@ public class UI_Staff extends javax.swing.JFrame {
             dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlgDmkLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
+                .addComponent(txtDmk_Tb, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dlgDmkLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dlgDmkLayout.createSequentialGroup()
-                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgDmkLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnHome_pass_OK)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dlgDmkLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(show2)
+                    .addComponent(disable, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgDmkLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnHome_pass_OK)
+                .addGap(46, 46, 46))
         );
         dlgDmkLayout.setVerticalGroup(
             dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dlgDmkLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgDmkLayout.createSequentialGroup()
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(txtMkcu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(dlgDmkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(txtMkmoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(show2)
+                    .addComponent(disable))
+                .addGap(7, 7, 7)
+                .addComponent(txtDmk_Tb)
+                .addGap(18, 18, 18)
                 .addComponent(btnHome_pass_OK)
-                .addGap(34, 34, 34))
+                .addContainerGap())
         );
 
         frmPerInf.setTitle("Thông tin Nhân viên");
@@ -879,6 +931,14 @@ public class UI_Staff extends javax.swing.JFrame {
 
         txtThongBaoThue.setForeground(new java.awt.Color(255, 51, 51));
 
+        btnHoanTac_Tra3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Undo (1).png"))); // NOI18N
+        btnHoanTac_Tra3.setText("Hoàn tác");
+        btnHoanTac_Tra3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoanTac_Tra3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlThueProcessLayout = new javax.swing.GroupLayout(pnlThueProcess);
         pnlThueProcess.setLayout(pnlThueProcessLayout);
         pnlThueProcessLayout.setHorizontalGroup(
@@ -887,7 +947,7 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTimKiemThue)
+                .addComponent(btnTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
@@ -896,25 +956,33 @@ public class UI_Staff extends javax.swing.JFrame {
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnThue)
+                        .addComponent(btnThue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRstThue)
+                        .addComponent(btnRstThue, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHoanTac_Tra3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlThueProcessLayout.setVerticalGroup(
             pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThueProcessLayout.createSequentialGroup()
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnThue)
-                                .addComponent(btnRstThue))
-                            .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnTimKiemThue))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(btnRstThue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnHoanTac_Tra3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueProcessLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtThongBaoThue)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -932,7 +1000,7 @@ public class UI_Staff extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueLayout.createSequentialGroup()
                 .addComponent(pnlThueProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE))
         );
 
         pnlContent.add(pnlThue, "card2");
@@ -975,6 +1043,14 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         });
 
+        btnHoanTac_Tra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Undo (1).png"))); // NOI18N
+        btnHoanTac_Tra.setText("Hoàn tác");
+        btnHoanTac_Tra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoanTac_TraMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -994,8 +1070,10 @@ public class UI_Staff extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnResetTra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnXuatHoaDon)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                        .addComponent(btnXuatHoaDon)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHoanTac_Tra)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1008,7 +1086,8 @@ public class UI_Staff extends javax.swing.JFrame {
                         .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnResetTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHoanTac_Tra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(txtTKTra)))
@@ -1016,6 +1095,8 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addComponent(txtThongBaoTra)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        btnHoanTac_Tra.getAccessibleContext().setAccessibleName("Hoàn tác(Chưa xuất hóa đơn)");
 
         tblTra.setAutoCreateRowSorter(true);
         tblTra.setModel(new javax.swing.table.DefaultTableModel(
@@ -1294,6 +1375,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnDMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDMKMouseClicked
         this.dlgDmk.setVisible(true);
         this.dlgDmk.setLocationRelativeTo(this);
+        this.show2.setVisible(true);
     }//GEN-LAST:event_btnDMKMouseClicked
 
     private void btnTTNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTTNDMouseClicked
@@ -1310,40 +1392,40 @@ public class UI_Staff extends javax.swing.JFrame {
         themKhachHang();
     }//GEN-LAST:event_btnThemKH_LuuMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UI_Staff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UI_Staff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UI_Staff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UI_Staff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnHome_pass_OKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHome_pass_OKMouseClicked
+        doiMatKhau();
+    }//GEN-LAST:event_btnHome_pass_OKMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UI_Staff().setVisible(true);
-            }
-        });
-    }
+    private void btnHoanTac_TraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_TraMouseClicked
+        this.pms.removeLast();
+    }//GEN-LAST:event_btnHoanTac_TraMouseClicked
+
+    private void btnHoanTac_Tra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_Tra3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHoanTac_Tra3MouseClicked
+
+    private void show2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MouseClicked
+        this.txtMkcu.setEchoChar((char)0);
+        this.txtMkmoi.setEchoChar((char)0);
+        disable.setVisible(true);
+        //disable.setEnabled(true);
+        show2.setVisible(false);
+    }//GEN-LAST:event_show2MouseClicked
+
+    private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
+        this.txtMkcu.setEchoChar('*');
+        this.txtMkmoi.setEchoChar('*');
+        disable.setVisible(false);
+        //disable.setEnabled(false);
+        show2.setVisible(true);
+    }//GEN-LAST:event_disableMouseClicked
+
+    private void dlgDmkWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDmkWindowClosed
+        this.txtMkcu.setText("");
+        this.txtMkmoi.setText("");
+    }//GEN-LAST:event_dlgDmkWindowClosed
+
+    
     /**HIỆN BẢNG DANH SÁCH ĐĨA SẴN SÀNG
      * @params NONE
     */
@@ -1800,8 +1882,27 @@ public class UI_Staff extends javax.swing.JFrame {
         this.txtHome_ns.setText(String.valueOf(staff.getNgaySinh()));
     }
     
+    /**
+     * Đổi mật khẩu
+     */
+    public void doiMatKhau(){
+        if(this.txtMkcu.getText().trim().equalsIgnoreCase("") || this.txtMkmoi.getText().trim().equalsIgnoreCase("")){
+            this.txtDmk_Tb.setText("Không được để trống dòng!");
+        }else{
+            try {
+                this.login = new LoginService();
+                this.login.UpdatePassword(LoginService.getId(), this.txtMkcu.getText().trim(), this.txtMkmoi.getText().trim());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(pnlHome, ex.toString());
+            }
+        }
+        this.login = null;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDMK;
+    private javax.swing.JButton btnHoanTac_Tra;
+    private javax.swing.JButton btnHoanTac_Tra3;
     private javax.swing.JButton btnHome_pass_OK;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnOkTra;
@@ -1821,6 +1922,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnXuatHoaDon;
     private javax.swing.JComboBox<String> cmbGioiTinh;
     private com.toedter.calendar.JDateChooser dchNgaySinh;
+    private javax.swing.JLabel disable;
     private javax.swing.JDialog dlgDmk;
     private javax.swing.JDialog dlgTheKH;
     private javax.swing.JDialog dlgThue;
@@ -1881,6 +1983,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JPanel pnlThue_Them1;
     private javax.swing.JPanel pnlTra;
     private javax.swing.JPanel pnlTra_Them;
+    private javax.swing.JLabel show2;
     private javax.swing.JSeparator sprtCD;
     private javax.swing.JPanel tabHome;
     private javax.swing.JPanel tabTheKH;
@@ -1891,6 +1994,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private javax.swing.JTable tblTra;
     private javax.swing.JTextField txtCccd;
     private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JLabel txtDmk_Tb;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JLabel txtHome_CCCD;

@@ -5,6 +5,7 @@
 package control;
 
 import dao.AccountDao;
+import dao.HomePageDao;
 import model.Acount;
 /**
  *
@@ -13,6 +14,7 @@ import model.Acount;
 public class LoginService {
     private AccountDao accDao;
     private static String id;
+    private HomePageDao homeDao;
 
     public static String getId() {
         return id;
@@ -43,4 +45,8 @@ public class LoginService {
         }
     }
     
+    public void UpdatePassword(String manv, String mkc, String mkm)throws Exception{
+        this.homeDao = new HomePageDao();
+        this.homeDao.UpdatePassword(manv, mkc, mkm);
+    }
 }
