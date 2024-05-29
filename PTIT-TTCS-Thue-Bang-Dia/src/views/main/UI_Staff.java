@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -299,7 +300,6 @@ public class UI_Staff extends javax.swing.JFrame {
         dlgDmk.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dlgDmk.setTitle("Đổi mật khẩu");
         dlgDmk.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        dlgDmk.setPreferredSize(new java.awt.Dimension(364, 150));
         dlgDmk.setSize(new java.awt.Dimension(396, 200));
         dlgDmk.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -466,7 +466,6 @@ public class UI_Staff extends javax.swing.JFrame {
 
         jLabel3.setText("Mã khách hàng");
 
-        txtIdKH.setText("ID Khách hàng");
         txtIdKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdKHActionPerformed(evt);
@@ -478,11 +477,7 @@ public class UI_Staff extends javax.swing.JFrame {
 
         jLabel6.setText("CCCD");
 
-        txtCccd.setText("CCCD");
-
         jLabel16.setText("Họ và tên");
-
-        txtHoTen.setText("Họ và tên");
 
         jLabel17.setText("Giới tính");
 
@@ -494,15 +489,9 @@ public class UI_Staff extends javax.swing.JFrame {
 
         jLabel19.setText("Số điện thoại");
 
-        txtSDT.setText("Số điện thoại");
-
         jLabel20.setText("Email");
 
-        txtEmail.setText("Email");
-
         jLabel21.setText("Địa chỉ");
-
-        txtDiaChi.setText("Địa chỉ");
 
         btnThemKH_Luu.setText("Lưu");
         btnThemKH_Luu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1315,6 +1304,14 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnThemKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemKHMouseClicked
         this.dlgTheKH.setLocationRelativeTo(this);
         this.dlgTheKH.setVisible(true);
+        
+        // Test Case
+        this.txtIdKH.setText("012345");
+        this.txtCccd.setText("123456789012");
+        this.txtHoTen.setText("Lê Thị Nở");
+        this.txtSDT.setText("0125364897");
+        this.txtEmail.setText("ltn@gmail.com");
+        this.txtDiaChi.setText("99 Man Thiện");
     }//GEN-LAST:event_btnThemKHMouseClicked
 
     private void btnRstTheKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRstTheKHActionPerformed
@@ -1397,7 +1394,7 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHome_pass_OKMouseClicked
 
     private void btnHoanTac_TraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_TraMouseClicked
-        this.pms.removeLast();
+//        this.pms.removeLast();
     }//GEN-LAST:event_btnHoanTac_TraMouseClicked
 
     private void btnHoanTac_Tra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_Tra3MouseClicked
@@ -1823,10 +1820,16 @@ public class UI_Staff extends javax.swing.JFrame {
                 throw new BlankValueException("Căn cước công dân không được để trống!");
             } else if (this.txtHoTen.getText().equals("")) {
                 throw new BlankValueException("Họ và tên không được để trống!");
-            } else if (this.txtHoTen.getText().equals("")) {
-                throw new BlankValueException("Họ và tên không được để trống!");
+            } else if (!Pattern.matches("[0-9]{12,12}" ,this.txtCccd.getText())) {
+                throw new BlankValueException("Căn cước công dân không hợp lệ!");
+            } else if (!this.txtSDT.getText().equals("") && !Pattern.matches("0[0-9]{9,9}" ,this.txtSDT.getText())) {
+                throw new BlankValueException("Số điện thoại không hợp lệ!");
             }
-
+            
+            System.out.println("CCCD: " + this.txtCccd.getText());
+            System.out.println("Regex: " + Pattern.matches("[0-9]{12,12}" , this.txtCccd.getText()));
+            System.out.println("Test Case: " + !Pattern.matches("[0-9]{12,12}" , "01234567890123"));
+            
             Customer cust = new Customer();
             cust.setMakh(txtIdKH.getText());
             cust.setCccd(txtCccd.getText());
@@ -1836,13 +1839,10 @@ public class UI_Staff extends javax.swing.JFrame {
             cust.setSdt(txtSDT.getText());
             cust.setEmail(txtEmail.getText());
             cust.setDiachi(txtDiaChi.getText());
-
-            System.out.println("I'm here!");
+            
             String manv = LoginService.getId();
 
             int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thêm khách hàng?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            System.out.println("x= " + x);
-            System.out.println("Equal?" + JOptionPane.YES_OPTION);
 
             if (x == JOptionPane.YES_OPTION) {
                 CustomerDao.addNewCustomer(cust, manv);
