@@ -24,7 +24,7 @@ import model.RentDetails;
  * @author vduct
  */
 public class PayDao {
-    public int insertPay(Payment payMent, String maPThue, String manv){
+    public int insertPay(Payment payMent, String manv){
         Connection con = JdbcConnection.getJdbcConnection();
         int rs = 0;
         String sql = "{CALL SP_TRA (?, ?, ?, ?, ?)}";
@@ -32,7 +32,7 @@ public class PayDao {
         CallableStatement cs;
         try {
             cs = con.prepareCall(sql);
-            cs.setString(1, maPThue);
+            cs.setString(1, payMent.getMaPthue());
             cs.setString(2, payMent.getMaPtra());
             cs.setString(3, payMent.getMaHd());
             cs.setString(4, manv);

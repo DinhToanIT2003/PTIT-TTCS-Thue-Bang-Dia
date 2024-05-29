@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Customer;
 import model.Disk;
@@ -53,7 +54,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private RandomCodeGenerator uID; 
     private RentDetails rentDt;
     private List<RentDetails> rentDtls = new ArrayList<>();
-    private List<Payment> pms = null;
+    private List<Payment> pms = new ArrayList<>();;
     private PayService payService = null;
 
     private DateConfig dcf = null;
@@ -936,19 +937,19 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTimKiemThue, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                        .addComponent(txtThongBaoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                        .addComponent(txtThongBaoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlThueProcessLayout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnThue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnThue, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRstThue, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRstThue, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHoanTac_Tra3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -958,20 +959,16 @@ public class UI_Staff extends javax.swing.JFrame {
                 .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlThueProcessLayout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addComponent(btnRstThue, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnHoanTac_Tra3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThueProcessLayout.createSequentialGroup()
-                            .addContainerGap()
                             .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlThueProcessLayout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addGroup(pnlThueProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTimKiemThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRstThue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHoanTac_Tra3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtThongBaoThue)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1051,7 +1048,7 @@ public class UI_Staff extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtTKTra, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTK)
+                        .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1249,9 +1246,9 @@ public class UI_Staff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThueMouseClicked
+        this.txtThue_MaDia.setText(this.getValueTable(tblThue));
         this.dlgThue.setLocationRelativeTo(this);
-        this.dlgThue.setVisible(true);
-        
+        this.dlgThue.setVisible(true);        
     }//GEN-LAST:event_btnThueMouseClicked
 
     private void btnThue_HuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_HuyMouseClicked
@@ -1271,6 +1268,7 @@ public class UI_Staff extends javax.swing.JFrame {
     private void btnThue_LuuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThue_LuuMouseClicked
         getRentForm();
         txtThongBaoThue.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
+        JOptionPane.showMessageDialog(pnlTra, "Thuê thành công!");
     }//GEN-LAST:event_btnThue_LuuMouseClicked
 
     private void btnTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTKMouseClicked
@@ -1283,18 +1281,22 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetTraMouseClicked
 
     private void btnTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTraMouseClicked
+        this.txtTra_ID .setText(this.getValueTable(tblTra));
         this.dlgTra.setLocationRelativeTo(this);
-        this.dlgTra.setVisible(true);
+        this.dlgTra.setVisible(true);                
     }//GEN-LAST:event_btnTraMouseClicked
 
     private void btnOkTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkTraMouseClicked
         getPhieuTra(); 
         txtThongBaoTra.setText("Phiếu trả đã được lưu!");
+        JOptionPane.showMessageDialog(pnlTra, "Đã lưu vào hàng đợi xuất hóa đơn!");
     }//GEN-LAST:event_btnOkTraMouseClicked
 
     private void btnXuatHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXuatHoaDonMouseClicked
         xuatHoaDon();
+        resetTableTra();
         txtThongBaoTra.setText("Số dòng bị ảnh hưởng trên Csdl là "+ this.countAffCol + " !");
+        JOptionPane.showMessageDialog(pnlTra, "Tạo hóa đơn thành công!");
     }//GEN-LAST:event_btnXuatHoaDonMouseClicked
 
     private void btnTimKiemTheKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemTheKHMouseClicked
@@ -1394,7 +1396,9 @@ public class UI_Staff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHome_pass_OKMouseClicked
 
     private void btnHoanTac_TraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_TraMouseClicked
-//        this.pms.removeLast();
+        Payment pm = this.pms.getLast();
+        this.pms.removeLast();
+        JOptionPane.showMessageDialog(pnlTra, "Đã xóa phiếu thuê "+ pm.getMaPthue() + " Khỏi hàng chờ!");
     }//GEN-LAST:event_btnHoanTac_TraMouseClicked
 
     private void btnHoanTac_Tra3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoanTac_Tra3MouseClicked
@@ -1536,9 +1540,13 @@ public class UI_Staff extends javax.swing.JFrame {
             int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
             if(x == JOptionPane.YES_OPTION){
                 this.countAffCol = this.rentService.insertRent(rentDt, LoginService.getId(), idThue);
+                this.dlgThue.dispose();
+                setTableThue();  
+                this.txtThue_MaKH.setText("");
+                this.txtThue_SoLuong.setText("");
+                //this.txtThue_NgayTra.setCalendar(null);
             }
-            this.dlgThue.dispose();
-            setTableThue();
+            
         }
       
     }
@@ -1646,7 +1654,6 @@ public class UI_Staff extends javax.swing.JFrame {
         payService = new PayService();
         rentDtls = this.rentService.getAllRentNotPay();
         Payment pm = new Payment();
-        pms = new ArrayList<>();
         List<Payment> pays = new ArrayList<>();
         pays = this.payService.getAllPay();
         
@@ -1667,7 +1674,7 @@ public class UI_Staff extends javax.swing.JFrame {
                     flag = false;
                     throw new InvalidIDException("Không tìm thấy phiếu thuê!");
                 }
-                this.idThue = this.txtTra_ID.getText(); 
+            pm.setMaPthue(this.txtTra_ID.getText().trim());
                 
             
             //Tạo mã phiếu trả tự động
@@ -1700,23 +1707,30 @@ public class UI_Staff extends javax.swing.JFrame {
         }else{
             int x = JOptionPane.showConfirmDialog(this, "Are you sure you want to save this change?");
             if(x == JOptionPane.YES_OPTION){
-             
+                this.dlgTra.dispose();
+               setTableTra();
+               this.txtTra_PhuPhi.setText("");
+               int count = pms.size();
             }
-            this.dlgTra.dispose();
-            setTableTra();
+            
         }
     }
     
     public void setTableTra(){
-        this.defTabMod.setRowCount(0);
-        this.rentDtls = this.rentService.getAllRentNotPay();
-                
-        for(RentDetails rent : this.rentDtls){
-            defTabMod.addRow(new Object[] {
-                rent.getId(), rent.getMadia(), rent.getMaKh(), rent.getSlThue(), rent.getGia(), rent.getNgayThue(), rent.getNgayTra()
-            });
-        }
-        this.rentDtls.clear();
+//        this.defTabMod.setRowCount(0);
+//        this.rentDtls = this.rentService.getAllRentNotPay();
+//                
+//        for(RentDetails rent : this.rentDtls){
+//            defTabMod.addRow(new Object[] {
+//                rent.getId(), rent.getMadia(), rent.getMaKh(), rent.getSlThue(), rent.getGia(), rent.getNgayThue(), rent.getNgayTra()
+//            });
+//        }
+//        this.rentDtls.clear();
+        int selectedRow = this.tblTra.getSelectedRow();
+            if (selectedRow != -1) {
+                // Bôi đen dòng được chọn
+                this.tblTra.setRowSelectionInterval(selectedRow, selectedRow);
+            }
     }
     
     public void xuatHoaDon(){
@@ -1724,6 +1738,7 @@ public class UI_Staff extends javax.swing.JFrame {
         String mahd;
         List<Payment> pays = new ArrayList<>();
         pays = this.payService.getAllPay();
+        int count = this.pms.size();
         
         //Tạo mã hóa đơn tự động
         do{
@@ -1738,9 +1753,9 @@ public class UI_Staff extends javax.swing.JFrame {
         //Chạy for để nhập phiếu trả cùng hóa đơn vào CSDL
         for(Payment pay : this.pms){
             pay.setMaHd(mahd);
-           this.countAffCol = this.payService.insertPay(pay, idThue, LoginService.getId()); 
+           this.countAffCol = this.payService.insertPay(pay, LoginService.getId()); 
         }
-        
+        this.pms.clear();
     }
     
     public void setBtnThue(){
@@ -1897,6 +1912,20 @@ public class UI_Staff extends javax.swing.JFrame {
             }
         }
         this.login = null;
+    }
+    
+    /**
+     * lấy giá trị trong jtable
+     */
+    public String getValueTable(JTable table){
+        // Lấy số hàng và số cột được chọn
+        int row = table.getSelectedRow();
+        int column = 0;
+
+        // Lấy giá trị từ ô được chọn
+        String cellValue = (String)table.getValueAt(row, column);
+
+        return cellValue;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

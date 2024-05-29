@@ -20,8 +20,8 @@ public class PayService {
         payDao = new PayDao();
     }
     
-    public int insertPay(Payment payMent, String maPThue, String manv){
-        return payDao.insertPay(payMent, maPThue, manv);
+    public int insertPay(Payment payMent, String manv){
+        return payDao.insertPay(payMent, manv);
     }
     
     public boolean checkIdRent(String maPthue, List<RentDetails> rents){

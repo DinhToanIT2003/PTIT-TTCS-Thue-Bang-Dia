@@ -12,6 +12,7 @@ public class Payment {
     private String maPtra;
     private String maHd;
     private int phuPhi;
+    private String maPthue;
 
     public String getMaPtra() {
         return maPtra;
@@ -35,6 +36,14 @@ public class Payment {
 
     public void setPhuPhi(int phuPhi) {
         this.phuPhi = phuPhi;
+    }
+
+    public String getMaPthue() {
+        return maPthue;
+    }
+
+    public void setMaPthue(String maPthue) {
+        this.maPthue = maPthue;
     }
     
     
