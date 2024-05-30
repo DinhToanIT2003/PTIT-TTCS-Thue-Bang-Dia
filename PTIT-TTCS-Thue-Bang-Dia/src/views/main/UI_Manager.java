@@ -385,23 +385,23 @@ public class UI_Manager extends javax.swing.JFrame {
         });
 
         lblTra.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTra.setText("TỔNG HỢP THỐNG KÊ");
+        lblTra.setText("Tổng hợp thống kê");
 
         javax.swing.GroupLayout tabTKLayout = new javax.swing.GroupLayout(tabTK);
         tabTK.setLayout(tabTKLayout);
         tabTKLayout.setHorizontalGroup(
             tabTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabTKLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTKLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(lblTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
         tabTKLayout.setVerticalGroup(
             tabTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTKLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(lblTra, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGap(30, 30, 30))
         );
 
         pnlMenu.add(tabTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 270, -1));
@@ -1090,13 +1090,28 @@ public class UI_Manager extends javax.swing.JFrame {
         btnLuu.setForeground(Color.red);
         
         switch (btn){
-            case 1 -> cnThem();
+            case 1: {
+                cnThem();
+                setDefaultTextField();
+                break;
+            } 
             
-            case 2 -> cnSua();
+            case 2: {
+                cnSua();
+                setDefaultTextField();
+                break;
+            }
             
-            case 3 -> cnXoa();
+            case 3: {
+                cnXoa();
+                setDefaultTextField();
+                break;
+            }
                 
-            default -> setDefaultTextField();
+            default:{
+                setDefaultTextField();
+                break;
+            }
         }
         this.btn = 0;
     }//GEN-LAST:event_btnLuuActionPerformed
@@ -1199,11 +1214,12 @@ public class UI_Manager extends javax.swing.JFrame {
             }
             
             //Kiểm giá trị của Giá
-            if(CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText()))){
+            if(CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText())) || Double.parseDouble(txtGia.getText()) > 0){
                 disk.setGia(Integer.parseInt(txtGia.getText()));
             }else{
                 flag = false;
-                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên!");
+                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên dương!");
+                throw new InvalidIDException("Giá phải mang giá trị dương!");
             }
         }catch(BlankValueException e){
             JOptionPane.showMessageDialog(this, e, "Warning", JOptionPane.WARNING_MESSAGE);
@@ -1223,6 +1239,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 setDefaultTextField();
                 countAffCol = this.upService.UpdateDisk(disk, LoginService.getId());
                 lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+                JOptionPane.showMessageDialog(this.pnlUpdate, "Sửa thành công!");
             }
         }
     }
@@ -1279,13 +1296,15 @@ public class UI_Manager extends javax.swing.JFrame {
             //tiếp tục thêm thông tin vào đĩa
             disk.setTen(txtTen.getText());
             disk.setLoai(txtLoai.getText().toUpperCase());
-            
-            if(CheckValueHelper.isInteger(Double.parseDouble(txtSl.getText())) && CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText()))){
+             
+            if(CheckValueHelper.isInteger(Double.parseDouble(txtSl.getText())) && CheckValueHelper.isInteger(Double.parseDouble(txtGia.getText())) 
+                    || Double.parseDouble(txtGia.getText()) > 0 || Double.parseDouble(txtSl.getText())>0){
                 disk.setSoluong(Integer.parseInt(txtSl.getText()));
                 disk.setGia(Integer.parseInt(txtGia.getText()));
             }else{
                 flag = false;
-                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên!");
+                this.lblPhanHoi.setText("Số lượng đĩa và Giá đĩa phải là số nguyên dương!");
+                throw new InvalidIDException("Số lượng đĩa và Giá đĩa phải là số nguyên dương!");
             }
             
             countAffCol = this.upService.addDisk(disk, LoginService.getId(), nhaCC);
@@ -1306,6 +1325,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 setTableData(this.disks);
                 setDefaultTextField();
                 lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+                JOptionPane.showMessageDialog(this.pnlUpdate, "Thêm thành công!");
             }
         }   
     }
@@ -1349,6 +1369,7 @@ public class UI_Manager extends javax.swing.JFrame {
                 setTableData(this.disks);
                 setDefaultTextField();
                 lblPhanHoi.setText("Số dòng bị ảnh hưởng là "+ countAffCol +" dòng!");
+                JOptionPane.showMessageDialog(this.pnlUpdate, "Xóa thành công!");
             }
         }        
     }
@@ -1562,7 +1583,6 @@ public class UI_Manager extends javax.swing.JFrame {
     private javax.swing.JPanel pnlUpdate;
     private javax.swing.JScrollPane scpDia;
     private javax.swing.JLabel show;
-    private javax.swing.JLabel show2;
     private javax.swing.JSeparator sprtCD;
     private javax.swing.JPanel tabHome;
     private javax.swing.JPanel tabTK;
